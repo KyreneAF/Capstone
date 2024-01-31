@@ -14,6 +14,12 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    songs = db.relationship("Song", back_populates="uploader", cascade='all, delete-orphan')
+    comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
+    liked_songs = db.relationship("LikedSong", back_populates="user", cascade="all, delete-orphan")
+    # playlists = db.relationship('Playlist', backref='owner')
+    # liked_songs = db.relationship('LikedSong', backref='liker')
+
     @property
     def password(self):
         return self.hashed_password
@@ -23,7 +29,7 @@ class User(db.Model, UserMixin):
         self.hashed_password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return check_password_hash(self.hashed_password, password)
 
     def to_dict(self):
         return {

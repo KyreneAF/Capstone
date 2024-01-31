@@ -1,5 +1,8 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from faker import Faker
+
+fake = Faker(locale='en_US')
 
 
 # Adds a demo user, you can add other users here if you want
@@ -15,6 +18,18 @@ def seed_users():
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.commit()
+    newUsers = []
+
+    for i in range(10):
+        newUser = User(
+            username=fake.user_name(),
+            email=fake.email(),
+            hashed_password=fake.password()
+        )
+        newUsers.append(newUser)
+    db.session.add_all(newUsers)
+
+    db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
@@ -28,5 +43,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()

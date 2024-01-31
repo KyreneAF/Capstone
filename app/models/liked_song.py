@@ -10,7 +10,7 @@ class LikedSong(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('users.id')) ,nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')),nullable=False)
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
 
@@ -18,13 +18,10 @@ class LikedSong(db.Model, UserMixin):
     song = db.relationship("Song", back_populates="liked_songs")
 
     def to_dict(self):
-
-
-        song_dict = {
+        liked_song_dict = {
             "id": self.id,
-            "user": self.user_id,
-            "song": self.song_id,
+            "user": self.user.to_dict(),
+            "song": self.song.to_dict(),
             "created_at": self.created_at
         }
-
-        return song_dict
+        return liked_song_dict
