@@ -31,6 +31,6 @@ class Song(db.Model, UserMixin):
             'audio_file': self.audio_file,
             'user_id': self.uploader.to_dict(),
             'created_at': self.created_at,
-            # 'num_likes': len(self.liked_songs)
+            'num_likes': len(self.liked_songs)
         }
         return song_dict
