@@ -69,13 +69,16 @@ export const thunkGetCurrSongs = () => async(dispatch)=>{
 
 }
 export const thunkCreateSong = (newSong) => async(dispatch) =>{
+
     const res = await fetch('/api/songs/new',{
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newSong)
+        // headers: {"Content-Type": "multipart/form-data"},
+        body: newSong //JSON.stringify(newSong)
     });
+
     if (res.ok){
         const createdSong = await res.json();
+
         dispatch(createSong(createdSong))
         return createdSong
     }else{
