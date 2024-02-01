@@ -119,7 +119,7 @@ function songReducer(state = {}, action){
     switch(action.type){
         case GET_ALL_SONGS:{
             let newState = {...state}
-            action.songs.forEach(song => newState[song.id] = song)
+            action.songs.songs.forEach(song => newState[song.id] = song)
             return newState
         }case GET_CURR_SONGS:{
             let newState = {...state};
