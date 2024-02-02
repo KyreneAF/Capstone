@@ -5,7 +5,8 @@ import Layout from './Layout';
 import GreetingPage from '../components/GreetingPage/GreetingPage';
 import SplashPage from '../components/SplashPage/SplashPage';
 import CreateSongForm from '../components/CreateSongForm/CreateSongForm';
-
+import SingleSongPage from '../components/SingleSongPage/SingleSongPage';
+import UpdateSongs from '../components/ManageSongs/UpdateSongs';
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ export const router = createBrowserRouter([
         element:<CreateSongForm />
 
       },
+      {
+        path: "songs/:id",
+        element: <SingleSongPage />
+      },
+      {
+        path: "songs/edit/:id",
+        element: <UpdateSongs />
+      }
       // {
       //   path:"songs/:id",
       //   element:<

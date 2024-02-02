@@ -2,10 +2,13 @@ import { useState } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import { thunkCreateSong } from "../../redux/song";
 import './CreateSongForm.css'
+import { useNavigate } from "react-router-dom";
 
 function CreateSongForm() {
   // const history = useHistory(); // so that you can redirect after the image upload is successful
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const currUser = useSelector(state.session.user)
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [image, setImage] = useState(null);
@@ -16,18 +19,6 @@ function CreateSongForm() {
 
   // Trying to allow drag and drop
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-
-    const droppedFile = e.dataTransfer.files[0];
-
-    if (droppedFile.type.startsWith('image')) {
-      setImage(droppedFile);
-    } else if (droppedFile.type.startsWith('audio')) {
-      setAudio(droppedFile);
-    }
-  }
-
 
 
   const handleSubmit = async (e) => {
@@ -36,8 +27,8 @@ function CreateSongForm() {
     const errObj = {}
     if(!title) errObj.title = "Must enter title..."
     if(!image) errObj.image = "Image file is required..."
-    if(!audio) errObj.audio = "Audio file is required"
-    if(!genre) errObj.genre = "Must select a genre"
+    if(!audio) errObj.audio = "Audio file is required..."
+    if(!genre) errObj.genre = "Must select a genre..."
     setError(errObj)
 
 
@@ -53,19 +44,23 @@ function CreateSongForm() {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
     setImageLoading(true);
-    await dispatch(thunkCreateSong(formData));
-    // history.push("/images");
+    const newSong = await dispatch(thunkCreateSong(formData));
+    console.log(newSong,'In component')
+    //after completion navigate to newly created song page
+    navigate(`/songs/${newSong.song.id}`)
+
   };
 
   return (
-    <div className="create-song-main-cont" onDragOver={(e) => e.preventDefault()} onDrop={handleDrop}>
+    <div className="create-song-main-cont">
     <div className="create-song-form-cont block">
+    <span>{`Hello, ${currUser.username} upload your new song`}</span>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
       <div className="csf-left-cont column">
 
         <div className='csf-img-cont column'>
             <label>Image file</label>
-            <input type="file" accept="image/png, image/jpeg" onChange={(e) => setImage(e.target.files[0])} />
+            <input type="file" accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif" onChange={(e) => setImage(e.target.files[0])} />
             <div className="error-cont">{errors.audio? errors.audio : ""}</div>
         </div>
         <div className='csf-audio-cont column'>
@@ -87,7 +82,8 @@ function CreateSongForm() {
 
           <div className="csf-genre-cont column">
             <label >Tell us your genre:</label>
-            <select name="genre" id="pet-select" onChange={(e) => setGenre(e.target.value)}>
+            <select name="genre" id="pet-select" value={genre} onChange={(e) => setGenre(e.target.value)}>
+              <option value="" disabled hidden>--Pick your genre--</option>
               <option value={"Dirty Bass"}>Dirty Bass</option>
               <option value={"Hip-Hop"}>Hip-Hop</option>
               <option value={"Rock"}>Rock</option>
@@ -99,7 +95,7 @@ function CreateSongForm() {
           </div>
         </div>
         <div className='submit-error-cont error-cont'>
-         <button type="submit"  >Submit</button>
+         <button type="submit">Create song</button>
 
         </div>
         {imageLoading && <p>Loading...</p>}

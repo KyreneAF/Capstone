@@ -18,9 +18,11 @@ const getCurrSongs = (songs) =>{
     }
 }
 const createSong = (song) =>{
+
     return {
         type: CREATE_SONG,
-        song
+        song,
+
     }
 }
 const updateSong = (song) =>{
@@ -80,17 +82,18 @@ export const thunkCreateSong = (newSong) => async(dispatch) =>{
         const createdSong = await res.json();
 
         dispatch(createSong(createdSong))
+
         return createdSong
     }else{
         const errors = await res.json()
         return errors
     }
 }
-export const thunkUpdateSong = (song,songId) => async(dispatch) =>{
-    const res = await fetch(`/api/songs/${songId}`,{
+export const thunkUpdateSong = (song,id) => async(dispatch) =>{
+    const res = await fetch(`/api/songs/${id}`,{
         method: "PUT",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(song)
+        // headers: {"Content-Type": "application/json"},
+        body:song //JSON.stringify(song)
     });
     if (res.ok){
         const updatedSong = await res.json();
@@ -126,13 +129,17 @@ function songReducer(state = {}, action){
             return newState
         }case GET_CURR_SONGS:{
             let newState = {...state};
-            action.songs.forEach(song => newState[song.id] = song)
+            action.songs.songs.forEach(song => newState[song.id] = song)
             return newState
         }case CREATE_SONG:{
-            let newState = { ...state, [action.song.id]: { ...action.song } };
+            const song = action.song.song;
+            const newState = {...state}
+            newState[song.id] = song
             return newState
         }case UPDATE_SONG:{
-            let newState = {...state,[action.song.id]:action.song};
+            const song = action.song.song
+            let newState = {...state}
+            newState[song.id] = song
             return newState
         }case DELETE_SONG:{
             let newState = {...state};

@@ -46,7 +46,7 @@ function SplashPage(){
             {arr.map(song =>(
                 <div key={song.id} className="column" onClick={() => navigate(`/spots/${song.id}`)}>
                     <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}/>
-                     <div className='play-icon-cont'><i class="fa-solid fa-play play-icon"></i></div>
+                     <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div>
                     <audio controls onError={(e) => console.error('Audio error:', e)}>
                      <source src={song.audio_file} type="audio/mp3" />
                     </audio>
@@ -64,9 +64,13 @@ function SplashPage(){
     }
 
 
-
+    if(!allSongsArr.length) return null
     return(
         <div className="land-pg-main-cont ">
+            <div className='add-song-bttn' onClick={() => navigate('/songs/new')}>
+                <i className="fa-solid fa-plus"></i>
+                <span>Upload new track</span>
+            </div>
             <div className='land-allSongs-cont block'>
                 <div className="land-greet-cont">{greetingMessage()}</div>
                 <div className='songs'>
