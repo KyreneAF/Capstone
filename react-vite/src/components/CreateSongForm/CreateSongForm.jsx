@@ -8,7 +8,7 @@ function CreateSongForm() {
   // const history = useHistory(); // so that you can redirect after the image upload is successful
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const currUser = useSelector(state.session.user)
+  const currUser = useSelector((state) =>state.session.user)
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [image, setImage] = useState(null);

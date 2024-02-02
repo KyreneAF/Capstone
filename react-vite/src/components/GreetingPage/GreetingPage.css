@@ -1,4 +1,13 @@
 .greeting-main-cont{
-    width: 100%;
-    height:100%;
+    height: 100%;
+    width: 200px;
+    justify-self: start;
+    /* position: fixed; */
+}
+/* .greeting-nav-main-cont{
+    height:400px;
+} */
+
+.click{
+    cursor:pointer
 }

@@ -6,6 +6,14 @@
     display: flex;
     flex-direction: row;
 }
+
+/* MAIN CONTAINER */
+/* .land-pg-main-cont{
+    justify-self: end;
+    width: 20px;
+} */
+
+
 /*SONG TILE*/
 .land-sqr-img{
     height:30px;

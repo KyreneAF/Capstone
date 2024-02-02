@@ -67,10 +67,6 @@ function SplashPage(){
     if(!allSongsArr.length) return null
     return(
         <div className="land-pg-main-cont ">
-            <div className='add-song-bttn' onClick={() => navigate('/songs/new')}>
-                <i className="fa-solid fa-plus"></i>
-                <span>Upload new track</span>
-            </div>
             <div className='land-allSongs-cont block'>
                 <div className="land-greet-cont">{greetingMessage()}</div>
                 <div className='songs'>

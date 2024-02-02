@@ -1,0 +1,14 @@
+/* DELETE MAIN CONT */
+.delete-song-modal{
+    display: flex;
+    align-content: center;
+}
+
+/******/
+/* DELETE IMAGE */
+.delete-img{
+    height:40px;
+    width:40px;
+}
+
+/******/

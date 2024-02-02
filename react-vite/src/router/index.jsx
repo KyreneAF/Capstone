@@ -7,6 +7,7 @@ import SplashPage from '../components/SplashPage/SplashPage';
 import CreateSongForm from '../components/CreateSongForm/CreateSongForm';
 import SingleSongPage from '../components/SingleSongPage/SingleSongPage';
 import UpdateSongs from '../components/ManageSongs/UpdateSongs';
+import DeleteModal from '../components/ManageSongs/SongDeleteModal';
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ export const router = createBrowserRouter([
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />
-      }
+      },
+      {
+        path: "songs/delete/:id",
+        element: <DeleteModal />
+      },
       // {
       //   path:"songs/:id",
       //   element:<
