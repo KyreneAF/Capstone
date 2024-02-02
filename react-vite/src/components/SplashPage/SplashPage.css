@@ -1,0 +1,42 @@
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+/* MAIN CONTAINER */
+/* .land-pg-main-cont{
+    justify-self: end;
+    width: 20px;
+} */
+
+
+/*SONG TILE*/
+.land-sqr-img{
+    height:30px;
+    width:30px;
+    border:red
+}
+
+/*****/
+
+/*PLAY BUTOON */
+.play-icon-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f70feb;
+    background-color: #f70feb;
+    height:40px;
+    width:40px;
+    border-radius:100%;
+    /* z-index:2; */
+
+}
+.play-icon{
+    color:black
+}
+/*****/

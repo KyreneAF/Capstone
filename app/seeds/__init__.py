@@ -1,5 +1,8 @@
 from flask.cli import AppGroup
-from .users import seed_users, undo_users
+from .user_seeds import seed_users, undo_users
+from .song_seeds import seed_songs, undo_songs
+from .comments_seeds import seed_comments, undo_comments
+from .liked_songs_seeds import seed_liked_songs, undo_liked_songs
 
 from app.models.db import db, environment, SCHEMA
 
@@ -12,12 +15,24 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     if environment == 'production':
-        # Before seeding in production, you want to run the seed undo 
-        # command, which will  truncate all tables prefixed with 
+        # Before seeding in production, you want to run the seed undo
+        # command, which will  truncate all tables prefixed with
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
+        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.songs RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.liked_songs RESTART IDENTITY CASCADE;")
+        db.session.commit()
+        undo_liked_songs()
+        undo_comments()
+        undo_songs()
         undo_users()
+
     seed_users()
+    seed_songs()
+    seed_comments()
+    seed_liked_songs()
     # Add other seed functions here
 
 
@@ -25,4 +40,7 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
+    undo_songs()
+    undo_comments()
+    undo_liked_songs()
     # Add other undo functions here
