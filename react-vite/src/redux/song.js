@@ -90,7 +90,8 @@ export const thunkCreateSong = (newSong) => async(dispatch) =>{
     }
 }
 export const thunkUpdateSong = (song,id) => async(dispatch) =>{
-    const res = await fetch(`/api/songs/${id}`,{
+    console.log(song,"in thunk")
+    const res = await fetch(`/api/songs/${id}/edit`,{
         method: "PUT",
         // headers: {"Content-Type": "application/json"},
         body:song //JSON.stringify(song)
@@ -144,6 +145,7 @@ function songReducer(state = {}, action){
         }case DELETE_SONG:{
             let newState = {...state};
             delete newState[action.songId]
+            return newState
         }case CLEAR_STATE: {
             return {}
         }

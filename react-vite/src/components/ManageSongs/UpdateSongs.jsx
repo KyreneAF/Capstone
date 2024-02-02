@@ -8,15 +8,15 @@ function UpdateSongs(){
     const navigate = useNavigate()
     const allSongs = useSelector(state => state.song)
     const currUser = useSelector(state => state.session.user)
-    const {id} = useParams()
-    const currSong = allSongs[id]
-
     const [title, setTitle] = useState("");
     const [genre, setGenre] = useState("");
     const [image, setImage] = useState(null);
     const [audio, setAudio] = useState(null);
     const [errors, setError] = useState({});
     const [imageLoading, setImageLoading] = useState(false);
+    const {id} = useParams()
+    const currSong = allSongs[id]
+
 
     useEffect(() =>{
         dispatch(thunkGetCurrSongs())
@@ -25,14 +25,13 @@ function UpdateSongs(){
 
     // this is to populate the input with previous info
     useEffect(() =>{
-        console.log(currSong,'currsong')
+
         if(currSong){
             setImage(currSong.image);
             setAudio(currSong.audio);
             setTitle(currSong.title);
             setGenre(currSong.genre);
         }
-        console.log(title,genre,image,audio)
     },[currSong])
 
 
@@ -47,23 +46,27 @@ function UpdateSongs(){
       if(!audio) errObj.audio = "Audio file is required..."
       if(!genre) errObj.genre = "Must select a genre..."
       setError(errObj)
+      console.log("in hs", image, audio, title,genre)
 
-
-      console.log(image,audio,title,genre)
+      if (!Object.values(errObj).length){
       const formData = new FormData();
       formData.append("image",image);
       formData.append("audio",audio);
       formData.append("title",title);
       formData.append("genre",genre);
       // formData.append("user_id",user.id)
-
+      console.log("inside hs",image,audio,title,genre)
+      console.log("inside hs", formData)
       // aws uploads can be a bit slow—displaying
       // some sort of loading message is a good idea
-      setImageLoading(true);
-      const updatedSong = await dispatch(thunkUpdateSong(formData,id));
-      console.log(updatedSong,'In component')
-      //after completion navigate to newly created song page
-      navigate(`/songs/${id}`)
+        setImageLoading(true);
+        console.log("inside hs", formData)
+         await dispatch(thunkUpdateSong(formData,id));
+         setError({})
+
+        //after completion navigate to newly created song page
+        navigate(`/songs/${id}`)
+      }
 
     };
 

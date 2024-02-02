@@ -33,7 +33,7 @@ function CreateSongForm() {
 
 
 
-    console.log(image,audio,title,genre)
+
     const formData = new FormData();
     formData.append("image",image);
     formData.append("audio",audio);
@@ -43,11 +43,14 @@ function CreateSongForm() {
 
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
+
+
+      const newSong = await dispatch(thunkCreateSong(formData));
+
+      //after completion navigate to newly created song page
+      navigate(`/songs/${newSong.song.id}`)
+
     setImageLoading(true);
-    const newSong = await dispatch(thunkCreateSong(formData));
-    console.log(newSong,'In component')
-    //after completion navigate to newly created song page
-    navigate(`/songs/${newSong.song.id}`)
 
   };
 

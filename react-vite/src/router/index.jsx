@@ -2,12 +2,13 @@ import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
-import GreetingPage from '../components/GreetingPage/GreetingPage';
+// import GreetingPage from '../components/GreetingPage/GreetingPage';
 import SplashPage from '../components/SplashPage/SplashPage';
 import CreateSongForm from '../components/CreateSongForm/CreateSongForm';
-import SingleSongPage from '../components/SingleSongPage/SingleSongPage';
+import SongDetails from '../components/SongDetails/SongDetails';
 import UpdateSongs from '../components/ManageSongs/UpdateSongs';
-import DeleteModal from '../components/ManageSongs/SongDeleteModal';
+import UserSongs from '../components/ManageSongs/UserSongs';
+
 
 export const router = createBrowserRouter([
   {
@@ -32,21 +33,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "songs/:id",
-        element: <SingleSongPage />
+        element: <SongDetails />
+      },
+      {
+        path: "songs/current",
+        element: <UserSongs />
       },
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />
       },
-      {
-        path: "songs/delete/:id",
-        element: <DeleteModal />
-      },
-      // {
-      //   path:"songs/:id",
-      //   element:<
 
-      // },
     ],
   },
 ]);

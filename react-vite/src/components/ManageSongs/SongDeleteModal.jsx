@@ -1,28 +1,29 @@
 import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
-import { thunkDeleteSong, thunkGetCurrSongs } from "../../redux/song";
+import { thunkDeleteSong,thunkGetCurrSongs} from "../../redux/song";
 import { useDispatch, useSelector } from "react-redux";
 import './SongDeleteModal.css'
 
 
-function SongDeleteModal({id}){
+function SongDeleteModal({ id }){
 
-    id = 32
+
     const dispatch = useDispatch();
     const {closeModal} = useModal();
     const userSongs = useSelector(state => state.song)
     const currUser = useSelector(state => state.session.user)
     const song = userSongs[id]
-    console.log("song",song)
+
 
     useEffect(() =>{
         dispatch(thunkGetCurrSongs())
     },[dispatch,currUser])
 
-    const handleSubmit = async () => {
-        closeModal()
+    const handleDelete = async () => {
 
-        await dispatch(thunkDeleteSong(id))
+      await dispatch(thunkDeleteSong(id))
+      await dispatch(thunkGetCurrSongs())
+      closeModal()
 
       };
 
@@ -41,7 +42,7 @@ function SongDeleteModal({id}){
             <span>{song.num_likes} Likes</span>
           </div>
           <div id='delete-buttons-cont'>
-            <button className='delete-button' onClick={handleSubmit}><h2 className='delete-button-title'>Delete</h2></button>
+            <button className='delete-button' onClick={handleDelete}><h2 className='delete-button-title'>Delete</h2></button>
             <button className='keep-button' onClick={handleCancel}><h2 className='delete-button-title'>Cancel</h2></button>
           </div>
         </div>
