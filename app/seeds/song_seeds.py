@@ -54,28 +54,6 @@ song_images = [
    "https://images.pexels.com/photos/18160979/pexels-photo-18160979/free-photo-of-sitting-on-the-air.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
 ]
 
-# audio = [
-#     "https://nn-audio-files.s3.amazonaws.com/better-day-186374+copy.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/coverless-book-186307.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/drive-breakbeat-173062.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/happy-acoustic-guitar-background-music-122614.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/happy-rock-165132.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/inside-you-162760.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/inspiring-cinematic-ambient-116199.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/mellow-future-bass-bounce-on-it-184234.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/midnight-forest-184304.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/my-heart-is-the-universe-11207.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/once-in-paris-168895.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/outer-space-188045.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/positive-way-124550.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/rock-it-21275.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/sad-soul-chasing-a-feeling-185750.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/separation-185196.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/time-166273.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/titanium-170190.mp3",
-#     "https://nn-audio-files.s3.amazonaws.com/you-can-do-more-108602.mp3",
-# ]
 audio=[
     "https://pixabay.com/music/beautiful-plays-inspiring-cinematic-ambient-116199/",
     "https://discord.com/channels/@me/1176971554152775812/1203109324797251674",
