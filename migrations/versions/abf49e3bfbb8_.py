@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b8673c05f3f5
+Revision ID: abf49e3bfbb8
 Revises:
-Create Date: 2024-02-02 17:53:11.322023
+Create Date: 2024-02-02 20:47:23.412179
 
 """
 from alembic import op
@@ -58,7 +58,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
