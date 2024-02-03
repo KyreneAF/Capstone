@@ -3,7 +3,6 @@ import { thunkGetAllSongs} from "../../redux/song"
 import { useEffect } from "react"
 import {useNavigate} from "react-router-dom"
 import './SplashPage.css'
-import GreetingPage from "../GreetingPage/GreetingPage"
 
 function SplashPage(){
     const dispatch = useDispatch()
@@ -21,7 +20,6 @@ function SplashPage(){
     useEffect(() =>{
         dispatch(thunkGetAllSongs())
     },[dispatch,])
-
 
     const greetingMessage  = () =>{
         const time = new Date().getHours()
@@ -42,21 +40,22 @@ function SplashPage(){
     const genreSort = (genre,arr) => {
         if(!arr.length)return null
         return(
-            <div className={`land-${genre}-cont block column`}>
+            <div className={`land-cont column block`}>
             <h3>{genre}</h3>
-            <div className="row">
+            <div className="genre-cont row">
             {arr.map(song =>(
-                <div key={song.id} className="column" onClick={() => navigate(`/songs/${song.id}`)}>
-                    <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}/>
-                     <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div>
-                    <audio controls onError={(e) => console.error('Audio error:', e)}>
-                     <source src={song.audio_file} type="audio/mp3" />
-                    </audio>
-                    <div className='land-song-info cloumn'>
+                <div key={song.id} className="song-cont " >
+                    <div className="stacked click">
+                    <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}  onClick={() => navigate(`/songs/${song.id}`)} />
+                     {/* <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div> */}
+                    <div className='land-song-info column'>
                         <span>{song.title},</span>
-                        <span>{song.user_id.username}</span>
+                        <span style={{ color: 'grey' }}> by: {song.user_id.username}</span>
 
                     </div>
+                    </div>
+
+                    <span className="hidden">tricky! </span>
                 </div>
             ))}
             </div>
@@ -66,10 +65,10 @@ function SplashPage(){
     }
 
 
+
     if(!allSongsArr.length) return null
     return(
-        <div className="land-pg-main-cont ">
-            <GreetingPage />
+        <div className="land-pg-main-cont main">
             <div className='land-allSongs-cont block'>
                 <div className="land-greet-cont">{greetingMessage()}</div>
                 <div className='songs'>
@@ -90,3 +89,12 @@ function SplashPage(){
 }
 
 export default SplashPage
+
+// onClick={() => navigate(`/songs/${song.id}`)}>
+{/* <audio controls >
+<audio controls onError={(e) => console.error('Audio error:', e)}></audio>
+</audio> */}
+
+
+
+{/* <source src={song.audio_file} type="audio/mp3" onError={(e) => e.target.src="https://nn-audio-files.s3.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3"} /> */}

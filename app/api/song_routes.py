@@ -6,7 +6,6 @@ from app.forms import SongForm
 # from app.api.aws_helpers.aws_upload import (upload_file_to_s3_images, upload_file_to_s3_audio, get_unique_filename)
 from app.api.aws_helpers import (upload_file_to_s3_images, upload_file_to_s3_audio, get_unique_filename, remove_file_from_s3_images, remove_file_from_s3)
 
-
 song_routes = Blueprint("songs", __name__)
 
 # GET ALL SONGS

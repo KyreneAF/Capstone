@@ -54,52 +54,14 @@ song_images = [
    "https://images.pexels.com/photos/18160979/pexels-photo-18160979/free-photo-of-sitting-on-the-air.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
 ]
 
-# audio=[
-#     "https://pixabay.com/music/beautiful-plays-inspiring-cinematic-ambient-116199/",
-#     "https://discord.com/channels/@me/1176971554152775812/1203109324797251674",
-#     "https://pixabay.com/music/beats-sunshine-bliss-181126/",
-#     "https://pixabay.com/music/future-bass-titanium-170190/",
-#     "https://pixabay.com/music/future-bass-lifelike-126735/",
-#     "https://pixabay.com/music/future-bass-mellow-future-bass-bounce-on-it-184234/",
-#     "https://pixabay.com/music/future-bass-trap-future-bass-royalty-free-music-167020/",
-#     "https://pixabay.com/music/future-bass-modern-vlog-140795/",
-#     "https://pixabay.com/music/future-bass-lifelike-126735/",
-#     "https://pixabay.com/music/future-bass-leonell-cassio-chapter-two-ft-carrie-114909/",
-#     "https://pixabay.com/music/future-bass-let-it-go-12279/",
-#     "https://pixabay.com/music/future-bass-soul-future-bass-royalty-free-music-188687/",
-#     "https://pixabay.com/music/future-bass-embrace-12278/",
-#     "https://pixabay.com/music/beats-tuesday-glitch-soft-hip-hop-118327/",
-#     "https://pixabay.com/music/beats-the-blade-1min-34sec-187351/",
-#     "https://pixabay.com/music/beats-glossy-168156/",
-#     "https://pixabay.com/music/beats-relaxed-vlog-night-street-131746/",
-#     "https://pixabay.com/music/beats-venice-story-30sec-187345/",
-#     "https://pixabay.com/music/future-bass-powerful-beat-121791/",
-#     "https://pixabay.com/music/future-bass-sexy-chillout-hip-hop-track-come-with-me-133764/",
 
-#]
 audio =[
-    "https://nn-audio-files.s3.amazonaws.com/01f36d0d8c2e4563be1f34ccab79ee8e.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/better-day-186374+copy.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/coverless-book-186307.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/d84cf705b0554aa286e0c00ba61117a1.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/drive-breakbeat-173062.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/happy-acoustic-guitar-background-music-122614.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/happy-rock-165132.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/inside-you-162760.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/inspiring-cinematic-ambient-116199.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/mellow-future-bass-bounce-on-it-184234.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/midnight-forest-184304.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/my-heart-is-the-universe-11207.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/once-in-paris-168895.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/outer-space-188045.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/positive-way-124550.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/rock-it-21275.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/sad-soul-chasing-a-feeling-185750.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/separation-185196.mp3",
-    "https://nn-audio-files.s3.amazonaws.com/separation-185196.mp3",
-]
+    "https://szhatqaudio.s3.us-west-1.amazonaws.com/better-day-186374+copy.mp3",
+    "https://szhatqaudio.s3.us-west-1.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3",
+    "https://szhatqaudio.s3.us-west-1.amazonaws.com/happy-rock-165132.mp3",
+    "https://szhatqaudio.s3.us-west-1.amazonaws.com/rock-it-21275.mp3",
 
+]
 
 
 def seed_songs():
@@ -110,7 +72,7 @@ def seed_songs():
             title= song_titles[i],
             genre= choice(["Rock","Electronic","Dirty Bass","Pop","Hip-Hop","Latino"]),
             image_file =  song_images[i],
-            audio_file = audio[i],
+            audio_file = choice(audio),
             user_id = randint(1,13),
             created_at = datetime.now()
 
