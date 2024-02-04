@@ -13,10 +13,15 @@ function CreateSongForm() {
   const [genre, setGenre] = useState("");
   const [image, setImage] = useState(null);
   const [audio, setAudio] = useState(null);
-  const [errors, setError] = useState({});
+  const [errors, setErrors] = useState({});
   const [imageLoading, setImageLoading] = useState(false);
 
-  // Trying to allow drag and drop
+
+
+
+
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +31,7 @@ function CreateSongForm() {
     if (!image) errObj.image = "Image file is required...";
     if (!audio) errObj.audio = "Audio file is required...";
     if (!genre) errObj.genre = "Must select a genre...";
-    setError(errObj);
+    setErrors(errObj);
 
     setImageLoading(true);
     const formData = new FormData();
@@ -34,16 +39,20 @@ function CreateSongForm() {
     formData.append("audio", audio);
     formData.append("title", title);
     formData.append("genre", genre);
-    // formData.append("user_id",user.id)
+
 
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
 
     const newSong = await dispatch(thunkCreateSong(formData));
 
-    //after completion navigate to newly created song page
+    if(newSong.errors) setImageLoading(false)
+    console.log("new song", newSong)
 
-    navigate(`/songs/${newSong.song.id}`);
+    if(newSong.id){
+      navigate(`/songs/${newSong.song.id}`);
+
+    }
   };
 
   return (
@@ -90,6 +99,7 @@ function CreateSongForm() {
                 type="text"
                 maxLength="40"
                 onChange={(e) => setTitle(e.target.value)}
+
               />
               <div className="error-cont">
                 {errors.title ? errors.title : ""}
@@ -103,6 +113,7 @@ function CreateSongForm() {
                 id="pet-select"
                 value={genre}
                 onChange={(e) => setGenre(e.target.value)}
+
               >
                 <option value="" disabled hidden>
                   --Pick your genre--
@@ -121,9 +132,12 @@ function CreateSongForm() {
           </div>
         </div>
           <div className="submit-error-cont error-cont">
-            <button type="submit">Create song</button>
-          </div>
+            <button disabled={!title || ! genre || !image || !audio}className='border click' type="submit">Create song</button>
+          </div >
+          <div className='is-loading'>
           {imageLoading && <p>Loading...</p>}
+
+          </div>
         </form>
       </div>
     </div>

@@ -74,3 +74,21 @@
     font-size: 20px;
 
 }
+
+.submit-error-cont > button{
+    color:black;
+    margin-left:200px;
+    padding: 10px;
+    border-radius: 5px;
+    width:100px
+}
+.is-loading{
+    display: flex;
+    justify-content: center;
+    color:#c91696;
+}
+
+.error-cont{
+    margin-top: 10px;
+    color:#c91696;
+}
