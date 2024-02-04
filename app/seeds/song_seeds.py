@@ -55,13 +55,6 @@ song_images = [
 ]
 
 
-audio =[
-    "https://szhatqaudio.s3.us-west-1.amazonaws.com/better-day-186374+copy.mp3",
-    "https://szhatqaudio.s3.us-west-1.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3",
-    "https://szhatqaudio.s3.us-west-1.amazonaws.com/happy-rock-165132.mp3",
-    "https://szhatqaudio.s3.us-west-1.amazonaws.com/rock-it-21275.mp3",
-
-]
 
 
 def seed_songs():

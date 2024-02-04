@@ -1,7 +1,8 @@
 import { useSelector,useDispatch } from "react-redux"
 import { thunkGetAllSongs} from "../../redux/song"
 import { useEffect } from "react"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, NavLink} from "react-router-dom"
+import AudioPlayer from "../Navigation/AudioPlayer"
 import './SplashPage.css'
 
 function SplashPage(){
@@ -28,12 +29,19 @@ function SplashPage(){
         else if(time >= 12 && time < 17) greeting = "Good afternoon"
         else greeting = "Good evening"
         return(
-            <div className='land-greeting-cont'>
+            <div className='land-greeting-cont block'>
                 <h3>{greeting}</h3>
             </div>
         )
     }
 
+    const handlePlayClick = (audio_file) =>{
+        <div className="audio-player" >
+        <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
+        </audio>
+      </div>
+
+    }
 
 
 
@@ -46,10 +54,11 @@ function SplashPage(){
             {arr.map(song =>(
                 <div key={song.id} className="song-cont " >
                     <div className="stacked click">
-                    <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}  onClick={() => navigate(`/songs/${song.id}`)} />
+                    <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"} onClick={handlePlayClick(song.audio_file)}  />
                      {/* <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div> */}
-                    <div className='land-song-info column'>
-                        <span>{song.title},</span>
+                    <div className='land-song-info column click '>
+                        {/* <span onClick={(e) => {e.stopPropagation();navigate(`/songs/${song.id}`)}}>{song.title},</span> */}
+                        <NavLink className='navie' to={`/songs/${song.id}`}>{song.title}</NavLink>
                         <span style={{ color: 'grey' }}> by: {song.user_id.username}</span>
 
                     </div>
