@@ -1,5 +1,5 @@
 from flask import Blueprint, request,abort
-from app.models import db, Song
+from app.models import db, Song, SongFile, ImageFile
 from flask_login import current_user, login_required
 from app.forms import SongForm
 
@@ -66,12 +66,24 @@ def create_song():
         new_song = Song(
             title = form.data["title"],
             genre = form.data["genre"],
-            image_file = image_upload["url"],
-            audio_file = audio_upload["url"],
             user_id = current_user.id
         )
-
         db.session.add(new_song)
+        db.session.commit()
+
+
+        new_audio = SongFile(
+            audio_file = audio_upload["url"],
+            song_id = new_song.id
+            )
+
+        new_image = ImageFile(
+            image_file = image_upload["url"],
+            song_id = new_song.id
+        )
+
+        db.session.add(new_audio)
+        db.session.add(new_image)
         db.session.commit()
 
         return {"song":new_song.to_dict()},201
@@ -86,6 +98,8 @@ def create_song():
 def edit_song(id):
 
     song = Song.query.get(id)
+    old_image = ImageFile.query.filter_by(song_id=id).first()
+    old_audio = SongFile.query.filter_by(song_id=id).first()
     if not song:
         return {"message": "Song doesn't exist"},404
     if not current_user:
@@ -121,8 +135,8 @@ def edit_song(id):
         if "url" not in new_audio_upload:
             return {"message": "error uploading audio file"},401
         #change old song to new image and commit
-        song.image_file = new_image_upload["url"]
-        song.audio_file = new_audio_upload["url"]
+        old_image.image_file = new_image_upload["url"]
+        old_audio.audio_file = new_audio_upload["url"]
 
 
         db.session.commit()
