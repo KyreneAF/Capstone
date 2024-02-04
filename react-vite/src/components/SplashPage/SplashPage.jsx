@@ -2,7 +2,7 @@ import { useSelector,useDispatch } from "react-redux"
 import { thunkGetAllSongs} from "../../redux/song"
 import { useEffect } from "react"
 import {useNavigate, NavLink} from "react-router-dom"
-import AudioPlayer from "../Navigation/AudioPlayer"
+// import AudioPlayer from "../Navigation/AudioPlayer"
 import './SplashPage.css'
 
 function SplashPage(){
@@ -35,18 +35,19 @@ function SplashPage(){
         )
     }
 
-    // const handlePlayClick = (audio_file) =>{
-    //     <div className="audio-player" >
-    //     <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
-    //     </audio>
-    //   </div>
+    const handlePlayClick = (audio_file) =>{
+        <div className="audio-player" >
+            <h1>hello</h1>
+        {/* <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
+        </audio> */}
+      </div>
 
-    // }
+    }
 
 
 
     const genreSort = (genre,arr) => {
-        if(!arr.length)return null
+        if(!allSongsArr.length)return null
         return(
             <div className={`land-cont column block`}>
             <h3>{genre}</h3>
@@ -54,7 +55,7 @@ function SplashPage(){
             {arr.map(song =>(
                 <div key={song.id} className="song-cont " >
                     <div className="stacked click">
-                   { song.id <= 20 && <img className='land-sqr-img' src={song.image}
+                   { song.id <= 20 && <img className='land-sqr-img' src={song.image_file}
                         onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}
                         onClick={handlePlayClick(song.audio_file)}  />}
                      {/* <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div> */}

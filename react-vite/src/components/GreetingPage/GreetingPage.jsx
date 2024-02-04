@@ -27,6 +27,7 @@ function GreetingPage() {
 
 
   // if (!currSongs) return null;
+  if(!currUser) return null
   return (
     <div className="greeting-main-cont row">
       {/* <div className="greeting-nav-main-cont"> */}

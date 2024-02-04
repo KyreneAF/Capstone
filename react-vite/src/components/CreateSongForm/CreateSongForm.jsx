@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateSong } from "../../redux/song";
-import "./CreateSongForm.css";
 import { useNavigate } from "react-router-dom";
+import "./CreateSongForm.css";
 
 function CreateSongForm() {
   // const history = useHistory(); // so that you can redirect after the image upload is successful
@@ -48,16 +48,21 @@ function CreateSongForm() {
 
   return (
     <div className="create-song-main-cont">
-      <div className="create-song-form-cont block">
-        <span>{`Hello, ${currUser.username} upload your new song`}</span>
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <div className="create-song-form-cont ">
+        <h2 className="cs-heading">{`Hello, ${currUser.username} upload your new song`}</h2>
+        <form  onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className='form-main-cont'>
+
+
           <div className="csf-left-cont column">
             <div className="csf-img-cont column">
               <label>Image file</label>
               <input
+              className="box"
                 type="file"
                 accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
                 onChange={(e) => setImage(e.target.files[0])}
+
               />
               <div className="error-cont">
                 {errors.audio ? errors.audio : ""}
@@ -66,10 +71,12 @@ function CreateSongForm() {
             <div className="csf-audio-cont column">
               <label>Audio file</label>
               <input
+              className="box"
                 type="file"
                 accept="audio/mp3"
                 onChange={(e) => setAudio(e.target.files[0])}
               />
+
               <div className="error-cont">
                 {errors.image ? errors.image : ""}
               </div>
@@ -112,6 +119,7 @@ function CreateSongForm() {
               </div>
             </div>
           </div>
+        </div>
           <div className="submit-error-cont error-cont">
             <button type="submit">Create song</button>
           </div>

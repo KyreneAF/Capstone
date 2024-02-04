@@ -12,13 +12,14 @@ class Song(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(40), nullable=False )
     genre = db.Column(db.String(255), nullable=False )
-    image_file = db.Column(db.Blob, nullable=False)
-    audio_file = db.Column(db.Blob, nullable=False)
+    image_file = db.Column(db.String(255), nullable=False)
+    audio_file = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod('users.id')) ,nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now)
 
-    uploader = db.relationship("User", back_populates='songs', cascade='all, delete-orphan')
-    liked_songs = db.relationship("LikedSong", back_populates='songs', cascade='all, delete-orphan')
+    comments = db.relationship('Comment', back_populates='song', cascade ='all,delete-orphan')
+    uploader = db.relationship("User", back_populates='songs')
+    liked_songs = db.relationship("LikedSong", back_populates='song', cascade='all, delete-orphan')
 
 
     def to_dict(self):
@@ -29,7 +30,8 @@ class Song(db.Model, UserMixin):
             'title': self.title,
             'genre': self.genre,
             'audio_file': self.audio_file,
-            'uploader': self.uploader,
+            'image_file': self.image_file,
+            'user_id': self.uploader.to_dict(),
             'created_at': self.created_at,
             'num_likes': len(self.liked_songs)
         }

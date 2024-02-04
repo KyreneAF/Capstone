@@ -14,7 +14,7 @@ song_routes = Blueprint("songs", __name__)
 def get_all_songs():
     songs = Song.query.order_by(Song.created_at).all()
     if not songs:
-        return {"message":"Songs do not exist"}, 404
+        return {"message":"Songs does not exist"}, 404
     songs_to_dict = [song.to_dict() for song in songs]
     return {"songs":songs_to_dict}
 
