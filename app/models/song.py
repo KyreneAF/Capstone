@@ -29,8 +29,8 @@ class Song(db.Model, UserMixin):
             'genre': self.genre,
             'user_id': self.uploader.to_dict(),
             'created_at': self.created_at,
-            'audio' : self.audio_file,
-            'image': self.image_file,
+            'audio' : self.audio_file.to_dict(),
+            'image': self.image_file.to_dict(),
             'num_likes': len(self.liked_songs)
         }
         return song_dict

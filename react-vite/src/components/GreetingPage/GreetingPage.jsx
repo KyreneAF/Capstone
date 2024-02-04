@@ -8,25 +8,25 @@ function GreetingPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currUser = useSelector((state) => state.session.user);
-  const currSongs = useSelector((state) => state.song);
-  const songsArr = Object.values(currSongs);
-  const currSongsArr = songsArr.filter(
-    (song) => song.user_id.id == currUser.id
-  );
-  console.log(currSongsArr);
+  // const currSongs = useSelector((state) => state.song);
+  // const songsArr = Object.values(currSongs);
+  // const currSongsArr = songsArr.filter(
+  //   (song) => song.user_id.id == currUser.id
+  // );
+  // console.log(currSongsArr);
 
-  useEffect(() => {
-    dispatch(thunkGetCurrSongs());
-  }, [dispatch, currUser]);
+  // useEffect(() => {
+  //   dispatch(thunkGetCurrSongs());
+  // }, [dispatch, currUser]);
 
   const handleNavMySongs = async () => {
     navigate("/songs/current");
     dispatch(clearState());
   };
 
-  console.log("currSongsArr", currSongsArr, "length", currSongsArr.length);
 
-  if (!currSongs) return null;
+
+  // if (!currSongs) return null;
   return (
     <div className="greeting-main-cont row">
       {/* <div className="greeting-nav-main-cont"> */}
@@ -44,13 +44,13 @@ function GreetingPage() {
         </div>
       </div>
       {/* </div> */}
-      {currSongsArr.length && currUser ? (
+      { currUser ? (
         <div className="gp-user-song-cont row click border" onClick={handleNavMySongs}>
           <div className='buttn-inner-div row'>
-          <img className="gp-img" src={currSongsArr[0]?.image_file} />
+          <img className="gp-img" src='https://cdn.pixabay.com/photo/2017/06/03/20/12/art-2369664_1280.jpg' />
           <div className="gp-user-song-title-cont column">
             <span>Your songs:</span>
-            <span>{currSongsArr.length} songs</span>
+            {/* <span>{currSongsArr.length} songs</span> */}
           </div>
 
           </div>

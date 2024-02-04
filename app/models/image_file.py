@@ -18,7 +18,7 @@ class ImageFile(db.Model, UserMixin):
     def to_dict(self):
         song_dict = {
             'id': self.id,
-            'song_id' : self.song_id,
-            'image_file' : self.audio_file
+            'song_id' : self.song_id.to_dict(),
+            'image_file' : self.image_file
         }
         return song_dict

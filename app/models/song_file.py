@@ -16,9 +16,10 @@ class SongFile(db.Model, UserMixin):
     audio = db.relationship('Song', back_populates='audio_file' )
 
     def to_dict(self):
+
         song_dict = {
             'id': self.id,
-            'song_id' : self.song_id,
+            'song_id' : self.song_id.to_dict(),
             'audio_file' : self.audio_file
         }
         return song_dict

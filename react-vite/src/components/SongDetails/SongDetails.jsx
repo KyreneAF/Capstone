@@ -20,11 +20,11 @@ function SongDetails(){
             <div className='song-main-cont column'>
                 <div className='song-img-play-poser-cont block '>
                     <div className='ss-stacked-con'>
-                        <img className='single-song-img' src={song.image_file}/>
+                        {/* <img className='single-song-img' src={song.image_file}/> */}
                         <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div>
-                        <audio controls onError={(e) => console.error('Audio error:', e)}>
+                        {/* <audio controls onError={(e) => console.error('Audio error:', e)}>
                             <source src={song.audio_file} type="audio/mp3" />
-                        </audio>
+                        </audio> */}
                         <span>{`produced by ${song.user_id.username}`}</span>
                     </div>
                     <div className='ss-liked-cont'>

@@ -35,13 +35,13 @@ function SplashPage(){
         )
     }
 
-    const handlePlayClick = (audio_file) =>{
-        <div className="audio-player" >
-        <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
-        </audio>
-      </div>
+    // const handlePlayClick = (audio_file) =>{
+    //     <div className="audio-player" >
+    //     <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
+    //     </audio>
+    //   </div>
 
-    }
+    // }
 
 
 
@@ -54,7 +54,9 @@ function SplashPage(){
             {arr.map(song =>(
                 <div key={song.id} className="song-cont " >
                     <div className="stacked click">
-                    <img className='land-sqr-img' src={song.image_file} onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"} onClick={handlePlayClick(song.audio_file)}  />
+                   { song.id <= 20 && <img className='land-sqr-img' src={song.image}
+                        onError={(e) => e.target.src="https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp"}
+                        onClick={handlePlayClick(song.audio_file)}  />}
                      {/* <div className='play-icon-cont'><i className="fa-solid fa-play play-icon"></i></div> */}
                     <div className='land-song-info column click '>
                         {/* <span onClick={(e) => {e.stopPropagation();navigate(`/songs/${song.id}`)}}>{song.title},</span> */}
@@ -98,12 +100,3 @@ function SplashPage(){
 }
 
 export default SplashPage
-
-// onClick={() => navigate(`/songs/${song.id}`)}>
-{/* <audio controls >
-<audio controls onError={(e) => console.error('Audio error:', e)}></audio>
-</audio> */}
-
-
-
-{/* <source src={song.audio_file} type="audio/mp3" onError={(e) => e.target.src="https://nn-audio-files.s3.amazonaws.com/dont-stop-me-abstract-future-bass-162753.mp3"} /> */}

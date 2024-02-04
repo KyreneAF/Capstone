@@ -20,8 +20,8 @@ console.log(isPlaying)
     // onClick={togglePlayPause}
     return (
       <div className="audio-player" >
-        <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
-        </audio>
+        {/* <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
+        </audio> */}
       </div>
     );
   };
