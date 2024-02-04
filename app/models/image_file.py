@@ -13,7 +13,7 @@ class ImageFile(db.Model, UserMixin):
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=False)
     image_file = db.Column(db.String(255), nullable=False)
 
-    image = db.relationship('Song', back_populates='image' )
+    image = db.relationship('Song', back_populates='image_file' )
 
     def to_dict(self):
         song_dict = {

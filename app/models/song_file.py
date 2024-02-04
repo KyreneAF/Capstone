@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from flask_login import UserMixin
-from datetime import datetime
+
 
 
 class SongFile(db.Model, UserMixin):
@@ -13,7 +13,7 @@ class SongFile(db.Model, UserMixin):
     song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable=False)
     audio_file = db.Column(db.String(255), nullable=False)
 
-    audio = db.relationship('Song', back_populates='audio_files' )
+    audio = db.relationship('Song', back_populates='audio_file' )
 
     def to_dict(self):
         song_dict = {
