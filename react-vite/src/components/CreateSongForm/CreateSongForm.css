@@ -75,13 +75,27 @@
 
 }
 
-.submit-error-cont > button{
+/* .submit-error-cont > button{
     color:black;
     margin-left:200px;
     padding: 10px;
     border-radius: 5px;
     width:100px
+
+} */
+.submit-error-cont > button{
+    margin-left:200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+
 }
+.submit-error-cont > button:hover {
+    color: rgba(252, 159, 232, 1);
+  }
+
 .is-loading{
     display: flex;
     justify-content: center;
