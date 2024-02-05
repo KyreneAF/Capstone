@@ -2,11 +2,107 @@
     max-height: 40px;
 }
 
-/* FORM CONTAINER*/
-/* .created-song-form-cont{
+/* MAIN CONT */
+.create-song-main-cont{
     display: flex;
-    flex-direction: column;
-    gap:50px;
+    justify-content: center;
+    align-items: center;
     height:100%;
-} */
+    gap:50px;
+}
+
+/* FORM CONTAINER*/
+.create-song-form-cont{
+    border: 1px solid black;
+    margin-top: 100px;
+    height:500px;
+    width: 500px;
+    padding:20px;
+
+}
+
+.form-main-cont{
+    height:300px;
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
 /******/
+/*RIGHT SIDE */
+.csf-right-cont{
+    gap:30px;
+    align-content: center;
+}
+.csf-right-cont label{
+    align-self: center;
+    padding: 10px;
+}
+.csf-title-cont{
+    display: flex;
+    justify-content: center;
+    padding:20px
+}
+/* LEFT SIDE */
+.csf-left-cont{
+    align-content: center;
+    gap: 50px
+}
+.csf-left-cont label{
+    align-self: center;
+    padding:20px
+}
+/* .box{
+    display: flex;
+    justify-content: center;
+    border:1px solid black;
+    height:100px;
+    width:200px
+} */
+
+/* FILES */
+.csf-left-cont input{
+    padding:5px
+
+}
+
+/* HEADING */
+.cs-heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 20px;
+
+}
+
+/* .submit-error-cont > button{
+    color:black;
+    margin-left:200px;
+    padding: 10px;
+    border-radius: 5px;
+    width:100px
+
+} */
+.submit-error-cont > button{
+    margin-left:200px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+
+
+}
+.submit-error-cont > button:hover {
+    color: rgba(252, 159, 232, 1);
+  }
+
+.is-loading{
+    display: flex;
+    justify-content: center;
+    color:#c91696;
+}
+
+.error-cont{
+    margin-top: 10px;
+    color:#c91696;
+}

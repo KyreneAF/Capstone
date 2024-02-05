@@ -3,7 +3,6 @@ from .user_seeds import seed_users, undo_users
 from .song_seeds import seed_songs, undo_songs
 from .comments_seeds import seed_comments, undo_comments
 from .liked_songs_seeds import seed_liked_songs, undo_liked_songs
-
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands

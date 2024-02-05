@@ -18,18 +18,8 @@ def seed_users():
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.commit()
-    newUsers = []
 
-    for i in range(10):
-        newUser = User(
-            username=fake.user_name(),
-            email=fake.email(),
-            hashed_password=fake.password()
-        )
-        newUsers.append(newUser)
-    db.session.add_all(newUsers)
 
-    db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
