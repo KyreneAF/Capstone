@@ -21,17 +21,15 @@ function CreateSongForm() {
 
 
 
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // creating error object to appear under inputs
-    const errObj = {};
-    if (!title) errObj.title = "Must enter title...";
-    if (!image) errObj.image = "Image file is required...";
-    if (!audio) errObj.audio = "Audio file is required...";
-    if (!genre) errObj.genre = "Must select a genre...";
-    setErrors(errObj);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  // creating error object to appear under inputs
+  const errObj = {};
+  if (!title) errObj.title = "Must enter title...";
+  if (!image) errObj.image = "Image file is required...";
+  if (!audio) errObj.audio = "Audio file is required...";
+  if (!genre) errObj.genre = "Must select a genre...";
+  setErrors(errObj);
 
     setImageLoading(true);
     const formData = new FormData();
@@ -47,7 +45,7 @@ function CreateSongForm() {
     const newSong = await dispatch(thunkCreateSong(formData));
 
     if(newSong.errors) setImageLoading(false)
-    console.log("new song", newSong)
+
 
     if(newSong.id){
       navigate(`/songs/${newSong.song.id}`);
