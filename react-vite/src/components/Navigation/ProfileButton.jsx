@@ -44,7 +44,7 @@ function ProfileButton() {
   return (
     <>
       <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle" />
+        <i className="fas fa-user-circle border" />
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>

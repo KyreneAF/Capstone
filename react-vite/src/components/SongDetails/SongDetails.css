@@ -1,19 +1,53 @@
 /* MAIN CONTAINER */
-.ss-main-cont{
-    display: flex;
+.ss-main-cont {
+  display: flex;
+  margin-top: 40px;
+  display: flex;
 }
 /******/
 /*SING SONG */
-.song-img-play-poser-cont{
-    align-self: center;
-    height: 250px;
-    width:500px;
-    padding:60px;
-    border: 1px solid black;
+.song-img-play-poser-cont {
+  align-self: center;
+
+  /* width: 80%; */
+  padding: 10px;
 }
 
-.single-song-img{
-    height: 250px;
-    width:500px;
+.ss-info-con {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.single-song-img {
+  height: 250px;
+  width: 500px;
 }
 /******/
+
+/* INFO CONT */
+.info-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#heart-cont {
+  display: flex;
+  gap: 10px;
+}
+
+#heart-cont i {
+  color: #fc9fe8;
+}
+
+/* .play-icon-cont {
+  background-color: #fc9fe8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f70feb;
+
+  height: 80px;
+  width: 40px;
+  border-radius: 100%;
+} */

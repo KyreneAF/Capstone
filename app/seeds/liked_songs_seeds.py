@@ -10,9 +10,9 @@ from datetime import datetime
 def seed_liked_songs():
     new_liked_songs = []
 
-    for i in range(100):
+    for i in range(20):
         new_liked_song = LikedSong(
-            user_id = randint(1,11),
+            user_id = randint(1,4),
             song_id = randint(1,20),
             created_at = datetime.now()
 
