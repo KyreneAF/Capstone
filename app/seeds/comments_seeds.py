@@ -29,7 +29,7 @@ def download_and_store_audio(audio_url):
 def seed_comments():
     newComments = []
 
-    for i in range(20):
+    for i in range(50):
         newComment = Comment(
             user_id= randint(1,3),
             song_id=randint(1,20),

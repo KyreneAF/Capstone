@@ -33,7 +33,8 @@ class Song(db.Model, UserMixin):
             'image_file': self.image_file,
             'user_id': self.uploader.to_dict(),
             'created_at': self.created_at,
-            'num_likes': len(self.liked_songs)
+            'num_likes': len(self.liked_songs),
+            'comments': [comment.to_dict() for comment in self.comments]
         }
 
         return song_dict

@@ -1,13 +1,12 @@
 import { useSelector,useDispatch } from "react-redux"
 import { thunkGetAllSongs} from "../../redux/song"
 import { useEffect } from "react"
-import {useNavigate, NavLink} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 // import AudioPlayer from "../Navigation/AudioPlayer"
 import './SplashPage.css'
 
 function SplashPage(){
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const allSongs = useSelector(state => state.song)
     const allSongsArr = Object.values(allSongs)
 
@@ -35,7 +34,7 @@ function SplashPage(){
         )
     }
 
-    const handlePlayClick = (audio_file) =>{
+    const handlePlayClick = () =>{
         <div className="audio-player" >
             <h1>hello</h1>
         {/* <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
