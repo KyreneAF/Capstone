@@ -1,7 +1,7 @@
 import { useSelector,useDispatch } from "react-redux"
 import { thunkGetAllSongs} from "../../redux/song"
 import { useEffect } from "react"
-import {useNavigate, NavLink} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 // import AudioPlayer from "../Navigation/AudioPlayer"
 import './SplashPage.css'
 

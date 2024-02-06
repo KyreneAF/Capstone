@@ -1,7 +1,7 @@
 
 import { useModal } from "../../context/Modal";
 import { thunkDeleteComment} from "../../redux/comment";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import "./SongDeleteModal.css";
 
 function CommentDeleteModal({ id}) {

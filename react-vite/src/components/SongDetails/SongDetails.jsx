@@ -22,7 +22,7 @@ function SongDetails() {
     if (Object.values(allSongs).length === 0) {
       dispatch(thunkGetAllSongs());
     }
-  }, [id]);
+  }, [dispatch,id]);
 
   // call all comments
   useEffect(() => {
