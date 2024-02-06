@@ -28,8 +28,10 @@ const updateComment = (comment, commentId) =>{
 
 }
 const deleteComment = (commentId) =>{
-    type:DELETE_COMMENT,
-    commentId
+    return{
+        type:DELETE_COMMENT,
+        commentId
+    }
 }
 export const clearState = () =>{
     return {

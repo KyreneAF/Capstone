@@ -22,8 +22,8 @@ def get_comments_of_song(song_id):
 @login_required
 def create_comment(song_id):
     form = CommentForm()
-    song = Song.query.filter(Song.id == song_id)
-    comments = Comment.query.filter(Comment.user_id == current_user.id)
+    song = Song.query.get(song_id)
+
     if not song:
         return {"message":"song does not exist"}, 404
 
@@ -34,8 +34,7 @@ def create_comment(song_id):
     if not current_user:
         return {"message": "current user not logged in"}
 
-    if comments:
-        return {"message": "User already has comment for song"}
+
 
     if form.validate_on_submit():
        new_comment = Comment(
@@ -65,7 +64,7 @@ def edit_comment(comment_id):
         return {"message": "comment does not exist"}, 404
     if comment.user_id != current_user.id:
         return {"message": "user is not owner of this comment"}, 403
-
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment.comment_text = form.comment_text.data
 

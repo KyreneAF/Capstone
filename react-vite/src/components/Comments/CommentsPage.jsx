@@ -1,29 +1,50 @@
 import { useSelector, useDispatch } from "react-redux";
-import { thunkGetAllComments,clearState } from "../../redux/comment";
+import { thunkGetAllComments, clearState } from "../../redux/comment";
 import { useEffect } from "react";
-import CommentDeleteModal from "./DeleteCommentModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import UpdateCommentModal from "./UpdateCommentModal";
+import CommentDeleteModal from "./CommentDeleteModal";
 import "./CommentsPage.css";
-import CreateComment from "./CreateComment";
 
-function CommentsPage({ songId,song}) {
-
+function CommentsPage({ songId, song }) {
   const dispatch = useDispatch();
   const allComments = useSelector((state) => state.comment);
   const currUser = useSelector((state) => state.session.user);
-  const commentsArr = Object.values(allComments);
+  const commentsArr = Object.values(allComments).sort((a,b) => b.id - a.id);
+
 
   useEffect(() => {
     dispatch(thunkGetAllComments(songId));
-    return () => dispatch(clearState())
-  }, [songId,currUser,song?.comments]);
+    return () => dispatch(clearState());
+  }, [dispatch,songId, currUser]);
+
 
   if (!commentsArr.length) return null;
+  const commentDelete = (comment) =>{
+    if(comment.user_id.id === currUser.id){
+      return(
+        <div className="pencil-delete row click">
+                <OpenModalButton
+                modalComponent={
+                  <UpdateCommentModal comment={comment}  />
+                }
+                buttonText={<i className="fa-solid fa-pencil trans edit-pencil"></i> }
+              />
+
+              <OpenModalButton
+                modalComponent={
+                  <CommentDeleteModal id={comment.id} comments={song.comments} />
+                }
+                buttonText={ <i className="fa-solid fa-trash-can click trashcan trans"></i> }
+              />
+            </div>
+          )}}
+
+
+
+
   return (
     <div className="comments-main-cont">
-     { song.user_id.id !== currUser &&
-     <CreateComment songId={songId} currUser={currUser} />
-      }
       {commentsArr.map((comment) => (
         <div
           className={
@@ -34,22 +55,8 @@ function CommentsPage({ songId,song}) {
           key={comment.id}
         >
           <p>{comment.user_id.username}</p>
-          {comment.user_id.id === currUser.id && (
-            <div className="pencil-delete row click">
-              <div
-                className="edit-bttn click"
-                // onClick={() => navigate(`/songs/edit/${song.id}`)}
-              >
-                <i className="fa-solid fa-pencil trans edit-pencil"></i>
-              </div>
-              <OpenModalButton
-                modalComponent={<CommentDeleteModal id={comment.id} comments={song.comments} />}
-                buttonText={
-                  <i className="fa-solid fa-trash-can click trashcan trans"></i>
-                }
-              />
-            </div>
-          )}
+          {commentDelete(comment)}
+
           <div className="comment-text-cont">
             <p>{comment.comment_text}</p>
           </div>

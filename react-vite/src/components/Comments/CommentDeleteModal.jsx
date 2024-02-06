@@ -1,16 +1,12 @@
-import { useEffect } from "react";
+
 import { useModal } from "../../context/Modal";
-import { thunkDeleteComment, thunkGetAllComments} from "../../redux/comment";
+import { thunkDeleteComment} from "../../redux/comment";
 import { useDispatch, useSelector } from "react-redux";
 // import "./SongDeleteModal.css";
 
-function CommentDeleteModal({ id, songId}) {
+function CommentDeleteModal({ id}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const currUser = useSelector((state) => state.session.user);
-
-
-
   // const handleDelete = () => {
   //   dispatch(thunkDeleteComment(id))
   //   closeModal();
@@ -18,10 +14,7 @@ function CommentDeleteModal({ id, songId}) {
   const handleDelete = async (e) =>{
     e.preventDefault();
      await dispatch(thunkDeleteComment(id))
-
-    await dispatch(thunkGetAllComments(songId)).then(() =>{
       closeModal()
-    })
 }
 
 

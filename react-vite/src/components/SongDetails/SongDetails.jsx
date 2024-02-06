@@ -2,20 +2,32 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
+import { thunkGetAllComments } from "../../redux/comment";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./SongDetails.css";
 import CommentsPage from "../Comments/CommentsPage";
 
 function SongDetails() {
   const dispatch = useDispatch();
   const allSongs = useSelector((state) => state.song);
+  const allComments = useSelector((state) => state.comment);
+  const currUser = useSelector((state) => state.session.user);
+  const commentsArr = Object.values(allComments);
   const { id } = useParams();
   const song = allSongs[id];
-  console.log(song,'SONG')
+  const userComment = commentsArr.find((comment) => comment.user_id.id === currUser);
+
   useEffect(() => {
     if (Object.values(allSongs).length === 0) {
       dispatch(thunkGetAllSongs());
     }
-  }, [id,song?.comments]);
+  }, [id]);
+
+  // call all comments
+  useEffect(() => {
+    dispatch(thunkGetAllComments(id));
+  },[dispatch,id]);
 
 
   if (!Object.values(allSongs).length) return null;
@@ -52,12 +64,26 @@ function SongDetails() {
     );
   };
 
-  return(
+
+  const renderAddCommentBttn = () =>{
+    if(song.user_id.id !== currUser || !userComment){
+      return (
+        <OpenModalButton
+        modalComponent={<CreateCommentModal songId={song.id} />}
+        buttonText={
+        <span style={{color:"#c91696",fontWeight:"400"}} className="click">
+          Add a comment <i className="fa-solid fa-plus"></i>
+        </span>}
+      />
+      )}}
+
+
+  return (
     <div className="ss-main-cont column">
       {renderSongDetails()}
-        <CommentsPage songId={song.id} song={song} comments={song.comments}/>
-      </div>
-
-    )
+      {renderAddCommentBttn()}
+      <CommentsPage songId={song.id} song={song} comments={song.comments} />
+    </div>
+  );
 }
 export default SongDetails;

@@ -1,14 +1,14 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-const AudioPlayer = ({ audioSrc }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [src, setSrc] = useState("")
+const AudioPlayer = () => {
+    // const [isPlaying, setIsPlaying] = useState(false);
+    // const [src, setSrc] = useState("")
 
-    if(audioSrc){
-        setSrc(audioSrc)
-        setIsPlaying(true)
-    }
-console.log(isPlaying)
+    // if(audioSrc){
+    //     setSrc(audioSrc)
+    //     setIsPlaying(true)
+    // }
+
     // const togglePlayPause = () => {
     //   if (isPlaying) {
     //     audioRef.current.pause();
@@ -22,6 +22,7 @@ console.log(isPlaying)
       <div className="audio-player" >
         {/* <audio className={ isPlaying ? 'show' : 'hidden' } controls src={src} >
         </audio> */}
+        <h3>From Audio Player</h3>
       </div>
     );
   };
