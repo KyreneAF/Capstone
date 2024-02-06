@@ -3,16 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
 import "./SongDetails.css";
+import CommentsPage from "../Comments/CommentsPage";
 
 function SongDetails() {
   const dispatch = useDispatch();
   const allSongs = useSelector((state) => state.song);
   const { id } = useParams();
   const song = allSongs[id];
-
+  console.log(song,'SONG')
   useEffect(() => {
-    dispatch(thunkGetAllSongs());
-  }, [dispatch, id]);
+    if (Object.values(allSongs).length === 0) {
+      dispatch(thunkGetAllSongs());
+    }
+  }, [id,song?.comments]);
+
 
   if (!Object.values(allSongs).length) return null;
   const renderSongDetails = () => {
@@ -48,6 +52,12 @@ function SongDetails() {
     );
   };
 
-  return <div className="ss-main-cont column">{renderSongDetails()}</div>;
+  return(
+    <div className="ss-main-cont column">
+      {renderSongDetails()}
+        <CommentsPage songId={song.id} song={song} comments={song.comments}/>
+      </div>
+
+    )
 }
 export default SongDetails;

@@ -21,9 +21,9 @@ class Comment(db.Model, UserMixin):
     def to_dict(self):
         comment_dict = {
             'id': self.id,
-            'user': self.user.to_dict(),
-            'song': self.song.to_dict(),
-            'comment': self.comment_text,
+            'user_id': self.user.to_dict(),
+            'song_id': self.song_id,
+            'comment_text': self.comment_text,
             'created_at': self.created_at
         }
         return comment_dict

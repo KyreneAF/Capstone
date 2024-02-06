@@ -99,15 +99,16 @@ export const thunkUpdateComment = (updatedComment,commentId) => async (dispatch)
     }
 };
 
-export const thunkDeleteComment = (commentId) => async (dispatch) => {
+export const thunkDeleteComment = (comment_id) => async (dispatch) => {
     try {
-    const res = await fetch(`/api/comments/${commentId}`, {
+        console.log('COMMENTS IN THUNK', comment_id)
+    const res = await fetch(`/api/comments/${comment_id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
       const comment = await res.json();
-      dispatch(deleteCOMME(commentId));
+      dispatch(deleteComment(comment_id));
       return comment;
     } else {
       const error = await res.json();
@@ -128,22 +129,23 @@ function commentReducer(state = {}, action){
         }
         case GET_ALL_COMMENTS: {
             let newState = { ...state };
+            console.log("action", action.comments)
             action.comments.comments.forEach((comment) => (newState[comment.id] = comment));
             return newState;
           }
-          case CREATE_SONG: {
+          case CREATE_COMMENT: {
             const comment = action.comment.comment;
             const newState = { ...state };
             newState[comment.id] = comment;
             return newState;
           }
-          case UPDATE_SONG: {
+          case UPDATE_COMMENT: {
             const comment = action.comment.comment;
             let newState = { ...state };
             newState[comment.id] = comment;
             return newState;
           }
-          case DELETE_SONG: {
+          case DELETE_COMMENT: {
             let newState = { ...state };
             delete newState[action.commentId];
             return newState;
@@ -152,3 +154,5 @@ function commentReducer(state = {}, action){
             return state;
     }
 }
+
+export default commentReducer
