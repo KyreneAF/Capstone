@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import CommentDeleteModal from "./DeleteCommentModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import "./CommentsPage.css";
+import CreateComment from "./CreateComment";
 
 function CommentsPage({ songId,song}) {
 
@@ -20,6 +21,9 @@ function CommentsPage({ songId,song}) {
   if (!commentsArr.length) return null;
   return (
     <div className="comments-main-cont">
+     { song.user_id.id !== currUser &&
+     <CreateComment songId={songId} currUser={currUser} />
+      }
       {commentsArr.map((comment) => (
         <div
           className={

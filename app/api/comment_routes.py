@@ -39,9 +39,9 @@ def create_comment(song_id):
 
     if form.validate_on_submit():
        new_comment = Comment(
-           user = current_user.id,
-           song = song_id,
-           comment = form.comment_text.data,
+           user_id = current_user.id,
+           song_id = song_id,
+           comment_text = form.comment_text.data,
        )
 
        db.session.add(new_comment)
