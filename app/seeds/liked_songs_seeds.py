@@ -12,7 +12,7 @@ def seed_liked_songs():
 
     for i in range(20):
         new_liked_song = LikedSong(
-            user_id = randint(1,4),
+            user_id = randint(1,3),
             song_id = randint(1,20),
             created_at = datetime.now()
 
