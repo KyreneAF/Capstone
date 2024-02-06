@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { thunkGetCurrSongs, clearState } from "../../redux/song";
+import { clearState } from "../../redux/song";
 import { useNavigate } from "react-router-dom";
 import "./GreetingPage.css";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 function GreetingPage() {
   const dispatch = useDispatch();
