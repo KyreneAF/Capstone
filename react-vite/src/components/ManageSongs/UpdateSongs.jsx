@@ -23,15 +23,13 @@ function UpdateSongs() {
   }, [dispatch, id, currUser.id]);
 
   // this is to populate the input with previous info
-  useEffect(() => {
-    if (currSong) {
-      setImage(currSong.image);
-      setAudio(currSong.audio);
-      setTitle(currSong.title);
-      setGenre(currSong.genre);
-    }
-  }, [currSong]);
-
+  // useEffect(() => {
+  //   if (currSong) {
+  //     setTitle(currSong.title);
+  //     setGenre(currSong.genre);
+  //   }
+  // }, [currSong]);
+  console.log("checking", title,image,audio,genre)
   const handleSubmit = async (e) => {
     e.preventDefault();
     // creating error object to appear under inputs
@@ -42,8 +40,9 @@ function UpdateSongs() {
     if (!genre) errObj.genre = "Must select a genre...";
     setError(errObj);
 
+    console.log("checking", title,image,audio,genre)
 
-    if (!Object.values(errObj).length) {
+      setImageLoading(true);
       const formData = new FormData();
       formData.append("image", image);
       formData.append("audio", audio);
@@ -54,14 +53,13 @@ function UpdateSongs() {
       console.log("inside hs", formData);
       // aws uploads can be a bit slow—displaying
       // some sort of loading message is a good idea
-      setImageLoading(true);
       console.log("inside hs", formData);
       await dispatch(thunkUpdateSong(formData, id));
-      setError({});
+      // setError({});
 
       //after completion navigate to newly created song page
       navigate(`/songs/${id}`);
-    }
+
   };
 
   if (!currSong) return null;
@@ -138,6 +136,7 @@ function UpdateSongs() {
             </div>
           </div>
           <div className="submit-error-cont error-cont">
+            <button className='click' onClick={() => navigate('/songs/current')}>Cancel</button>
             <button className='click' type="submit">Update song</button>
           </div>
           {imageLoading && <p>Loading...</p>}

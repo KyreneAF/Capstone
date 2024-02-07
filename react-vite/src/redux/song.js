@@ -84,7 +84,7 @@ export const thunkCreateSong = (newSong) => async (dispatch) => {
   }
 };
 export const thunkUpdateSong = (song, id) => async (dispatch) => {
-  // console.log(song, "in thunk");
+  console.log(song, "id in thunk", id, "in thunk");
   const res = await fetch(`/api/songs/${id}/edit`, {
     method: "PUT",
     // headers: {"Content-Type": "application/json"},
