@@ -48,11 +48,11 @@ const handleSubmit = async (e) => {
     if(newSong.errors) setImageLoading(false)
 
 
-    if(newSong.id){
-      navigate(`/songs/${newSong.song.id}`);
-    }
 
-  console.log("there are errors")
+      navigate(`/songs/${newSong.id}`);
+
+
+
   };
 
   return (
