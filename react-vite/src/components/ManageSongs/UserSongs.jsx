@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { thunkGetCurrSongs } from "../../redux/song";
+import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
 import "./UserSongs.css";
+import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 export default function UserSongs() {
   const currSongs = useSelector((state) => state.song);
@@ -22,6 +24,14 @@ export default function UserSongs() {
   useEffect(() => {
     dispatch(thunkGetCurrSongs());
   }, [dispatch, currUser]);
+
+  const handlePlayClick = (song) => {
+    dispatch(pauseCurrAudio(false));
+    dispatch(clearStateAudio());
+    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(pauseCurrAudio(true));
+    dispatch;
+  };
 
   if (!currSongsArr.length) return null;
   const genreSort = (genre, arr) => {
@@ -53,23 +63,23 @@ export default function UserSongs() {
                 <img
                   className="land-sqr-img ms-image"
                   src={song.image_file}
-                  onClick={() => navigate(`/songs/${song.id}`)}
+                  onClick={() => handlePlayClick(song)}
                   onError={(e) =>
                     (e.target.src =
                       "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
                   }
                 />
 
-                <div className="us-title-cont">
+                <div
+                  className="us-title-cont"
+                  onClick={() => navigate(`/songs/${song.id}`)}
+                >
                   <span className="navie click">{song.title}</span>{" "}
                 </div>
 
                 {/* <div className="play-icon-cont">
                   <i className="fa-solid fa-play play-icon"></i>
                 </div> */}
-                {/* <audio controls onError={(e) => console.error("Audio error:", e)}>
-                <source src={song.audio_file} type="audio/mp3" />
-              </audio> */}
               </div>
             ))}
           </div>
@@ -87,6 +97,7 @@ export default function UserSongs() {
       {genreSort("Dirty Bass", bassSongs)}
       {genreSort("Pop", popSongs)}
       {genreSort("Latino", latinSongs)}
+      <AudioPlayer />
     </div>
   );
 }

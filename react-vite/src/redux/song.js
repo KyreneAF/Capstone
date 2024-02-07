@@ -18,6 +18,7 @@ const getCurrSongs = (songs) => {
   };
 };
 const createSong = (song) => {
+  console.log("song in action", song)
   return {
     type: CREATE_SONG,
     song,
@@ -73,8 +74,8 @@ export const thunkCreateSong = (newSong) => async (dispatch) => {
 
   if (res.ok) {
     const createdSong = await res.json();
-
-    dispatch(createSong(createdSong));
+    console.log("song in thunk", createdSong)
+    dispatch(createSong(createdSong,createSong.id));
 
     return createdSong;
   } else {
@@ -127,6 +128,7 @@ function songReducer(state = {}, action) {
     }
     case CREATE_SONG: {
       const song = action.song.song;
+      console.log("song in reducer", song, 'before', action.song)
       const newState = { ...state };
       newState[song.id] = song;
       return newState;

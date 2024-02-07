@@ -42,6 +42,7 @@ const handleSubmit = async (e) => {
     // aws uploads can be a bit slow—displaying
     // some sort of loading message is a good idea
 
+
     const newSong = await dispatch(thunkCreateSong(formData));
 
     if(newSong.errors) setImageLoading(false)
@@ -49,8 +50,9 @@ const handleSubmit = async (e) => {
 
     if(newSong.id){
       navigate(`/songs/${newSong.song.id}`);
-
     }
+
+  console.log("there are errors")
   };
 
   return (

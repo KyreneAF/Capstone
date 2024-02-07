@@ -21,7 +21,7 @@ function CommentsPage({ songId, song }) {
 
   if (!commentsArr.length) return null;
   const commentDelete = (comment) =>{
-    if(comment.user_id.id === currUser.id){
+    if(currUser && comment.user_id.id === currUser.id){
       return(
         <div className="pencil-delete row click">
                 <OpenModalButton
@@ -48,7 +48,7 @@ function CommentsPage({ songId, song }) {
       {commentsArr.map((comment) => (
         <div
           className={
-            comment.user_id.id === currUser.id
+           currUser && comment.user_id.id === currUser.id
               ? "single-comment-cont-h "
               : "single-comment-cont block"
           }

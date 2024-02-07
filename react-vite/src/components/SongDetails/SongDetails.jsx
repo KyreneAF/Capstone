@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
 import { thunkGetAllComments } from "../../redux/comment";
+import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./SongDetails.css";
 import CommentsPage from "../Comments/CommentsPage";
+import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 function SongDetails() {
   const dispatch = useDispatch();
@@ -29,16 +31,24 @@ function SongDetails() {
     dispatch(thunkGetAllComments(id));
   },[dispatch,id]);
 
+  const handlePlayClick = (song) => {
+    dispatch(pauseCurrAudio(false));
+    dispatch(clearStateAudio());
+    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(pauseCurrAudio(true));
+    dispatch;
+  };
+
 
   if (!Object.values(allSongs).length) return null;
   const renderSongDetails = () => {
     return (
       <div className="song-main-cont column">
         <div className="song-img-play-poser-cont">
-          <div className="ss-info-con">
+          <div className="ss-info-con click" onClick={() => handlePlayClick(song)}>
             <img className="single-song-img" src={song.image_file} />
             <div className="play-icon-cont">
-              <i className="fa-solid fa-play play-icon"></i>
+              {/* <i className="fa-solid fa-play play-icon click" ></i> */}
             </div>
             {/* <audio controls onError={(e) => console.error('Audio error:', e)}>
                             <source src={song.audio_file} type="audio/mp3" />
@@ -66,7 +76,7 @@ function SongDetails() {
 
 
   const renderAddCommentBttn = () =>{
-    if(song.user_id.id !== currUser || !userComment){
+    if(currUser && song.user_id.id !== currUser || !userComment){
       return (
         <OpenModalButton
         modalComponent={<CreateCommentModal songId={song.id} />}
@@ -81,8 +91,9 @@ function SongDetails() {
   return (
     <div className="ss-main-cont column">
       {renderSongDetails()}
-      {renderAddCommentBttn()}
+      {currUser && renderAddCommentBttn()}
       <CommentsPage songId={song.id} song={song} comments={song.comments} />
+      <AudioPlayer />
     </div>
   );
 }
