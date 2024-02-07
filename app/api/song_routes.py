@@ -100,21 +100,23 @@ def edit_song(id):
         song.genre = form.data["genre"]
 
         #set new image & audio from the incoming from
-        image = form.image.data
-        audio = form.audio.data
+        # image = form.image.data
+        # audio = form.audio.data
         #check if there is an incoming image & audio
-        if image and audio:
+        if form.image.data and form.audio.data:
         #delete old image and audio from old song
-            remove_file_from_s3_images(song.image_file)
-            remove_file_from_s3(song.audio_file)
+            # remove_file_from_s3_images(song.image_file)
+            # remove_file_from_s3(song.audio_file)
+            image = form.image.data
+            audio = form.audio.data
         #assign filename property to a unique name
-        image.filename = get_unique_filename(image.filename)
-        audio.filename = get_unique_filename(audio.filename)
+            image.filename = get_unique_filename(image.filename)
+            audio.filename = get_unique_filename(audio.filename)
         #upload to aws
-        new_image_upload = upload_file_to_s3_images(image)
-        new_audio_upload = upload_file_to_s3_audio(audio)
-        print(new_image_upload)
-        print(new_audio_upload)
+            new_image_upload = upload_file_to_s3_images(image)
+            new_audio_upload = upload_file_to_s3_audio(audio)
+            print(new_image_upload)
+            print(new_audio_upload)
 
 
         if "url" not in new_image_upload:
