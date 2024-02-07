@@ -27,12 +27,30 @@ function LoginFormModal() {
       closeModal();
     }
   };
+  const demoLogin = async (e) => {
+    e.preventDefault();
+  const serverResponse = await dispatch(
+    thunkLogin({
+      email: "demo@aa.io",
+      password: "password",
+    })
+  );
+
+  if (serverResponse) {
+    setErrors(serverResponse);
+  } else {
+    navigate("/");
+
+    closeModal();
+  }
+};
+
 
   return (
-    <>
+    <div id='log-in-modal'>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form id='log-in-form' onSubmit={handleSubmit}>
+        <label className="label">
           Email
           <input
             type="text"
@@ -42,7 +60,7 @@ function LoginFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
+        <label className="label">
           Password
           <input
             type="password"
@@ -52,10 +70,38 @@ function LoginFormModal() {
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
+        <button id="log-in-submit" type="submit">Log In</button>
       </form>
-    </>
+      <h5 className='click' onClick={demoLogin}>Demo User</h5>
+    </div>
   );
 }
 
 export default LoginFormModal;
+
+{/* <>
+<h1>Log In</h1>
+<form onSubmit={handleSubmit}>
+  <label>
+    Email
+    <input
+      type="text"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+  </label>
+  {errors.email && <p>{errors.email}</p>}
+  <label>
+    Password
+    <input
+      type="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+  </label>
+  {errors.password && <p>{errors.password}</p>}
+  <button type="submit">Log In</button>
+</form>
+</> */}

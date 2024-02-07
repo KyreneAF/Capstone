@@ -8,14 +8,19 @@ import CreateSongForm from "../components/CreateSongForm/CreateSongForm";
 import SongDetails from "../components/SongDetails/SongDetails";
 import UpdateSongs from "../components/ManageSongs/UpdateSongs";
 import UserSongs from "../components/ManageSongs/UserSongs";
+
 // import CreateCommentModal from "../components/Comments/CreateCommentModal";
 
 export const router = createBrowserRouter([
   {
     element: <Layout />,
-    children: [
+    children: [,
       {
         path: "/",
+        element: <SplashPage />,
+      },
+      {
+        path: "songs",
         element: <SplashPage />,
       },
       {

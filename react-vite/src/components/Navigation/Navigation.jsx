@@ -1,6 +1,6 @@
 import ProfileButton from "./ProfileButton";
 import GreetingPage from "../GreetingPage/GreetingPage";
-import AudioPlayer from "./AudioPlayer";
+import AudioPlayer from "./AudioPlayer/AudioPlayer";
 import "./Navigation.css";
 
 function Navigation() {
@@ -24,28 +24,3 @@ function Navigation() {
 }
 
 export default Navigation;
-
-// import { NavLink } from "react-router-dom";
-// import ProfileButton from "./ProfileButton";
-// import {useSelector, useDispatch} from 'react-redux';
-// import { thunkGetCurrSongs,clearState } from '../../redux/song';
-// import { useNavigate } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import "./Navigation.css";
-
-// function Navigation() {
-
-//   return (
-//     <ul>
-//       <li>
-//         <NavLink to="/">Home</NavLink>
-//       </li>
-
-//       <li>
-//         <ProfileButton />
-//       </li>
-//     </ul>
-//   );
-// }
-
-// export default Navigation;
