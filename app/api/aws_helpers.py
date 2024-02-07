@@ -10,6 +10,7 @@ S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
 
 BUCKET_NAME_2 = os.environ.get("S3_BUCKET_AUDIO")
 S3_LOCATION_2 = f"http://{BUCKET_NAME_2}.s3.amazonaws.com/"
+
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif","mp3"}
 ALLOWED_AUDIO_EXTENSIONS = {"mp3"}
 

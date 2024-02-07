@@ -60,9 +60,9 @@ def create_song():
         # if the dictionary doesn't have a url key
         # it means that there was an error when you tried to upload
         # so you send back that error message (and you printed it above)
-            return {"message":"error uploading image file"}
+            return {"message":image_upload["errors"],"Object":"image_upload"}
         if "url" not in audio_upload:
-            return {"message": "error uploading audio file"}
+            return {"message": audio_upload["errors"],"Object":"audio_upload"}
 
         new_song = Song(
             title = form.data["title"],
@@ -71,7 +71,7 @@ def create_song():
             audio_file = audio_upload["url"],
             user_id = current_user.id
         )
-
+        print("New Song in routes",new_song,"new_song")
         db.session.add(new_song)
         db.session.commit()
 
