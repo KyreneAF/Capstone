@@ -118,9 +118,9 @@ def edit_song(id):
 
 
         if "url" not in new_image_upload:
-            return {"message":"error uploading image file"},401
+            return {"message":new_image_upload["errors"],"Object":"image_upload"}
         if "url" not in new_audio_upload:
-            return {"message": "error uploading audio file"},401
+            return {"message": new_audio_upload["errors"],"Object":"audio_upload"}
         #change old song to new image and commit
         song.image_file = new_image_upload["url"]
         song.audio_file = new_audio_upload["url"]
