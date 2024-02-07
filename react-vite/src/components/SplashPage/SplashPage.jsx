@@ -43,7 +43,7 @@ function SplashPage() {
     dispatch(clearStateAudio());
     dispatch(setCurrAudio(song.id, song.audio_file));
     dispatch(pauseCurrAudio(true));
-    dispatch;
+
   };
 
   const genreSort = (genre, arr) => {
@@ -104,7 +104,7 @@ function SplashPage() {
           {genreSort("Latino", latinSongs)}
         </div>
       </div>
-      <AudioPlayer />
+32
     </div>
   );
 }

@@ -47,9 +47,9 @@ const handleSubmit = async (e) => {
 
     if(newSong.errors) setImageLoading(false)
 
+    console.log("CREATED SONG", newSong)
 
-
-      navigate(`/songs/${newSong.id}`);
+      navigate(`/songs/${newSong.song.id}`);
 
 
 
