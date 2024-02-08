@@ -18,16 +18,18 @@
 .nav-profile-button-main-cont{
   display: flex;
   align-items: center;
-  gap:25px;
-  margin-right:50px;
+  gap:30px;
+  margin-right:80px;
+  width:200px;
+  justify-content: space-between;
 }
 
 
 
 /* */
 .logo-img{
-  height:50px;
-  width:70px;
+  height:70px;
+  width:100px;
   margin-top: 10px;
 
 }

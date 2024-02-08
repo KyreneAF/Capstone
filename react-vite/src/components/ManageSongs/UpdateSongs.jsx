@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkUpdateSong, thunkGetCurrSongs } from "../../redux/song";
 import { useNavigate, useParams } from "react-router-dom";
-import '../CreateSongForm/CreateSongForm.css'
+import "../CreateSongForm/CreateSongForm.css";
 
 function UpdateSongs() {
   const dispatch = useDispatch();
@@ -23,16 +23,16 @@ function UpdateSongs() {
   }, [dispatch, id, currUser.id]);
 
   // this is to populate the input with previous info
-  // useEffect(() => {
-  //   if (currSong) {
-  //     setTitle(currSong.title);
-  //     setGenre(currSong.genre);
-  //   }
-  // }, [currSong]);
-  console.log("checking", title,image,audio,genre)
+  useEffect(() => {
+    if (currSong) {
+      setTitle(currSong.title);
+      setGenre(currSong.genre);
+    }
+  }, [currSong]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // creating error object to appear under inputs
+
     const errObj = {};
     if (!title) errObj.title = "Must enter title...";
     if (!image) errObj.image = "Image file is required...";
@@ -40,59 +40,72 @@ function UpdateSongs() {
     if (!genre) errObj.genre = "Must select a genre...";
     setError(errObj);
 
-    console.log("checking", title,image,audio,genre)
+    console.log("checking", title, image, audio, genre);
 
-      setImageLoading(true);
-      const formData = new FormData();
-      formData.append("image", image);
-      formData.append("audio", audio);
-      formData.append("title", title);
-      formData.append("genre", genre);
-      // formData.append("user_id",user.id)
-      console.log("inside hs", image, audio, title, genre);
-      console.log("inside hs", formData);
-      // aws uploads can be a bit slow—displaying
-      // some sort of loading message is a good idea
-      console.log("inside hs", formData);
-      await dispatch(thunkUpdateSong(formData, id));
-      // setError({});
+    setImageLoading(true);
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("audio", audio);
+    formData.append("title", title);
+    formData.append("genre", genre);
 
-      //after completion navigate to newly created song page
-      navigate(`/songs/${id}`);
+    await dispatch(thunkUpdateSong(formData, id));
 
+    navigate(`/songs/${id}`);
   };
 
   if (!currSong) return null;
   return (
     <div className="create-song-main-cont">
       <div className="create-song-form-cont ">
-        <span>{`Update your song ${currSong.title}`}</span>
+        <h2 className="cs-heading">{`Hello, ${currUser.username} update your song ${currSong.title}`}</h2>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-main-cont">
-
-
             <div className="csf-left-cont column">
               <div className="csf-img-cont column">
-                <label>New image file</label>
+                <label>Image file</label>
                 <input
+                  className="box"
                   type="file"
                   accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
                   onChange={(e) => setImage(e.target.files[0])}
                 />
+                <div
+                  style={{ maxHeight: "20px", marginTop: "20px" }}
+                  className="update-err-cont"
+                >
+                  {!image ? (
+                    <span style={{ color: "red" }}>
+                      Image file cannot be empty
+                    </span>
+                  ) : (
+                    <span style={{ color: "white" }}>Holding</span>
+                  )}
+                </div>
                 <div className="error-cont">
                   {errors.audio ? errors.audio : ""}
                 </div>
               </div>
               <div className="csf-audio-cont column">
-                <label>New audio file</label>
+                <label>Audio file</label>
                 <input
-                className="box"
+                  className="box"
                   type="file"
                   accept="audio/mp3"
                   onChange={(e) => setAudio(e.target.files[0])}
                 />
-                <div className="error-cont">
-                  {errors.image ? errors.image : ""}
+
+                <div
+                  style={{ maxHeight: "20px", marginTop: "20px" }}
+                  className="update-err-cont"
+                >
+                  {!audio ? (
+                    <span style={{ color: "red" }}>
+                      Audio file cannot be empty
+                    </span>
+                  ) : (
+                    <span style={{ color: "white" }}>Holding</span>
+                  )}
                 </div>
               </div>
             </div>
@@ -106,9 +119,16 @@ function UpdateSongs() {
                   maxLength="40"
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <div className="error-cont">
-                  {errors.title ? errors.title : ""}
-                </div>
+              </div>
+              <div
+                style={{ maxHeight: "20px", marginTop: "20px" }}
+                className="comment-err-cont"
+              >
+                {!title.length ? (
+                  <span style={{ color: "red" }}>Title cannot be empty</span>
+                ) : (
+                  <span style={{ color: "white" }}>Holding</span>
+                )}
               </div>
 
               <div className="csf-genre-cont column">
@@ -135,11 +155,18 @@ function UpdateSongs() {
               </div>
             </div>
           </div>
-          <div className="submit-error-cont error-cont">
-            <button className='click' onClick={() => navigate('/songs/current')}>Cancel</button>
-            <button className='click' type="submit">Update song</button>
+          <div className="submit-error-cont error-cont row">
+            <button
+              style={{ marginTop: "50px" }}
+              disabled={!title || !genre || !image || !audio}
+              className="border click"
+              type="submit"
+            >
+              Create song
+            </button>
           </div>
-          {imageLoading && <p>Loading...</p>}
+
+          <div className="is-loading">{imageLoading && <p>Loading...</p>}</div>
         </form>
       </div>
     </div>
@@ -147,3 +174,83 @@ function UpdateSongs() {
 }
 
 export default UpdateSongs;
+
+//   <div className="create-song-main-cont">
+//     <div className="create-song-form-cont ">
+//       <span>{`Update your song ${currSong.title}`}</span>
+//       <form onSubmit={handleSubmit} encType="multipart/form-data">
+//         <div className="form-main-cont">
+
+//           <div className="csf-left-cont column">
+//             <div className="csf-img-cont column">
+//               <label>New image file</label>
+//               <input
+//                 type="file"
+//                 accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
+//                 onChange={(e) => setImage(e.target.files[0])}
+//               />
+//               <div className="error-cont">
+//                 {errors.audio ? errors.audio : ""}
+//               </div>
+//             </div>
+//             <div className="csf-audio-cont column">
+//               <label>New audio file</label>
+//               <input
+//               className="box"
+//                 type="file"
+//                 accept="audio/mp3"
+//                 onChange={(e) => setAudio(e.target.files[0])}
+//               />
+//               <div className="error-cont">
+//                 {errors.image ? errors.image : ""}
+//               </div>
+//             </div>
+//           </div>
+
+//           <div className="csf-right-cont column">
+//             <div className="csf-title-cont column">
+//               <label>Title</label>
+//               <input
+//                 value={title}
+//                 type="text"
+//                 maxLength="40"
+//                 onChange={(e) => setTitle(e.target.value)}
+//               />
+//               <div className="error-cont">
+//                 {errors.title ? errors.title : ""}
+//               </div>
+//             </div>
+
+//             <div className="csf-genre-cont column">
+//               <label>Tell us your genre:</label>
+//               <select
+//                 name="genre"
+//                 id="pet-select"
+//                 value={genre}
+//                 onChange={(e) => setGenre(e.target.value)}
+//               >
+//                 <option value="" disabled hidden>
+//                   --Pick your genre--
+//                 </option>
+//                 <option value={"Dirty Bass"}>Dirty Bass</option>
+//                 <option value={"Hip-Hop"}>Hip-Hop</option>
+//                 <option value={"Rock"}>Rock</option>
+//                 <option value={"Electronic"}>Electronic</option>
+//                 <option value={"Pop"}>Pop</option>
+//                 <option value={"Latino"}>Latino</option>
+//               </select>
+//               <div className="error-cont">
+//                 {errors.genre ? errors.genre : ""}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="submit-error-cont error-cont row">
+//           <button className='click' onClick={() => navigate('/songs/current')}>Cancel</button>
+//           <button className='click' type="submit">Update song</button>
+//         </div>
+//         {imageLoading && <p>Loading...</p>}
+//       </form>
+//     </div>
+//   </div>
+// );

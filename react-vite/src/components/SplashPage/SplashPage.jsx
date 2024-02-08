@@ -1,17 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllSongs } from "../../redux/song";
-import {
-  setCurrAudio,
-  clearStateAudio,
-  pauseCurrAudio,
-} from "../../redux/audioPlayer";
+import {setCurrAudio,clearStateAudio,pauseCurrAudio,} from "../../redux/audioPlayer";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 import "./SplashPage.css";
 
 function SplashPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const allSongs = useSelector((state) => state.song);
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
@@ -62,16 +59,11 @@ function SplashPage() {
                     (e.target.src =
                       "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
                   }
-                  onClick={() => handlePlayClick(song)}
+                  onClick={() => navigate(`/songs/${song.id}`)}
                 />
-                {/* <div
-                  onClick={() => handlePlayClick(song)}
-                  className="play-icon-cont"
-                >
-                  <i className="fa-solid fa-play play-icon"></i>
-                </div> */}
-                <div className="land-song-info column click ">
+                <div className="land-song-info row click ">
                   {/* <span onClick={(e) => {e.stopPropagation();navigate(`/songs/${song.id}`)}}>{song.title},</span> */}
+                  <div className='splash-song-producer-cont column'>
                   <NavLink className="navie" to={`/songs/${song.id}`}>
                     {song.title}
                   </NavLink>
@@ -79,6 +71,14 @@ function SplashPage() {
                     {" "}
                     by: {song.user_id.username}
                   </span>
+
+                  </div>
+                <div
+                  onClick={() => handlePlayClick(song)}
+                  className="play-icon-cont-splash"
+                >
+                  <i className="fa-solid fa-play play-icon-splash"></i>
+                </div>
                 </div>
               </div>
 

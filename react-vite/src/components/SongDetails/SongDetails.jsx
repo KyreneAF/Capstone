@@ -18,13 +18,10 @@ function SongDetails() {
   const commentsArr = Object.values(allComments);
   const { id } = useParams();
   const song = allSongs[id];
-  const userComment = commentsArr.some((comment) => comment.user_id.id === currUser.id);
+  const userComment = commentsArr.some((comment) => comment.user_id.id === currUser?.id);
 
-  // useEffect(() => {
-  //   if (Object.values(allSongs).length === 0) {
-  //     dispatch(thunkGetAllSongs());
-  //   }
-  // }, [dispatch, id]);
+
+
   useEffect(() => {
 
       dispatch(thunkGetAllSongs());
@@ -103,7 +100,7 @@ function SongDetails() {
       {renderSongDetails()}
       {renderAddCommentBttn()}
       <CommentsPage songId={song.id} song={song} comments={song.comments} />
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }
