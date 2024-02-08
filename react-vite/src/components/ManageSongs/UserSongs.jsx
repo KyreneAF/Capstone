@@ -92,6 +92,15 @@ export default function UserSongs() {
   if (!currSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont column">
+      <div
+        className="add-song-bttn click row border"
+        onClick={() => navigate("songs/new")}
+      >
+        <div style={{ color: "#c91696" }} className="buttn-inner-div row">
+          <i className="fa-solid fa-plus"></i>
+          <span>Upload new track</span>
+        </div>
+      </div>
       {genreSort("Hip-Hop", hipHopSongs)}
       {genreSort("Rock", rockSongs)}
       {genreSort("Electronic", elecSongs)}
