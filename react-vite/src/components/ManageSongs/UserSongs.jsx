@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
 import "./UserSongs.css";
-import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
+// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 export default function UserSongs() {
   const currSongs = useSelector((state) => state.song);

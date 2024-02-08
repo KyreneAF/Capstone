@@ -74,6 +74,11 @@ def seed_songs():
     db.session.add_all(newSongs)
     db.session.commit()
 
+    db.session.add_all(newSongs)
+
+
+    db.session.commit()
+
 
 def undo_songs():
     if environment == "production":
