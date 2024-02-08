@@ -104,7 +104,6 @@ function SplashPage() {
           {genreSort("Latino", latinSongs)}
         </div>
       </div>
-32
     </div>
   );
 }

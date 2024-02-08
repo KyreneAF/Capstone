@@ -5,6 +5,7 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import './ProfileButton.css';
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -42,20 +43,20 @@ function ProfileButton() {
   };
 
   return (
-    <>
-      <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle border" />
-      </button>
+    <div className='pb-main-cont'>
+      <div onClick={toggleMenu}>
+        <i className="fa-solid fa-user user-icon click"></i>
+      </div>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
-            <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
-                <button onClick={logout}>Log Out</button>
-              </li>
-            </>
+            <div className='dropdown-text'>
+              <div style={{borderBottom:'1px solid black', padding:'5px'}}>{user.username}</div>
+              <div style={{borderBottom:'1px solid black', padding:'5px'}}>{user.email}</div>
+              <div>
+                <button className='click border pb-bttn' onClick={logout}>Log Out</button>
+              </div>
+            </div>
           ) : (
             <>
               <OpenModalMenuItem
@@ -70,9 +71,9 @@ function ProfileButton() {
               />
             </>
           )}
-        </ul>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

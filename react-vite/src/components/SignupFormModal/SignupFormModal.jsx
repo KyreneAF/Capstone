@@ -15,36 +15,60 @@ function SignupFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let newErrors = {};
 
     if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
+      // return setErrors({
+      //   confirmPassword:
+      //     "Confirm Password field must be the same as the Password field",
+      // });
+      newErrors.confirmPassword =
+        "Confirm Password field must be the same as the Password field";
     }
+    if (!password || password.length < 6) {
+      // setErrors({
+      //   password: "Password must have 6 characters",
+      // });
+      newErrors.password = "Password must have 6 characters";
+    }
+    if (!username || username.length < 6) {
+      // setErrors({
+      //   username: "username must have 6 characters",
+      // });
+      newErrors.username = "username must have 6 characters";
+    }
+    if (!email.match(emailRegex)) {
+      // return setErrors({
+      //   email: "Please provide a valid email address",
+      // });
+      newErrors.email = "Please provide a valid email address";
+    }
+    setErrors(newErrors);
+    if (!Object.values(newErrors).length) {
+      const serverResponse = await dispatch(
+        thunkSignup({
+          email,
+          username,
+          password,
+        })
+      );
 
-    const serverResponse = await dispatch(
-      thunkSignup({
-        email,
-        username,
-        password,
-      })
-    );
-
-    if (serverResponse) {
-      setErrors(serverResponse);
-    } else {
-      closeModal();
+      if (serverResponse) {
+        setErrors(serverResponse);
+      } else {
+        closeModal();
+      }
     }
   };
 
   return (
-    <>
+    <div id="signUp-main-cont">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Email
+          <span>Email</span>
           <input
             type="text"
             value={email}
@@ -52,9 +76,16 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        <div className="err-cont" style={{ maxHeight: "20px" }}>
+          {errors.email ? (
+            <p>{errors.email}</p>
+          ) : (
+            <p style={{ color: "white" }}>Holding</p>
+          )}
+        </div>
         <label>
-          Username
+          <span>Username</span>
+
           <input
             type="text"
             value={username}
@@ -62,9 +93,17 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        <div className="err-cont" style={{ maxHeight: "20px" }}>
+          {errors.username ? (
+            <p>{errors.username}</p>
+          ) : (
+            <p style={{ color: "white" }}>Holding</p>
+          )}
+        </div>
+
         <label>
-          Password
+          <span>Password</span>
+
           <input
             type="password"
             value={password}
@@ -72,9 +111,16 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        <div className="err-cont" style={{ maxHeight: "20px" }}>
+          {errors.password ? (
+            <p>{errors.password}</p>
+          ) : (
+            <p style={{ color: "white" }}>Holding</p>
+          )}
+        </div>
+
         <label>
-          Confirm Password
+          <span>Confirm Password</span>
           <input
             type="password"
             value={confirmPassword}
@@ -82,10 +128,16 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        <div className="err-cont" style={{ maxHeight: "20px" }}>
+          {errors.confirmPassword ? (
+            <p>{errors.confirmPassword}</p>
+          ) : (
+            <p style={{ color: "white" }}>Holding</p>
+          )}
+        </div>
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

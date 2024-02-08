@@ -2,10 +2,12 @@ import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,39 +31,45 @@ function LoginFormModal() {
   };
   const demoLogin = async (e) => {
     e.preventDefault();
-  const serverResponse = await dispatch(
-    thunkLogin({
-      email: "demo@aa.io",
-      password: "password",
-    })
-  );
+    const serverResponse = await dispatch(
+      thunkLogin({
+        email: "demo@aa.io",
+        password: "password",
+      })
+    );
 
-  if (serverResponse) {
-    setErrors(serverResponse);
-  } else {
-    navigate("/");
+    if (serverResponse) {
+      setErrors(serverResponse);
+    } else {
+      navigate("/");
 
-    closeModal();
-  }
-};
-
+      closeModal();
+    }
+  };
 
   return (
-    <div id='log-in-modal'>
+    <div id="log-in-modal">
       <h1>Log In</h1>
-      <form id='log-in-form' onSubmit={handleSubmit}>
+      <form id="log-in-form" onSubmit={handleSubmit}>
         <label className="label">
-          Email
+          <span>Email</span>
+
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <div className="err-cont" style={{ maxHeight: "20px" }}>
+            {errors.email ? (
+              <p>{errors.email}</p>
+            ) : (
+              <p style={{ color: "white" }}>holding </p>
+            )}
+          </div>
         </label>
-        {errors.email && <p>{errors.email}</p>}
         <label className="label">
-          Password
+          <span>Password</span>
           <input
             type="password"
             value={password}
@@ -69,39 +77,22 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button id="log-in-submit" type="submit">Log In</button>
+        <div className="err-cont" style={{ maxHeight: "20px" }}>
+          {errors.password ? (
+            <p>{errors.password}</p>
+          ) : (
+            <p style={{ color: "white" }}>Holding </p>
+          )}
+        </div>
+        <button id="log-in-submit" type="submit">
+          Log In
+        </button>
       </form>
-      <h5 className='click' onClick={demoLogin}>Demo User</h5>
+      <h5 className="demo-link click" onClick={demoLogin()}>
+        Demo User
+      </h5>
     </div>
   );
 }
 
 export default LoginFormModal;
-
-{/* <>
-<h1>Log In</h1>
-<form onSubmit={handleSubmit}>
-  <label>
-    Email
-    <input
-      type="text"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      required
-    />
-  </label>
-  {errors.email && <p>{errors.email}</p>}
-  <label>
-    Password
-    <input
-      type="password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-    />
-  </label>
-  {errors.password && <p>{errors.password}</p>}
-  <button type="submit">Log In</button>
-</form>
-</> */}

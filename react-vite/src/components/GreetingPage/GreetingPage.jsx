@@ -56,7 +56,8 @@ function GreetingPage() {
 
           </div>
         </div>
-      ) : null}
+      ) : null
+      }
     </div>
   );
 }
