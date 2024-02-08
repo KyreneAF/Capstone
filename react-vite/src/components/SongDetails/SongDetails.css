@@ -36,18 +36,13 @@
   gap: 10px;
 }
 
-#heart-cont i {
-  color: #fc9fe8;
+#add-comment-link{
+  margin-top:50px;
+  margin-left:20px;
+
 }
-
-/* .play-icon-cont {
-  background-color: #fc9fe8;
-  display: flex;
-  justify-content: center;
+.ss-liked-cont{
+  /* justify-content: space-between; */
   align-items: center;
-  border: 1px solid #f70feb;
-
-  height: 80px;
-  width: 40px;
-  border-radius: 100%;
-} */
+  gap:30px
+}

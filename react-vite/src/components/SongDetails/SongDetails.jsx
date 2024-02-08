@@ -3,11 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
 import { thunkGetAllComments } from "../../redux/comment";
-import {
-  setCurrAudio,
-  pauseCurrAudio,
-  clearStateAudio,
-} from "../../redux/audioPlayer";
+import {setCurrAudio,pauseCurrAudio,clearStateAudio} from "../../redux/audioPlayer";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./SongDetails.css";
@@ -42,7 +38,7 @@ function SongDetails() {
     dispatch(clearStateAudio());
     dispatch(setCurrAudio(song.id, song.audio_file));
     dispatch(pauseCurrAudio(true));
-    dispatch;
+
   };
 
   if (!Object.values(allSongs).length) return null;
@@ -51,16 +47,12 @@ function SongDetails() {
       <div className="song-main-cont column">
         <div className="song-img-play-poser-cont">
           <div
-            className="ss-info-con click"
-            onClick={() => handlePlayClick(song)}
+            className="ss-info-con"
           >
             <img className="single-song-img" src={song.image_file} />
-            <div className="play-icon-cont">
-              {/* <i className="fa-solid fa-play play-icon click" ></i> */}
-            </div>
             {/* <audio controls onError={(e) => console.error('Audio error:', e)}>
                             <source src={song.audio_file} type="audio/mp3" />
-                        </audio> */}
+                          </audio> */}
             <div className="info-cont">
               {/* <span>{`produced by ${song.user_id.username}`}</span> */}
               <span>
@@ -69,11 +61,14 @@ function SongDetails() {
                   {song.user_id.username}
                 </span>
               </span>
-              <div className="ss-liked-cont">
+              <div className="ss-liked-cont row">
                 <div id="heart-cont">
                   <i className="fa-solid fa-heart"></i>
                   <span>{song.num_likes} Likes</span>
                 </div>
+                  <div className="play-icon-cont click">
+                      <i className="fa-solid fa-play play-icon click" onClick={() => handlePlayClick(song)} ></i>
+                    </div>
               </div>
             </div>
           </div>
@@ -81,21 +76,25 @@ function SongDetails() {
       </div>
     );
   };
-  console.log("USER COMMENT", userComment);
+
+
   const renderAddCommentBttn = () => {
     if (currUser && !userComment && song.user_id.id !== currUser) {
       return (
-        <OpenModalButton
-          modalComponent={<CreateCommentModal songId={song.id} />}
-          buttonText={
-            <span
-              style={{ color: "#c91696", fontWeight: "400" }}
-              className="click"
-            >
-              Add a comment <i className="fa-solid fa-plus"></i>
-            </span>
-          }
-        />
+        <div id='add-comment-link'>
+          <OpenModalButton
+            modalComponent={<CreateCommentModal songId={song.id} />}
+            buttonText={
+              <span
+                style={{ color: "#c91696", fontWeight: "400", fontSize:'20px' }}
+                className="click"
+              >
+                Add a comment <i className="fa-solid fa-plus"></i>
+              </span>
+            }
+          />
+
+        </div>
       );
     }
   };

@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import UpdateCommentModal from "./UpdateCommentModal";
 import CommentDeleteModal from "./CommentDeleteModal";
 import "./CommentsPage.css";
+import './CreateCommentModal.css'
 
 function CommentsPage({ songId, song }) {
   const dispatch = useDispatch();
@@ -54,11 +55,11 @@ function CommentsPage({ songId, song }) {
           }
           key={comment.id}
         >
-          <p>{comment.user_id.username}</p>
+          <p style={{fontWeight:'500', fontSize:"17px"}}>{comment.user_id.username}</p>
           {commentDelete(comment)}
 
           <div className="comment-text-cont">
-            <p>{comment.comment_text}</p>
+            <p style={{color:'grey'}}>{comment.comment_text}</p>
           </div>
         </div>
       ))}
