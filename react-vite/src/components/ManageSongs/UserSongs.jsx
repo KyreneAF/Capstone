@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetCurrSongs } from "../../redux/song";
+import { thunkGetCurrSongs,clearState } from "../../redux/song";
 import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
@@ -23,7 +23,8 @@ export default function UserSongs() {
 
   useEffect(() => {
     dispatch(thunkGetCurrSongs());
-  }, [dispatch, currUser]);
+    return () => dispatch(clearState());
+  }, [dispatch]);
 
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));

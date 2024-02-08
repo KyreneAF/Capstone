@@ -18,15 +18,18 @@ function SongDetails() {
   const commentsArr = Object.values(allComments);
   const { id } = useParams();
   const song = allSongs[id];
-  const userComment = commentsArr.some(
-    (comment) => comment.user_id.id === currUser.id
-  );
+  const userComment = commentsArr.some((comment) => comment.user_id.id === currUser.id);
 
+  // useEffect(() => {
+  //   if (Object.values(allSongs).length === 0) {
+  //     dispatch(thunkGetAllSongs());
+  //   }
+  // }, [dispatch, id]);
   useEffect(() => {
-    if (Object.values(allSongs).length === 0) {
+
       dispatch(thunkGetAllSongs());
-    }
-  }, [dispatch, id]);
+
+  }, [dispatch]);
 
   // call all comments
   useEffect(() => {
@@ -41,6 +44,7 @@ function SongDetails() {
 
   };
 
+
   if (!Object.values(allSongs).length) return null;
   const renderSongDetails = () => {
     return (
@@ -50,11 +54,7 @@ function SongDetails() {
             className="ss-info-con"
           >
             <img className="single-song-img" src={song.image_file} />
-            {/* <audio controls onError={(e) => console.error('Audio error:', e)}>
-                            <source src={song.audio_file} type="audio/mp3" />
-                          </audio> */}
             <div className="info-cont">
-              {/* <span>{`produced by ${song.user_id.username}`}</span> */}
               <span>
                 {`produced by `}
                 <span style={{ color: "#c91696" }}>
@@ -62,13 +62,13 @@ function SongDetails() {
                 </span>
               </span>
               <div className="ss-liked-cont row">
+                  <div className="play-icon-cont click">
+                      <i className="fa-solid fa-play play-icon click" onClick={() => handlePlayClick(song)} ></i>
+                    </div>
                 <div id="heart-cont">
                   <i className="fa-solid fa-heart"></i>
                   <span>{song.num_likes} Likes</span>
                 </div>
-                  <div className="play-icon-cont click">
-                      <i className="fa-solid fa-play play-icon click" onClick={() => handlePlayClick(song)} ></i>
-                    </div>
               </div>
             </div>
           </div>
@@ -76,7 +76,6 @@ function SongDetails() {
       </div>
     );
   };
-
 
   const renderAddCommentBttn = () => {
     if (currUser && !userComment && song.user_id.id !== currUser) {
@@ -98,7 +97,7 @@ function SongDetails() {
       );
     }
   };
-
+  if (!Object.values(allSongs).length) return null;
   return (
     <div className="ss-main-cont column">
       {renderSongDetails()}

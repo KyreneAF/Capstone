@@ -21,7 +21,7 @@ function GreetingPage() {
 
   const handleNavMySongs = async () => {
     navigate("/songs/current");
-    dispatch(clearState());
+    return () => dispatch(clearState());
   };
 
 

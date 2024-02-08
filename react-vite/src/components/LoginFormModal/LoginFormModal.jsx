@@ -51,10 +51,11 @@ function LoginFormModal() {
     <div id="log-in-modal">
       <h1>Log In</h1>
       <form id="log-in-form" onSubmit={handleSubmit}>
-        <label className="label">
+        <label className="label" maxLength={20}>
           <span>Email</span>
 
           <input
+            maxLength={30}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -71,6 +72,7 @@ function LoginFormModal() {
         <label className="label">
           <span>Password</span>
           <input
+            maxLength={20}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

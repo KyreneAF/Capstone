@@ -89,6 +89,7 @@ function SignupFormModal() {
         <label>
           <span>Email</span>
           <input
+            maxLength={20}
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -106,6 +107,7 @@ function SignupFormModal() {
           <span>Username</span>
 
           <input
+            maxLength={20}
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -124,6 +126,7 @@ function SignupFormModal() {
           <span>Password</span>
 
           <input
+            maxLength={20}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -141,6 +144,7 @@ function SignupFormModal() {
         <label>
           <span>Confirm Password</span>
           <input
+            maxLength={20}
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
