@@ -88,7 +88,7 @@ function LoginFormModal() {
           Log In
         </button>
       </form>
-      <h5 className="demo-link click" onClick={demoLogin()}>
+      <h5 className="demo-link click" onClick={(e) => demoLogin(e)}>
         Demo User
       </h5>
     </div>

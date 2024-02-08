@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { thunkLogin } from "../../redux/session";
 import { useModal } from "../../context/Modal";
 import { thunkSignup } from "../../redux/session";
+import { useNavigate } from "react-router-dom";
 import "./SignupForm.css";
 
 function SignupFormModal() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -61,7 +64,23 @@ function SignupFormModal() {
       }
     }
   };
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const serverResponse = await dispatch(
+      thunkLogin({
+        email: "demo@aa.io",
+        password: "password",
+      })
+    );
 
+    if (serverResponse) {
+      setErrors(serverResponse);
+    } else {
+      navigate("/");
+
+      closeModal();
+    }
+  };
   return (
     <div id="signUp-main-cont">
       <h1>Sign Up</h1>
@@ -137,6 +156,13 @@ function SignupFormModal() {
         </div>
         <button type="submit">Sign Up</button>
       </form>
+      <h5
+        id="so-demo"
+        className="demo-link click"
+        onClick={(e) => demoLogin(e)}
+      >
+        Demo User
+      </h5>
     </div>
   );
 }

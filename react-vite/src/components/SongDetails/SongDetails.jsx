@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
 import { thunkGetAllComments } from "../../redux/comment";
-import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
+import {
+  setCurrAudio,
+  pauseCurrAudio,
+  clearStateAudio,
+} from "../../redux/audioPlayer";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./SongDetails.css";
@@ -18,18 +22,20 @@ function SongDetails() {
   const commentsArr = Object.values(allComments);
   const { id } = useParams();
   const song = allSongs[id];
-  const userComment = commentsArr.find((comment) => comment.user_id.id === currUser);
+  const userComment = commentsArr.some(
+    (comment) => comment.user_id.id === currUser.id
+  );
 
   useEffect(() => {
     if (Object.values(allSongs).length === 0) {
       dispatch(thunkGetAllSongs());
     }
-  }, [dispatch,id]);
+  }, [dispatch, id]);
 
   // call all comments
   useEffect(() => {
     dispatch(thunkGetAllComments(id));
-  },[dispatch,id]);
+  }, [dispatch, id]);
 
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
@@ -39,13 +45,15 @@ function SongDetails() {
     dispatch;
   };
 
-
   if (!Object.values(allSongs).length) return null;
   const renderSongDetails = () => {
     return (
       <div className="song-main-cont column">
         <div className="song-img-play-poser-cont">
-          <div className="ss-info-con click" onClick={() => handlePlayClick(song)}>
+          <div
+            className="ss-info-con click"
+            onClick={() => handlePlayClick(song)}
+          >
             <img className="single-song-img" src={song.image_file} />
             <div className="play-icon-cont">
               {/* <i className="fa-solid fa-play play-icon click" ></i> */}
@@ -73,25 +81,29 @@ function SongDetails() {
       </div>
     );
   };
-
-
-  const renderAddCommentBttn = () =>{
-    if(currUser && song.user_id.id !== currUser || !userComment){
+  console.log("USER COMMENT", userComment);
+  const renderAddCommentBttn = () => {
+    if (currUser && !userComment && song.user_id.id !== currUser) {
       return (
         <OpenModalButton
-        modalComponent={<CreateCommentModal songId={song.id} />}
-        buttonText={
-        <span style={{color:"#c91696",fontWeight:"400"}} className="click">
-          Add a comment <i className="fa-solid fa-plus"></i>
-        </span>}
-      />
-      )}}
-
+          modalComponent={<CreateCommentModal songId={song.id} />}
+          buttonText={
+            <span
+              style={{ color: "#c91696", fontWeight: "400" }}
+              className="click"
+            >
+              Add a comment <i className="fa-solid fa-plus"></i>
+            </span>
+          }
+        />
+      );
+    }
+  };
 
   return (
     <div className="ss-main-cont column">
       {renderSongDetails()}
-      {currUser && renderAddCommentBttn()}
+      {renderAddCommentBttn()}
       <CommentsPage songId={song.id} song={song} comments={song.comments} />
       <AudioPlayer />
     </div>

@@ -44,3 +44,7 @@
 #signUp-main-cont button:hover {
   background-color: #c91696;
 }
+.signUp-main-cont h5 {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
