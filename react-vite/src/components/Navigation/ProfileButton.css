@@ -1,35 +1,39 @@
-
 /* ICON BUTTON  */
-.pb-main-cont{
-    position: relative;
+.pb-main-cont {
+  position: relative;
 }
 
-.user-icon{
-    font-size: 20px;
-    background-color:#333333;
-    color: white;
+.user-icon {
+  font-size: 20px;
+  background-color: #333333;
+  color: white;
 }
 
 /*DROP DOWN */
-.profile-dropdown{
-    position: absolute;
-    border: 1px solid black;
-    height:100px;
-    width: 100px;
-    padding:20px;
-    top:80%;
-    z-index:2px;
-    box-shadow: 5px 5px 10px 3px gray;
+.profile-dropdown {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: absolute;
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+  padding: 20px;
+  top: 80%;
+  z-index: 2px;
+  box-shadow: 5px 5px 10px 3px gray;
 }
-.dropdown-text{
-    display: flex;
-    flex-direction: column;
-    justify-items:center;
-    gap:15px;
-    font-size:15px;
+.dropdown-text {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 15px;
+  font-size: 15px;
 }
 
-.pb-bttn{
-    background-color: white;
-    border: .5 solid black;
+.pb-bttn {
+  background-color: white;
+  border: 0.5 solid black;
 }

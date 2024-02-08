@@ -1,7 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetCurrSongs,clearState } from "../../redux/song";
-import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
+import { thunkGetCurrSongs, clearState } from "../../redux/song";
+import {
+  setCurrAudio,
+  pauseCurrAudio,
+  clearStateAudio,
+} from "../../redux/audioPlayer";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
@@ -77,10 +81,6 @@ export default function UserSongs() {
                 >
                   <span className="navie click">{song.title}</span>{" "}
                 </div>
-
-                {/* <div className="play-icon-cont">
-                  <i className="fa-solid fa-play play-icon"></i>
-                </div> */}
               </div>
             ))}
           </div>
@@ -98,7 +98,7 @@ export default function UserSongs() {
       {genreSort("Dirty Bass", bassSongs)}
       {genreSort("Pop", popSongs)}
       {genreSort("Latino", latinSongs)}
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }

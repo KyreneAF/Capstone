@@ -11,10 +11,9 @@
 }
 /* GENRE CONTAINERS*/
 .genre-cont {
-  height: 200px;
+  height: 300px;
   width: 100%;
-  /* white-space: nowrap; */
-  overflow: scroll;
+  overflow-x: auto;
 }
 .song-cont {
   display: flex;
@@ -23,7 +22,7 @@
 }
 
 .land-cont {
-  height: 320px;
+  height: 300px;
 }
 
 .land-cont h3 {
@@ -39,6 +38,7 @@
 }
 .land-song-info {
   font-size: small;
+  margin-top: 20px;
 }
 
 /* GREETING CONT */
@@ -59,25 +59,23 @@
   transform: scale(1.1);
 }
 
- /* PLAY ICON */
-.land-song-info{
+/* PLAY ICON */
+.land-song-info {
   align-items: center;
-  gap:30px
+  gap: 30px;
 }
 
-.play-icon-cont-splash{
+.play-icon-cont-splash {
   width: 30px;
   height: 30px;
-  background-color:rgba(252,159,232, 1);
+  background-color: rgba(252, 159, 232, 1);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-.play-icon-cont-splash i{
+.play-icon-cont-splash i {
   color: white;
   font-size: 15px;
-  z-index:2;
-
+  z-index: 2;
 }
