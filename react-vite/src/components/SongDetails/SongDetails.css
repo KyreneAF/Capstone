@@ -36,18 +36,29 @@
   gap: 10px;
 }
 
-#heart-cont i {
-  color: #fc9fe8;
+#add-comment-link{
+  margin-top:50px;
+  margin-left:20px;
+
+}
+.ss-liked-cont{
+  /* justify-content: space-between; */
+  align-items: center;
+  gap:30px
 }
 
-/* .play-icon-cont {
-  background-color: #fc9fe8;
+/* PLAY BUTTON */
+.play-icon-cont {
+  width: 50px;
+  height: 50px;
+  background-color:rgba(252,159,232, 1);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #f70feb;
-
-  height: 80px;
-  width: 40px;
-  border-radius: 100%;
-} */
+}
+.play-icon-cont i{
+  color: white;
+  font-size: 24px;
+  z-index:2;
+}

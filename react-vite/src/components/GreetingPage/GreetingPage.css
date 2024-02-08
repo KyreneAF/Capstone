@@ -1,7 +1,8 @@
+
 .greeting-main-cont{
         display: flex;
-        align-content: center;
-        width: 400px;
+        align-items: center;
+        width: 350px;
         /* gap: px; */
         color: white;
 
@@ -37,7 +38,9 @@
 .buttn-inner-div{
     display: flex;
     flex-direction: row;
-    align-content: center;
+    align-items: center;
     gap:10px;
-    margin-top:10px;
+    margin-top:15px;
 }
+
+/* LOGO */

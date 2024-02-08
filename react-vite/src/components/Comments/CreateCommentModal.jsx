@@ -8,7 +8,7 @@ import './CreateCommentModal.css'
 function CreateCommentModal({ songId}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const [commentText, setCommentText] = useState();
+  const [commentText, setCommentText] = useState('');
 
 
   const handleCreate = async (e) => {
@@ -30,17 +30,23 @@ function CreateCommentModal({ songId}) {
         <h3>Post your comment</h3>
         <textarea
           rows="6"
-          cols="10"
+          cols="25"
           value={commentText}
-          maxLength="50"
+          maxLength="60"
           placeholder="Add a comment"
           onChange={(e) => setCommentText(e.target.value)}
         ></textarea>
+        <div style={{maxHeight:'20px'}} className='comment-err-cont'>
+          {!commentText.length ?<span style={{color:'red'}} >Comment text must not be empty</span> :
+          <span style={{color:'white'}} >Holding</span>
+          }
+
+        </div>
         <div className="delete-buttons-cont">
           <button id='create-modal-cancel-bttn' className="modal-bttn click"  onClick={handleCancel}>
             cancel
           </button>
-          <button className="modal-bttn click" disabled={!commentText}>comment</button>
+          <button className="modal-bttn click" disabled={!commentText.length}>comment</button>
         </div>
         </div>
       </form>

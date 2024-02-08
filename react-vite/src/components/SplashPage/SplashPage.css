@@ -11,10 +11,9 @@
 }
 /* GENRE CONTAINERS*/
 .genre-cont {
-  height: 200px;
+  height: 300px;
   width: 100%;
-  /* white-space: nowrap; */
-  overflow: scroll;
+  overflow-x: auto;
 }
 .song-cont {
   display: flex;
@@ -23,7 +22,7 @@
 }
 
 .land-cont {
-  height: 320px;
+  height: 300px;
 }
 
 .land-cont h3 {
@@ -39,6 +38,7 @@
 }
 .land-song-info {
   font-size: small;
+  margin-top: 20px;
 }
 
 /* GREETING CONT */
@@ -58,38 +58,24 @@
   color: rgba(252, 159, 232, 1);
   transform: scale(1.1);
 }
-/* .play-icon-cont{
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      position: absolute;
 
-  } */
-/* .land-sqr-img  .play-icon-cont {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+/* PLAY ICON */
+.land-song-info {
+  align-items: center;
+  gap: 30px;
+}
 
-  } */
-
-/*****/
-
-/*PLAY BUTOON */
-/* .play-icon-cont{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #f70feb;
-    background-color: #f70feb;
-    height:40px;
-    width:40px;
-    border-radius:100%;
-
-} */
-/* .play-icon{
-    color:white
-} */
-/*****/
+.play-icon-cont-splash {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(252, 159, 232, 1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play-icon-cont-splash i {
+  color: white;
+  font-size: 15px;
+  z-index: 2;
+}

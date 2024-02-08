@@ -19,24 +19,55 @@ music_comments = [
     "The diversity of genres blended in this track showcases the artist's versatility."
 ]
 
-def download_and_store_audio(audio_url):
-    response = requests.get(audio_url)
-    if response.status_code == 200:
-        audio_data = BytesIO(response.content)
-        return audio_data.read()
-    return None
+
 
 def seed_comments():
     newComments = []
 
-    for i in range(50):
+    for i in range(1,21):
         newComment = Comment(
-            user_id= randint(1,3),
-            song_id=randint(1,20),
+            user_id= 4,
+            song_id= i,
             comment_text = choice(music_comments),
             created_at = datetime.now()
         )
         newComments.append(newComment)
+        newComment2 = Comment(
+            user_id= 5,
+            song_id= i,
+            comment_text = choice(music_comments),
+            created_at = datetime.now()
+        )
+        newComments.append(newComment2)
+        newComment3 = Comment(
+            user_id= 6,
+            song_id= i,
+            comment_text = choice(music_comments),
+            created_at = datetime.now()
+        )
+        newComments.append(newComment3)
+        newComment4 = Comment(
+            user_id= 7,
+            song_id= i,
+            comment_text = choice(music_comments),
+            created_at = datetime.now()
+        )
+        newComments.append(newComment4)
+        newComment5 = Comment(
+            user_id= 8,
+            song_id= i,
+            comment_text = choice(music_comments),
+            created_at = datetime.now()
+        )
+        newComments.append(newComment5)
+        newComment6 = Comment(
+            user_id= 9,
+            song_id= i,
+            comment_text = choice(music_comments),
+            created_at = datetime.now()
+        )
+        newComments.append(newComment6)
+
     db.session.add_all(newComments)
 
     db.session.commit()
