@@ -1,19 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetCurrSongs } from "../../redux/song";
-import { setCurrAudio, pauseCurrAudio, clearStateAudio } from "../../redux/audioPlayer";
+import { thunkGetCurrSongs, clearState } from "../../redux/song";
+import {
+  setCurrAudio,
+  pauseCurrAudio,
+  clearStateAudio,
+} from "../../redux/audioPlayer";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
 import "./UserSongs.css";
-import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
+// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 export default function UserSongs() {
   const currSongs = useSelector((state) => state.song);
   const currSongsArr = Object.values(currSongs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currUser = useSelector((state) => state.session.user);
+  // const currUser = useSelector((state) => state.session.user);
   const hipHopSongs = currSongsArr.filter((song) => song.genre === "Hip-Hop");
   const rockSongs = currSongsArr.filter((song) => song.genre === "Rock");
   const elecSongs = currSongsArr.filter((song) => song.genre === "Electronic");
@@ -23,7 +27,8 @@ export default function UserSongs() {
 
   useEffect(() => {
     dispatch(thunkGetCurrSongs());
-  }, [dispatch, currUser]);
+    return () => dispatch(clearState());
+  }, [dispatch]);
 
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
@@ -76,10 +81,6 @@ export default function UserSongs() {
                 >
                   <span className="navie click">{song.title}</span>{" "}
                 </div>
-
-                {/* <div className="play-icon-cont">
-                  <i className="fa-solid fa-play play-icon"></i>
-                </div> */}
               </div>
             ))}
           </div>
@@ -91,13 +92,22 @@ export default function UserSongs() {
   if (!currSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont column">
+      <div
+        className="add-song-bttn click row border"
+        onClick={() => navigate("songs/new")}
+      >
+        <div style={{ color: "#c91696" }} className="buttn-inner-div row">
+          <i className="fa-solid fa-plus"></i>
+          <span>Upload new track</span>
+        </div>
+      </div>
       {genreSort("Hip-Hop", hipHopSongs)}
       {genreSort("Rock", rockSongs)}
       {genreSort("Electronic", elecSongs)}
       {genreSort("Dirty Bass", bassSongs)}
       {genreSort("Pop", popSongs)}
       {genreSort("Latino", latinSongs)}
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }
