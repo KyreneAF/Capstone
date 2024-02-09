@@ -1,14 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllSongs } from "../../redux/song";
-import {setCurrAudio,clearStateAudio,pauseCurrAudio,} from "../../redux/audioPlayer";
+import {
+  setCurrAudio,
+  clearStateAudio,
+  pauseCurrAudio,
+} from "../../redux/audioPlayer";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
+// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 import "./SplashPage.css";
 
 function SplashPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const allSongs = useSelector((state) => state.song);
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
@@ -40,7 +44,6 @@ function SplashPage() {
     dispatch(clearStateAudio());
     dispatch(setCurrAudio(song.id, song.audio_file));
     dispatch(pauseCurrAudio(true));
-
   };
 
   const genreSort = (genre, arr) => {
@@ -63,22 +66,21 @@ function SplashPage() {
                 />
                 <div className="land-song-info row click ">
                   {/* <span onClick={(e) => {e.stopPropagation();navigate(`/songs/${song.id}`)}}>{song.title},</span> */}
-                  <div className='splash-song-producer-cont column'>
-                  <NavLink className="navie" to={`/songs/${song.id}`}>
-                    {song.title}
-                  </NavLink>
-                  <span style={{ color: "grey" }}>
-                    {" "}
-                    by: {song.user_id.username}
-                  </span>
-
+                  <div className="splash-song-producer-cont column">
+                    <NavLink className="navie" to={`/songs/${song.id}`}>
+                      {song.title}
+                    </NavLink>
+                    <span style={{ color: "grey" }}>
+                      {" "}
+                      by: {song.user_id.username}
+                    </span>
                   </div>
-                <div
-                  onClick={() => handlePlayClick(song)}
-                  className="play-icon-cont-splash"
-                >
-                  <i className="fa-solid fa-play play-icon-splash"></i>
-                </div>
+                  <div
+                    onClick={() => handlePlayClick(song)}
+                    className="play-icon-cont-splash"
+                  >
+                    <i className="fa-solid fa-play play-icon-splash"></i>
+                  </div>
                 </div>
               </div>
 
