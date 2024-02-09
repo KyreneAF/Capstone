@@ -1,11 +1,10 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./AudioPlayer.css";
 
 function AudioPlayer() {
-
   const currAudio = useSelector((state) => state.audio);
   const isPlaying = useSelector((state) => state.audio.isPlaying);
   if (!currAudio[1]) return null;

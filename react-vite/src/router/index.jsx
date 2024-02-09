@@ -14,7 +14,7 @@ import UserSongs from "../components/ManageSongs/UserSongs";
 export const router = createBrowserRouter([
   {
     element: <Layout />,
-    children: [,
+    children: [
       {
         path: "/",
         element: <SplashPage />,

@@ -12,7 +12,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import CreateCommentModal from "../Comments/CreateCommentModal";
 import "./SongDetails.css";
 import CommentsPage from "../Comments/CommentsPage";
-import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
+// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 function SongDetails() {
   const dispatch = useDispatch();
