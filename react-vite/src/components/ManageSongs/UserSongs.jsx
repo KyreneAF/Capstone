@@ -17,7 +17,7 @@ export default function UserSongs() {
   const currSongsArr = Object.values(currSongs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const currUser = useSelector((state) => state.session.user);
+  const currUser = useSelector((state) => state.session.user);
   const hipHopSongs = currSongsArr.filter((song) => song.genre === "Hip-Hop");
   const rockSongs = currSongsArr.filter((song) => song.genre === "Rock");
   const elecSongs = currSongsArr.filter((song) => song.genre === "Electronic");
@@ -28,7 +28,7 @@ export default function UserSongs() {
   useEffect(() => {
     dispatch(thunkGetCurrSongs());
     return () => dispatch(clearState());
-  }, [dispatch]);
+  }, [dispatch, currUser]);
 
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
