@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetCurrSongs, clearState } from "../../redux/song";
+// import { thunkGetCurrSongs, clearState, thunkGetAllSongs } from "../../redux/song";
+import { thunkGetAllSongs } from "../../redux/song";
 import {
   setCurrAudio,
   pauseCurrAudio,
@@ -13,8 +14,12 @@ import "./UserSongs.css";
 // import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
 export default function UserSongs() {
-  const currSongs = useSelector((state) => state.song);
-  const currSongsArr = Object.values(currSongs);
+  const allSongs = useSelector((state) => state.song);
+  const currUser = useSelector((state) => state.session.user);
+  const allSongsArr = Object.values(allSongs);
+  const currSongsArr = allSongsArr.filter(
+    (song) => song.user_id.id === currUser.id
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const currUser = useSelector((state) => state.session.user);
@@ -25,9 +30,12 @@ export default function UserSongs() {
   const popSongs = currSongsArr.filter((song) => song.genre === "Pop");
   const latinSongs = currSongsArr.filter((song) => song.genre === "Latino");
 
+  // useEffect(() => {
+  //   dispatch(thunkGetCurrSongs());
+  //   return () => dispatch(clearState());
+  // }, [dispatch]);
   useEffect(() => {
-    dispatch(thunkGetCurrSongs());
-    return () => dispatch(clearState());
+    dispatch(thunkGetAllSongs());
   }, [dispatch]);
 
   const handlePlayClick = (song) => {
