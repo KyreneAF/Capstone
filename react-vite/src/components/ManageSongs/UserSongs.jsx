@@ -35,68 +35,78 @@ export default function UserSongs() {
     dispatch(clearStateAudio());
     dispatch(setCurrAudio(song.id, song.audio_file));
     dispatch(pauseCurrAudio(true));
-    dispatch;
   };
 
   if (!currSongsArr.length) return null;
   const genreSort = (genre, arr) => {
+    if (arr.length === 0 || !arr.some((song) => song.genre === genre)) {
+      return null;
+    }
+
     return (
-      <div className={`land-${genre}-cont block column`}>
-        {arr.length ? <h3>{genre}</h3> : null}
-        {arr && (
-          <div className="genre-cont-ms row">
-            {arr.map((song) => (
-              <div key={song.id} className="column">
-                <div className="pencil-delete row click ">
-                  <div
-                    className="edit-bttn click"
-                    onClick={() => navigate(`/songs/edit/${song.id}`)}
-                  >
-                    <i className="fa-solid fa-pencil trans"></i>
+      <div className={`land-cont column block`}>
+        <h3>{genre}</h3>
+        <div className="genre-cont-ms row">
+          {arr.map((song) => {
+            if (song.genre === genre) {
+              return (
+                <div key={song.id} className="column">
+                  <div className="pencil-delete row click ">
+                    <div
+                      className="edit-bttn click"
+                      onClick={() => navigate(`/songs/edit/${song.id}`)}
+                    >
+                      <i className="fa-solid fa-pencil trans"></i>
+                    </div>
+
+                    <OpenModalButton
+                      modalComponent={
+                        <SongDeleteModal id={song.id} song={song} />
+                      }
+                      buttonText={
+                        <i className="fa-solid fa-trash-can click trashcan trans"></i>
+                      }
+                    />
                   </div>
 
-                  <OpenModalButton
-                    modalComponent={
-                      <SongDeleteModal id={song.id} song={song} />
-                    }
-                    buttonText={
-                      <i className="fa-solid fa-trash-can click trashcan trans"></i>
+                  <img
+                    className="land-sqr-img ms-image"
+                    src={song.image_file}
+                    onClick={() => handlePlayClick(song)}
+                    onError={(e) =>
+                      (e.target.src =
+                        "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
                     }
                   />
-                </div>
 
-                <img
-                  className="land-sqr-img ms-image"
-                  src={song.image_file}
-                  onClick={() => handlePlayClick(song)}
-                  onError={(e) =>
-                    (e.target.src =
-                      "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
-                  }
-                />
-
-                <div
-                  className="us-title-cont"
-                  onClick={() => navigate(`/songs/${song.id}`)}
-                >
-                  <span className="navie click">{song.title}</span>{" "}
+                  <div
+                    className="us-title-cont"
+                    onClick={() => navigate(`/songs/${song.id}`)}
+                  >
+                    <span className="navie click">{song.title}</span>{" "}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        )}
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
       </div>
     );
   };
-
   if (!currSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont column">
       <div
-        className="add-song-bttn click row border"
-        onClick={() => navigate("songs/new")}
+        className="add-song-bttn click row"
+        onClick={() => navigate("/songs/new")}
       >
-        <div style={{ color: "#c91696" }} className="buttn-inner-div row">
+        <div
+          style={{ color: "#c91696" }}
+          className="buttn-inner-div-ms row"
+          nClick={() => navigate("/songs/new")}
+        >
           <i className="fa-solid fa-plus"></i>
           <span>Upload new track</span>
         </div>
@@ -111,3 +121,55 @@ export default function UserSongs() {
     </div>
   );
 }
+
+//old code refactored code above
+// if (!currSongsArr.length) return null;
+// const genreSort = (genre, arr) => {
+//   return (
+//     <div className={`land-cont column block`}>
+//       {arr.length ? <h3>{genre}</h3> : null}
+//       {arr && (
+//         <div className="genre-cont-ms row">
+//           {arr.map((song) => (
+//             <div key={song.id} className="column">
+//               <div className="pencil-delete row click ">
+//                 <div
+//                   className="edit-bttn click"
+//                   onClick={() => navigate(`/songs/edit/${song.id}`)}
+//                 >
+//                   <i className="fa-solid fa-pencil trans"></i>
+//                 </div>
+
+//                 <OpenModalButton
+//                   modalComponent={
+//                     <SongDeleteModal id={song.id} song={song} />
+//                   }
+//                   buttonText={
+//                     <i className="fa-solid fa-trash-can click trashcan trans"></i>
+//                   }
+//                 />
+//               </div>
+
+//               <img
+//                 className="land-sqr-img ms-image"
+//                 src={song.image_file}
+//                 onClick={() => handlePlayClick(song)}
+//                 onError={(e) =>
+//                   (e.target.src =
+//                     "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
+//                 }
+//               />
+
+//               <div
+//                 className="us-title-cont"
+//                 onClick={() => navigate(`/songs/${song.id}`)}
+//               >
+//                 <span className="navie click">{song.title}</span>{" "}
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };

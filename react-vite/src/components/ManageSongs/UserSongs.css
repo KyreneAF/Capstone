@@ -40,3 +40,12 @@
   margin-top: 5px;
   margin-bottom: 10px;
 }
+
+.add-song-bttn {
+  justify-content: center;
+}
+
+.buttn-inner-div-ms {
+  margin-top: 40px;
+  gap: 8px;
+}
