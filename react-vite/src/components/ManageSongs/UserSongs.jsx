@@ -113,7 +113,7 @@ export default function UserSongs() {
         <div
           style={{ color: "#c91696" }}
           className="buttn-inner-div-ms row"
-          nClick={() => navigate("/songs/new")}
+          onClick={() => navigate("/songs/new")}
         >
           <i className="fa-solid fa-plus"></i>
           <span>Upload new track</span>
