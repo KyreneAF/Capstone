@@ -6,7 +6,7 @@ from app.forms import LikedSongForm
 liked_song_routes = Blueprint("liked_songs", __name__)
 
 # GET LIKED SONGS OF USER
-@liked_song_routes.route('<int:user_id>', methods=["GET"])
+@liked_song_routes.route('/<int:user_id>', methods=["GET"])
 @login_required
 def get_liked_songs(user_id):
 
@@ -41,7 +41,7 @@ def create_liked_song(song_id):
         return {'errors': form.errors},400
 
 # DELETE LIKED_SONG
-@liked_song_routes.route("<int:id>", methods=['DELETE'])
+@liked_song_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_liked_song(id):
     liked_song = LikedSong.get(id)
