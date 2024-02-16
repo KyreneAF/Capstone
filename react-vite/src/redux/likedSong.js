@@ -31,8 +31,8 @@ export const clearState = () => {
   };
 
 
-export const thunkGetCurrLiked = (id) => async (dispatch) =>{
-    const res = await fetch(`/api/liked_songs/${id}`);
+export const thunkGetCurrLiked = (user_id) => async (dispatch) =>{
+    const res = await fetch(`/api/liked_songs/${user_id}`);
 
     if(res.ok){
         const likedSongs = await res.json();

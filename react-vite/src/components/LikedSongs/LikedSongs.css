@@ -1,0 +1,31 @@
+
+/* IMAGE DIV this holds the entire image*/
+.liked-img-cont{
+    height:170px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width:170px
+}
+
+/* PLAY ICON*/
+.play-cont-liked{
+    visibility: hidden;
+    position: absolute;
+    top:50%;
+    left:50%;
+    visibility:hidden;
+    transform: translate(-50%, -50%);
+    height:50px;
+    width:50px;
+
+    /* z-index: 2; */
+}
+.liked-img-cont:hover .play-cont-liked{
+    visibility:visible;
+}
+
+/* .play-icon-liked{
+    height:60px;
+    width:60px;
+} */

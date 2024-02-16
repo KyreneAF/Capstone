@@ -10,7 +10,7 @@ liked_song_routes = Blueprint("liked_songs", __name__)
 @login_required
 def get_liked_songs(user_id):
 
-    liked_songs = LikedSong.query.filter(LikedSong.user_id == user_id)
+    liked_songs = LikedSong.query.filter(LikedSong.user_id == user_id).order_by(LikedSong.created_at.desc())
     if not liked_songs:
         return {"message": "user does not have liked songs"}, 404
     liked_songs_to_dict = [song.to_dict() for song in liked_songs]
