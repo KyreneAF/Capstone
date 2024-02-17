@@ -148,8 +148,8 @@ def delete_song(id):
         abort(404, {"message": "Song does not exist"})
     if current_user.id != song.user_id:
         return {"message": "Current user not owner of Song!"}, 403
-    remove_file_from_s3_images(song.image_file)
-    remove_file_from_s3(song.audio_file)
+    # remove_file_from_s3_images(song.image_file)
+    # remove_file_from_s3(song.audio_file)
 
     db.session.delete(song)
     db.session.commit()
