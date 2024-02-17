@@ -8,33 +8,6 @@
   gap: 40px;
 }
 
-/* DELETE AND EDIT BUTTONS*/
-/* .pencil-delete {
-  gap: 10px;
-  font-size: 18px;
-  margin-bottom: 5px;
-
-}
-.trashcan {
-  background-color: none;
-  font-size: 18px;
-
-}
-.trans {
-  color: rgb(51, 51, 51, 0.7);
-}
-
-.trans:hover {
-  color: rgba(252, 159, 232, 1);
-  transform: scale(1.1);
-} */
-/* TITLE */
-
-/* .navie:hover {
-  color: rgba(252, 159, 232, 1);
-  transform: scale(1.1);
-} */
-
 /* IMAGE */
 .ms-image {
   margin-top: 5px;
@@ -58,8 +31,10 @@
   background-position: center;
   position: relative;
   width: 170px;
-  border: 1px solid grey;
 }
+/* .user-img-main-cont:hover {
+  transform: scale(1.1);
+} */
 
 /* PLAY BUTTON*/
 .play-cont-user {
@@ -77,6 +52,11 @@
 
 .user-img-main-cont:hover .play-cont-user {
   visibility: visible;
+}
+/* TILE IMG AND NAME OF SONG*/
+.user-single-tile {
+  display: flex;
+  gap: 10px;
 }
 
 /* TRASHCAN AND PENCIL ICONS */
@@ -125,3 +105,13 @@
   color: rgb(34, 34, 34, 0.6);
   transform: scale(1.1);
 }
+
+/* TEXT */
+.us-title-cont span {
+  font-size: 15px;
+  color: grey;
+  transform: scale(1.1);
+}
+/* .navie:hover {
+  transform: scale(1.1);
+} */

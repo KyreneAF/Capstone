@@ -39,7 +39,7 @@ export default function UserSongs() {
     dispatch(thunkGetAllSongs());
   }, [dispatch]);
 
-  const handlePlayClick = (e, song) => {
+  const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
     dispatch(clearStateAudio());
     dispatch(setCurrAudio(song.id, song.audio_file));
@@ -60,81 +60,49 @@ export default function UserSongs() {
             if (song.genre === genre) {
               return (
                 // MAKING IMAGE A DIV TO LET OTHER CONTS LAY ONTOP
-                <div
-                  key={song.id}
-                  className="user-img-main-cont click"
-                  style={{ backgroundImage: `url(${song.image_file})` }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigate(`/songs/${song.id}`);
-                  }}
-                >
+                <div className="user-single-tile column">
                   <div
-                    // PLAY ICON CODE TO PLAY SONGS
-                    onClick={() => handlePlayClick(song)}
-                    className="play-icon-cont-splash play-cont-user click"
+                    key={song.id}
+                    className="user-img-main-cont click"
+                    style={{ backgroundImage: `url(${song.image_file})` }}
                   >
-                    <i className="fa-solid fa-play play-icon-liked"></i>
-                  </div>
-                  <div className="pencil-delete row click ">
-                    {/* TRASHCAN AND PENCIL ICONS */}
                     <div
-                      className="edit-bttn click"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate(`/songs/edit/${song.id}`);
-                      }}
+                      // PLAY ICON CODE TO PLAY SONGS
+                      onClick={() => handlePlayClick(song)}
+                      className="play-icon-cont-splash play-cont-user click"
                     >
-                      <i className="fa-solid fa-pencil trans"></i>
+                      <i className="fa-solid fa-play play-icon-liked"></i>
                     </div>
+                    <div className="pencil-delete row click ">
+                      {/* TRASHCAN AND PENCIL ICONS */}
+                      <div
+                        className="edit-bttn click"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/songs/edit/${song.id}`);
+                        }}
+                      >
+                        <i className="fa-solid fa-pencil trans"></i>
+                      </div>
 
-                    <OpenModalButton
-                      modalComponent={
-                        <SongDeleteModal id={song.id} song={song} />
-                      }
-                      buttonText={
-                        <i className="fa-solid fa-trash-can click trashcan trans"></i>
-                      }
-                      onClick={(e) => e.stopPropagation()}
-                    />
+                      <OpenModalButton
+                        modalComponent={
+                          <SongDeleteModal id={song.id} song={song} />
+                        }
+                        buttonText={
+                          <i className="fa-solid fa-trash-can click trashcan trans"></i>
+                        }
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="us-title-cont"
+                    onClick={() => navigate(`/songs/${song.id}`)}
+                  >
+                    <span className="navie click">{song.title}</span>{" "}
                   </div>
                 </div>
-                // <div key={song.id} className="column">
-                // <div className="pencil-delete row click ">
-                //   <div
-                //     className="edit-bttn click"
-                //     onClick={() => navigate(`/songs/edit/${song.id}`)}
-                //   >
-                //     <i className="fa-solid fa-pencil trans"></i>
-                //   </div>
-
-                //   <OpenModalButton
-                //     modalComponent={
-                //       <SongDeleteModal id={song.id} song={song} />
-                //     }
-                //     buttonText={
-                //       <i className="fa-solid fa-trash-can click trashcan trans"></i>
-                //     }
-                //   />
-                // </div>
-
-                //   <img
-                //     className="land-sqr-img ms-image"
-                //     src={song.image_file}
-                //     onClick={() => handlePlayClick(song)}
-                //     onError={(e) =>
-                //       (e.target.src =
-                //         "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
-                //     }
-                //   />
-
-                //   <div
-                //     className="us-title-cont"
-                //     onClick={() => navigate(`/songs/${song.id}`)}
-                //   >
-                //     <span className="navie click">{song.title}</span>{" "}
-                //   </div>
-                // </div>
               );
             } else {
               return null;
@@ -171,6 +139,7 @@ export default function UserSongs() {
   );
 }
 
+// old code
 // return (
 //   <div className={`land-cont column block`}>
 //     <h3>{genre}</h3>
