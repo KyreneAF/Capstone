@@ -44,7 +44,7 @@ def create_liked_song(song_id):
 @liked_song_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_liked_song(id):
-    liked_song = LikedSong.get(id)
+    liked_song = LikedSong.query.get(id)
 
     if not current_user:
         return {"message": "current user not logged in"}, 403

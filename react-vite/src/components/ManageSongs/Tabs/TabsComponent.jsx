@@ -1,25 +1,29 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-
 import LikedSongs from '../../LikedSongs/LikedSongs'
 import UserSongs from '../UserSongs';
+import './TabsComponent.css'
 
 function TabsComponent(){
+
 
 
 return(
 
   <Tabs>
-    <TabList>
-      <Tab><h3>Uploaded Songs</h3></Tab>
-      <Tab><h3>Liked Songs</h3></Tab>
+    <TabList id='tabs-main-cont'>
+      <Tab id='tab'>Uploaded Songs</Tab>
+      <Tab >Liked Songs</Tab>
     </TabList>
 
     <TabPanel>
+
       <UserSongs />
+
     </TabPanel>
     <TabPanel>
         <LikedSongs />
+
     </TabPanel>
   </Tabs>
 )

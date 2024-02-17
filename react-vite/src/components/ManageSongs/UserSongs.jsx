@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
+import UserSongs404 from "./UserSongs404/UserSongs404";
 import "./UserSongs.css";
 // import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
@@ -45,7 +46,7 @@ export default function UserSongs() {
     dispatch(pauseCurrAudio(true));
   };
 
-  if (!currSongsArr.length) return null;
+  if (!currSongsArr.length)return <UserSongs404 />;
   const genreSort = (genre, arr) => {
     if (arr.length === 0 || !arr.some((song) => song.genre === genre)) {
       return null;

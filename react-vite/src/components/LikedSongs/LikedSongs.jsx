@@ -1,60 +1,129 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { thunkGetCurrLiked, clearState } from "../../redux/likedSong";
-import { setCurrAudio,clearStateAudio,pauseCurrAudio } from "../../redux/audioPlayer";
-import './LikedSongs.css'
+import { useNavigate } from "react-router-dom";
+import {
+  thunkGetCurrLiked,
+  thunkCreateLiked,
+  thunkDeleteLiked,
+  clearState,
+} from "../../redux/likedSong";
+import {
+  setCurrAudio,
+  clearStateAudio,
+  pauseCurrAudio,
+} from "../../redux/audioPlayer";
+import "./LikedSongs.css";
+import LikedSongs404 from "./LikedSongs404";
 
-function LikedSongs(){
+function LikedSongs() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const currUser = useSelector((state) => state.session.user);
+  const currLikedSongs = useSelector((state) => state.likedSong);
+  const likedArr = Object.values(currLikedSongs);
 
-    const dispatch = useDispatch()
-    const currUser = useSelector(state => state.session.user)
-    const currLikedSongs = useSelector(state => state.likedSong)
-    const likedArr = Object.values(currLikedSongs)
-    console.log(currUser)
 
-    useEffect(() =>{
-        dispatch(thunkGetCurrLiked(currUser.id))
-        return () => dispatch(clearState())
-    },[currUser])
+  useEffect(() => {
+    dispatch(thunkGetCurrLiked(currUser.id));
+    return () => dispatch(clearState());
+  }, [dispatch,currUser]);
 
-    const handlePlayClick = (song) => {
-        dispatch(pauseCurrAudio(false));
-        dispatch(clearStateAudio());
-        dispatch(setCurrAudio(song.id, song.audio_file));
-        dispatch(pauseCurrAudio(true));
-      };
+  const handlePlayClick = (song) => {
+    dispatch(pauseCurrAudio(false));
+    dispatch(clearStateAudio());
+    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(pauseCurrAudio(true));
+  };
 
-    return(
-        <div>
-           {likedArr.map( liked =>(
-            <div key={liked.id}>
-                {/* <img className='land-sqr-img'
-                src={liked.song.image_file}
-                /> */}
-                <div className='liked-img-cont'style={{ backgroundImage: `url(${liked.song.image_file})` }}>
-                    {/* <span style={{backgroundImage:liked.song.image_file}}></span> */}
-                    <div
-                    onClick={() => handlePlayClick(liked.song)}
-                    className="play-icon-cont-splash play-cont-liked click"
-                  >
-                    <i className="fa-solid fa-play play-icon-liked"></i>
-                  </div>
-                  <div clssName='heart-cont click'>
-                    <i class="fa-solid fa-heart"></i>
-                  </div>
+  //ADD TO FAVORTIES
+  const removeFromLiked = (id) => {
+    if (currLikedSongs[id]) {
+      dispatch(thunkDeleteLiked(id));
+    }
+  };
 
-                </div>
-                <div className='liked-song-info-cont column'>
-                    <span>{liked.song.title}</span>
-                    <span>{liked.song.genre}</span>
-
-                </div>
-
+  return (
+    <div className='liked-songs-main-cont'>
+      {likedArr.length === 0 ? (
+        <LikedSongs404 />
+      ) : (
+        likedArr.map((liked) => (
+          <div key={liked.id}>
+            <div
+              className="liked-img-cont click"
+              style={{ backgroundImage: `url(${liked.song.image_file})` }}
+              onClick={() => navigate(`/songs/${liked.song.id}`)}
+            >
+              <div
+                onClick={() => handlePlayClick(liked.song)}
+                className="play-icon-cont-splash play-cont-liked click"
+              >
+                <i className="fa-solid fa-play play-icon-liked"></i>
+              </div>
             </div>
-           ))}
-        </div>
-    )
-
+            <div className="liked-song-info-cont column">
+              <div className="heart-title-cont row">
+                <div className="heart-cont click" onClick={() => removeFromLiked(liked.id)}>
+                  <i
+                    className={
+                      currLikedSongs[liked.id]
+                        ? 'fa-solid fa-heart filled-heart'
+                        : 'fa-regular fa-heart empty-heart click'
+                    }
+                  ></i>
+                </div>
+                <span>{liked.song.title}</span>
+              </div>
+              <span style={{color:'grey', marginLeft:'20px'}}>{liked.song.genre}</span>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
 
-export default LikedSongs
+export default LikedSongs;
+
+
+
+// const addToLiked = (likedSong) => {
+//     if (currLikedSongs[likedSong.id]) {
+//       dispatch(thunkDeleteLiked(likedSong.id));
+//     } else{
+//       dispatch(thunkCreateLiked(likedSong.song.id));
+//     }
+//   };
+
+
+
+// return (
+//     <div>
+//       {likedArr.map((liked) => (
+//         <div key={liked.id}>
+//           <div
+//             className="liked-img-cont"
+//             style={{ backgroundImage: `url(${liked.song.image_file})` }}
+//           >
+//             <div
+//               onClick={() => handlePlayClick(liked.song)}
+//               className="play-icon-cont-splash play-cont-liked click"
+//             >
+//               <i className="fa-solid fa-play play-icon-liked"></i>
+//             </div>
+//           </div>
+//           <div className="liked-song-info-cont column">
+//             <div className='heart-title-cont row'>
+//             <div className="heart-cont click" onClick={() => removeFromLiked(liked.id)}>
+//               <i className={ currLikedSongs[liked.id]?"fa-solid fa-heart filled-heart" : "fa-regular fa-heart empty-heart click"}></i>
+//             </div>
+//               <span>{liked.song.title}</span>
+
+//             </div>
+//             <span>{liked.song.genre}</span>
+//           </div>
+//         </div>
+//       ))}
+
+//     </div>
+//   );

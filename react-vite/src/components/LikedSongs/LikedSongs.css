@@ -1,4 +1,12 @@
+/* LIKED SONGS MAIN CONT */
+.liked-songs-main-cont{
+    padding:40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
 
+}
 /* IMAGE DIV this holds the entire image*/
 .liked-img-cont{
     height:170px;
@@ -6,6 +14,9 @@
     background-position: center;
     position: relative;
     width:170px
+}
+.liked-img-cont:hover{
+    transform: scale(1.1);
 }
 
 /* PLAY ICON*/
@@ -25,7 +36,27 @@
     visibility:visible;
 }
 
-/* .play-icon-liked{
-    height:60px;
-    width:60px;
-} */
+/* HEART ICON */
+.filled-heart{
+    color: rgb(247,15,235,.7)
+}
+.filled-heart:hover{
+    transform: scale(1.1);
+    color:rgb(77,80,77,.7)
+}
+
+.empty-heart{
+    background-color: gray;
+}
+.liked-song-info-cont{
+    gap:5px;
+}
+.liked-song-info-cont span{
+    font-size: small;
+}
+
+.heart-title-cont{
+    display: flex;
+    gap:5px;
+    margin-top: 20px;
+}

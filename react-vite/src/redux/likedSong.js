@@ -59,13 +59,14 @@ export const thunkCreateLiked = (songId) => async(dispatch) => {
       }
 }
 
-export const thunkDeleteLiked = (songId) => async(dispatch) =>{
-    const res = await fetch(`/api/liked_songs/${songId}`,{
+export const thunkDeleteLiked = (id) => async(dispatch) =>{
+    const res = await fetch(`/api/liked_songs/${id}`,{
         method: "DELETE",
         headers:{"Content-Type": "application/json" }
     })
     if(res.ok){
         const message = await res.json();
+        dispatch(deleteLiked(id))
         return message
     } else {
         const error = await res.json();

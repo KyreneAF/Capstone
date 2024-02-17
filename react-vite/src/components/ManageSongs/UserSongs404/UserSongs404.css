@@ -1,0 +1,12 @@
+#no-liked-cont button{
+    height:60px;
+    width:300px;
+    background-color: #c9c9c9;
+    color:white;
+    border-color:#c9c9c9 ;
+    font-size: large;
+}
+
+#no-liked-cont button:hover{
+    background-color: #c91696;
+}
