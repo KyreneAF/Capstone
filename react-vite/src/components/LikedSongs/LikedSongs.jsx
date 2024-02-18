@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   thunkGetCurrLiked,
-  thunkCreateLiked,
   thunkDeleteLiked,
   clearState,
 } from "../../redux/likedSong";

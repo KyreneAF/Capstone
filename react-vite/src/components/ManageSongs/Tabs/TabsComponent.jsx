@@ -1,7 +1,7 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 import LikedSongs from '../../LikedSongs/LikedSongs'
-import UserSongs from '../UserSongs';
+import UserSongs from '../UserSongs'
 import './TabsComponent.css'
 
 function TabsComponent(){
@@ -27,6 +27,6 @@ return(
     </TabPanel>
   </Tabs>
 )
-};
+}
 
 export default TabsComponent;

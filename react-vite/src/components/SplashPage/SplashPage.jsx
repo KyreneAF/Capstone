@@ -1,10 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllSongs } from "../../redux/song";
-import {
-  setCurrAudio,
-  clearStateAudio,
-  pauseCurrAudio,
-} from "../../redux/audioPlayer";
+import {setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 // import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";

@@ -2,11 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 // import { thunkGetCurrSongs, clearState, thunkGetAllSongs } from "../../redux/song";
 import { thunkGetAllSongs } from "../../redux/song";
-import {
-  setCurrAudio,
-  pauseCurrAudio,
-  clearStateAudio,
-} from "../../redux/audioPlayer";
+import { setCurrAudio, pauseCurrAudio, clearStateAudio} from "../../redux/audioPlayer";
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
@@ -60,14 +56,14 @@ export default function UserSongs() {
             if (song.genre === genre) {
               return (
                 // MAKING IMAGE A DIV TO LET OTHER CONTS LAY ONTOP
-                <div className="user-single-tile column">
+                <div className="user-single-tile column" key={song.id}>
                   <div
-                    key={song.id}
                     className="user-img-main-cont click"
                     style={{ backgroundImage: `url(${song.image_file})` }}
                   >
                     <div
                       // PLAY ICON CODE TO PLAY SONGS
+                      key={song}
                       onClick={() => handlePlayClick(song)}
                       className="play-icon-cont-splash play-cont-user click"
                     >
