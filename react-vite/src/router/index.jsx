@@ -8,6 +8,7 @@ import CreateSongForm from "../components/CreateSongForm/CreateSongForm";
 import SongDetails from "../components/SongDetails/SongDetails";
 import UpdateSongs from "../components/ManageSongs/UpdateSongs";
 import UserSongs from "../components/ManageSongs/UserSongs";
+import TabsComponent from "../components/ManageSongs/Tabs/TabsComponent";
 
 // import CreateCommentModal from "../components/Comments/CreateCommentModal";
 
@@ -41,8 +42,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "songs/current",
-        element: <UserSongs />,
+        element: <TabsComponent />,
       },
+      // {
+      //   path: "songs/current",
+      //   element: <UserSongs />,
+      // },
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />,

@@ -51,12 +51,9 @@ function GreetingPage() {
           onClick={handleNavMySongs}
         >
           <div className="buttn-inner-div row">
-            <img
-              className="gp-img"
-              src="https://cdn.pixabay.com/photo/2017/06/03/20/12/art-2369664_1280.jpg"
-            />
+
             <div className="gp-user-song-title-cont column">
-              <span>Your songs:</span>
+              <span>Library</span>
               {/* <span>{currSongsArr.length} songs</span> */}
             </div>
           </div>
