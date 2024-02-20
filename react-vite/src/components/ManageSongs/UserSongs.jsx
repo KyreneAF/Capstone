@@ -42,7 +42,7 @@ export default function UserSongs() {
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
     dispatch(clearStateAudio());
-    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(setCurrAudio(song.id, song.audio_file, song));
     dispatch(pauseCurrAudio(true));
   };
 
