@@ -56,6 +56,7 @@
 }
 .navie:hover {
   color: rgba(252, 159, 232, 1);
+  /* color: #f70feb; */
   transform: scale(1.1);
 }
 

@@ -5,9 +5,9 @@ import {
   clearStateAudio,
   pauseCurrAudio,
 } from "../../redux/audioPlayer";
+import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 import "./SplashPage.css";
 
 function SplashPage() {
@@ -34,7 +34,7 @@ function SplashPage() {
     else greeting = "Good evening";
     return (
       <div className="land-greeting-cont block">
-        <h3>{greeting}</h3>
+        <h3>{greeting}, Welcome to Neon Noir!</h3>
       </div>
     );
   };
@@ -42,7 +42,7 @@ function SplashPage() {
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
     dispatch(clearStateAudio());
-    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(setCurrAudio(song.id, song.audio_file, song));
     dispatch(pauseCurrAudio(true));
   };
 
