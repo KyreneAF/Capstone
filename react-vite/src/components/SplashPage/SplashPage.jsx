@@ -61,7 +61,7 @@ function SplashPage() {
     if (!allSongsArr.length) return null;
 
     return (
-      <div className={`land-cont column block`}>
+      <div className={`land-cont block column`}>
         <h3>{genre}</h3>
 
         <div className="genre-cont row">
