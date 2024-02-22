@@ -62,3 +62,10 @@
   font-size: 24px;
   z-index:2;
 }
+
+.pencil-delete{
+  display: flex;
+  align-items: center;
+  gap:10px;
+  color: rgb(34, 34, 34, 0.6);
+}

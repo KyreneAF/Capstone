@@ -1,7 +1,10 @@
 /* LIKED SONGS MAIN CONT */
 .liked-songs-main-cont {
-  padding: 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: sans-serif;
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 50px;

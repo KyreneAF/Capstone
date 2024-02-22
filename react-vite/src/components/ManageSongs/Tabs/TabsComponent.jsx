@@ -27,6 +27,6 @@ return(
     </TabPanel>
   </Tabs>
 )
-};
+}
 
 export default TabsComponent;

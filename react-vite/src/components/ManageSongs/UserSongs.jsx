@@ -60,7 +60,7 @@ export default function UserSongs() {
             if (song.genre === genre) {
               return (
                 // MAKING IMAGE A DIV TO LET OTHER CONTS LAY ONTOP
-                <div className="user-single-tile column">
+                <div className="user-single-tile column" key={song.id}>
                   <div
                     key={song.id}
                     className="user-img-main-cont click"
@@ -73,10 +73,10 @@ export default function UserSongs() {
                     >
                       <i className="fa-solid fa-play play-icon-liked"></i>
                     </div>
-                    <div className="pencil-delete row click ">
+                    <div className="pencil-delete-us row click ">
                       {/* TRASHCAN AND PENCIL ICONS */}
                       <div
-                        className="edit-bttn click"
+                        className="edit-bttn-us click"
                         onClick={(e) => {
                           e.stopPropagation();
                           navigate(`/songs/edit/${song.id}`);
@@ -90,7 +90,7 @@ export default function UserSongs() {
                           <SongDeleteModal id={song.id} song={song} />
                         }
                         buttonText={
-                          <i className="fa-solid fa-trash-can click trashcan trans"></i>
+                          <i className="fa-solid fa-trash-can click trashcan-us trans"></i>
                         }
                         onClick={(e) => e.stopPropagation()}
                       />
@@ -115,6 +115,7 @@ export default function UserSongs() {
   if (!currSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont column">
+      <div className='land-allSongs-cont'>
       <div
         className="add-song-bttn click row"
         onClick={() => navigate("/songs/new")}
@@ -135,6 +136,7 @@ export default function UserSongs() {
       {genreSort("Pop", popSongs)}
       {genreSort("Latino", latinSongs)}
       {/* <AudioPlayer /> */}
+      </div>
     </div>
   );
 }

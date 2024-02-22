@@ -3,18 +3,36 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-left: 30px;
+  /* margin-left: 30px; */
+  font-family: sans-serif;
+
 }
 .land-allSongs-cont {
-  width: 95%;
+  width:90%;
   margin-top: 20px;
+
 }
 /* GENRE CONTAINERS*/
-.genre-cont {
+.genre-cont{
+  margin-right: 40px;
   height: 300px;
   width: 100%;
   overflow-x: auto;
 }
+/* SCROLL BAR*/
+
+.genre-cont {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+  /******* */
+
+.genre-cont {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
 .song-cont {
   display: flex;
   align-content: center;
@@ -23,6 +41,7 @@
 
 .land-cont {
   height: 300px;
+  width:100%
 }
 
 .land-cont h3 {
@@ -42,12 +61,18 @@
 }
 
 /* GREETING CONT */
+.land-greeting-cont {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
 .land-greeting-cont h3 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-weight: 300;
   font-size: 20px;
+  color: grey;
+  font-weight: 600;
 }
 
 .navie {
@@ -80,3 +105,16 @@
   font-size: 15px;
   z-index: 2;
 }
+
+/* .neon-text {
+  color: #fff;
+  text-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9,
+    0 0 40px #00fff9, 0 0 70px #00fff9, 0 0 80px #00fff9, 0 0 100px #00fff9,
+    0 0 150px #00fff9;
+} */
+/* .neon-text {
+  color: hotpink;
+  text-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9,
+    0 0 40px #00fff9, 0 0 70px #00fff9, 0 0 80px #00fff9, 0 0 100px #00fff9,
+    0 0 150px #00fff9;
+} */
