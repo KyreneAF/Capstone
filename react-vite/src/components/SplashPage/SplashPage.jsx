@@ -45,7 +45,7 @@ function SplashPage() {
     else greeting = "Good evening";
     return (
       <div className="land-greeting-cont block neon-text">
-        <h3 className="modern-greeting">{greeting}, Welcome to Neon Noir!</h3>
+        <h3 className="modern-greeting">{greeting}</h3>
       </div>
     );
   };
