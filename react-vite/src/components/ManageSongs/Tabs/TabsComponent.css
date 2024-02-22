@@ -1,0 +1,25 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap'); */
+
+
+.react-tabs__tab-list{
+
+    margin-left:20px;
+    border-bottom:.2px,solid #f2f2f2;
+    margin-top: 20px;
+}
+
+
+.react-tabs__tab{
+    border:none;
+    padding:20px;
+    font-size:20px;
+    font-family: Inter,sans-serif;
+    color: #333;
+    /* border-bottom: 1px solid grey */
+
+}
+.react-tabs__tab--selected{
+    border-bottom: 2px solid rgb(201,22,150);
+    color:rgb(201,22,150);
+    z-index:2
+}

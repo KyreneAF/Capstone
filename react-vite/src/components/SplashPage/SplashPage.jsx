@@ -5,14 +5,15 @@ import {
   clearStateAudio,
   pauseCurrAudio,
 } from "../../redux/audioPlayer";
+// import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-// import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 import "./SplashPage.css";
 
 function SplashPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const allSongs = useSelector((state) => state.song);
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
@@ -21,6 +22,16 @@ function SplashPage() {
   const bassSongs = allSongsArr.filter((song) => song.genre === "Dirty Bass");
   const popSongs = allSongsArr.filter((song) => song.genre === "Pop");
   const latinSongs = allSongsArr.filter((song) => song.genre === "Latino");
+
+
+  // useEffect(() => {
+  //   dispatch(thunkGetCurrLiked(currUser.id));
+  //   return () => dispatch(clearState());
+  // }, [dispatch, currUser]);
+
+
+
+
 
   useEffect(() => {
     dispatch(thunkGetAllSongs());
@@ -33,8 +44,8 @@ function SplashPage() {
     else if (time >= 12 && time < 17) greeting = "Good afternoon";
     else greeting = "Good evening";
     return (
-      <div className="land-greeting-cont block">
-        <h3>{greeting}</h3>
+      <div className="land-greeting-cont block neon-text">
+        <h3 className="modern-greeting">{greeting}, Welcome to Neon Noir!</h3>
       </div>
     );
   };
@@ -42,15 +53,17 @@ function SplashPage() {
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
     dispatch(clearStateAudio());
-    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(setCurrAudio(song.id, song.audio_file, song));
     dispatch(pauseCurrAudio(true));
   };
 
   const genreSort = (genre, arr) => {
     if (!allSongsArr.length) return null;
+
     return (
       <div className={`land-cont column block`}>
         <h3>{genre}</h3>
+
         <div className="genre-cont row">
           {arr.map((song) => (
             <div key={song.id} className="song-cont ">
@@ -77,9 +90,9 @@ function SplashPage() {
                   </div>
                   <div
                     onClick={() => handlePlayClick(song)}
-                    className="play-icon-cont-splash"
+                    className="play-icon-cont-splash click"
                   >
-                    <i className="fa-solid fa-play play-icon-splash"></i>
+                    <i className="fa-solid fa-play play-icon-splash click"></i>
                   </div>
                 </div>
               </div>
@@ -88,6 +101,7 @@ function SplashPage() {
             </div>
           ))}
         </div>
+
       </div>
     );
   };
@@ -100,10 +114,10 @@ function SplashPage() {
         <div className="songs">
           {genreSort("Hip-Hop", hipHopSongs)}
           {genreSort("Rock", rockSongs)}
-          {genreSort("Electronic", elecSongs)}
-          {genreSort("Dirty Bass", bassSongs)}
           {genreSort("Pop", popSongs)}
           {genreSort("Latino", latinSongs)}
+          {genreSort("Electronic", elecSongs)}
+          {genreSort("Dirty Bass", bassSongs)}
         </div>
       </div>
     </div>

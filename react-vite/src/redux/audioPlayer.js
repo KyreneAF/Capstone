@@ -2,16 +2,17 @@ const SET_CURR_AUDIO = "audio/set_curr_audio";
 const PAUSE_CURR_AUDIO = "audio/pause_curr_audio";
 const CLEAR_STATE_AUDIO = "audio/clear_state_AUDIO";
 
-export const setCurrAudio = (songId, audioFile) => {
+export const setCurrAudio = (songId, audioFile, song) => {
   return {
     type: SET_CURR_AUDIO,
     songId,
     audioFile,
+    song,
   };
 };
 export const pauseCurrAudio = (status) => {
   return {
-    type:PAUSE_CURR_AUDIO,
+    type: PAUSE_CURR_AUDIO,
     status,
   };
 };
@@ -25,7 +26,7 @@ function audioReducer(state = {}, action) {
   switch (action.type) {
     case SET_CURR_AUDIO: {
       let newState = { ...state };
-      newState[1] = action.audioFile;
+      newState[1] = { audio: action.audioFile, song: action.song };
       return newState;
     }
     case PAUSE_CURR_AUDIO:

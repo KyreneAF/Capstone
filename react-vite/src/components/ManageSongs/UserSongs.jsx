@@ -10,6 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SongDeleteModal from "./SongDeleteModal";
+import UserSongs404 from "./UserSongs404/UserSongs404";
 import "./UserSongs.css";
 // import AudioPlayer from "../Navigation/AudioPlayer/AudioPlayer";
 
@@ -41,11 +42,11 @@ export default function UserSongs() {
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
     dispatch(clearStateAudio());
-    dispatch(setCurrAudio(song.id, song.audio_file));
+    dispatch(setCurrAudio(song.id, song.audio_file, song));
     dispatch(pauseCurrAudio(true));
   };
 
-  if (!currSongsArr.length) return null;
+  if (!currSongsArr.length) return <UserSongs404 />;
   const genreSort = (genre, arr) => {
     if (arr.length === 0 || !arr.some((song) => song.genre === genre)) {
       return null;
@@ -58,35 +59,43 @@ export default function UserSongs() {
           {arr.map((song) => {
             if (song.genre === genre) {
               return (
-                <div key={song.id} className="column">
-                  <div className="pencil-delete row click ">
+                // MAKING IMAGE A DIV TO LET OTHER CONTS LAY ONTOP
+                <div className="user-single-tile column" key={song.id}>
+                  <div
+                    key={song.id}
+                    className="user-img-main-cont click"
+                    style={{ backgroundImage: `url(${song.image_file})` }}
+                  >
                     <div
-                      className="edit-bttn click"
-                      onClick={() => navigate(`/songs/edit/${song.id}`)}
+                      // PLAY ICON CODE TO PLAY SONGS
+                      onClick={() => handlePlayClick(song)}
+                      className="play-icon-cont-splash play-cont-user click"
                     >
-                      <i className="fa-solid fa-pencil trans"></i>
+                      <i className="fa-solid fa-play play-icon-liked"></i>
                     </div>
+                    <div className="pencil-delete-us row click ">
+                      {/* TRASHCAN AND PENCIL ICONS */}
+                      <div
+                        className="edit-bttn-us click"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/songs/edit/${song.id}`);
+                        }}
+                      >
+                        <i className="fa-solid fa-pencil trans"></i>
+                      </div>
 
-                    <OpenModalButton
-                      modalComponent={
-                        <SongDeleteModal id={song.id} song={song} />
-                      }
-                      buttonText={
-                        <i className="fa-solid fa-trash-can click trashcan trans"></i>
-                      }
-                    />
+                      <OpenModalButton
+                        modalComponent={
+                          <SongDeleteModal id={song.id} song={song} />
+                        }
+                        buttonText={
+                          <i className="fa-solid fa-trash-can click trashcan-us trans"></i>
+                        }
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    </div>
                   </div>
-
-                  <img
-                    className="land-sqr-img ms-image"
-                    src={song.image_file}
-                    onClick={() => handlePlayClick(song)}
-                    onError={(e) =>
-                      (e.target.src =
-                        "https://pics.craiyon.com/2023-09-11/9ef3786032194aa195be4f05210f9570.webp")
-                    }
-                  />
-
                   <div
                     className="us-title-cont"
                     onClick={() => navigate(`/songs/${song.id}`)}
@@ -106,6 +115,7 @@ export default function UserSongs() {
   if (!currSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont column">
+      <div className='land-allSongs-cont'>
       <div
         className="add-song-bttn click row"
         onClick={() => navigate("/songs/new")}
@@ -126,19 +136,19 @@ export default function UserSongs() {
       {genreSort("Pop", popSongs)}
       {genreSort("Latino", latinSongs)}
       {/* <AudioPlayer /> */}
+      </div>
     </div>
   );
 }
 
-//old code refactored code above
-// if (!currSongsArr.length) return null;
-// const genreSort = (genre, arr) => {
-//   return (
-//     <div className={`land-cont column block`}>
-//       {arr.length ? <h3>{genre}</h3> : null}
-//       {arr && (
-//         <div className="genre-cont-ms row">
-//           {arr.map((song) => (
+// old code
+// return (
+//   <div className={`land-cont column block`}>
+//     <h3>{genre}</h3>
+//     <div className="genre-cont-ms row">
+//       {arr.map((song) => {
+//         if (song.genre === genre) {
+//           return (
 //             <div key={song.id} className="column">
 //               <div className="pencil-delete row click ">
 //                 <div
@@ -175,9 +185,12 @@ export default function UserSongs() {
 //                 <span className="navie click">{song.title}</span>{" "}
 //               </div>
 //             </div>
-//           ))}
-//         </div>
-//       )}
+//           );
+//         } else {
+//           return null;
+//         }
+//       })}
 //     </div>
-//   );
+//   </div>
+// );
 // };
