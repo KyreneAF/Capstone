@@ -1,11 +1,32 @@
 .land-pg-main-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* margin-left: 30px; */
+  font-family: sans-serif;
+
+}
+.land-allSongs-cont {
+  width:90%;
+  margin-top: 20px;
+
+}
+.land-cont {
+  height: 300px;
+  width:100%
+}
+
+/* .land-pg-main-cont {
   width: 100%;
   height: 100%;
-}
+} */
 
 .genre-cont-ms {
   display: flex;
   gap: 40px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 /* IMAGE */
@@ -61,7 +82,7 @@
 
 /* TRASHCAN AND PENCIL ICONS */
 
-.pencil-delete {
+.pencil-delete-us {
   display: flex;
   justify-content: end;
   position: absolute;
@@ -82,7 +103,7 @@
 }
 
 /* pencil icon*/
-.edit-bttn i {
+.edit-bttn-us i {
   margin-top: 5px;
   margin-left: 5px;
 }
@@ -92,11 +113,11 @@
   margin-right: 8px;
 }
 
-.user-img-main-cont:hover .pencil-delete {
+.user-img-main-cont:hover .pencil-delete-us {
   visibility: visible;
 }
 
-.trashcan {
+.trashcan-us {
   background-color: none;
   font-size: 18px;
 }

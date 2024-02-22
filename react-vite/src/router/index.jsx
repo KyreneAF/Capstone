@@ -7,7 +7,7 @@ import SplashPage from "../components/SplashPage/SplashPage";
 import CreateSongForm from "../components/CreateSongForm/CreateSongForm";
 import SongDetails from "../components/SongDetails/SongDetails";
 import UpdateSongs from "../components/ManageSongs/UpdateSongs";
-import UserSongs from "../components/ManageSongs/UserSongs";
+// import UserSongs from "../components/ManageSongs/UserSongs";
 import TabsComponent from "../components/ManageSongs/Tabs/TabsComponent";
 
 // import CreateCommentModal from "../components/Comments/CreateCommentModal";

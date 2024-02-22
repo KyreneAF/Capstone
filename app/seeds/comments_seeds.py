@@ -24,7 +24,7 @@ music_comments = [
 def seed_comments():
     newComments = []
 
-    for i in range(1,21):
+    for i in range(1,62):
         newComment = Comment(
             user_id= 4,
             song_id= i,
