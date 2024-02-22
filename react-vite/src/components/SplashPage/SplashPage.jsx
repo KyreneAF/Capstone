@@ -45,7 +45,7 @@ function SplashPage() {
     else greeting = "Good evening";
     return (
       <div className="land-greeting-cont block neon-text">
-        <h3 className="modern-greeting">{greeting}, Welcome to Neon Noir!</h3>
+        <h3 className="modern-greeting">{greeting}</h3>
       </div>
     );
   };
@@ -61,7 +61,7 @@ function SplashPage() {
     if (!allSongsArr.length) return null;
 
     return (
-      <div className={`land-cont column block`}>
+      <div className={`land-cont block column`}>
         <h3>{genre}</h3>
 
         <div className="genre-cont row">

@@ -13,8 +13,8 @@
   cursor: pointer;
 }
 .block {
-  padding-bottom: 20px;
-  border-bottom: 0.3px solid gray;
+  padding-bottom: 50px;
+  border-bottom: 0.3px solid rgb(145,145,145,.6)
 }
 
 .border {
