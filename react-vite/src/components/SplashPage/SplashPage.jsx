@@ -37,18 +37,25 @@ function SplashPage() {
     dispatch(thunkGetAllSongs());
   }, [dispatch]);
 
-  const greetingMessage = () => {
-    const time = new Date().getHours();
-    let greeting = null;
-    if (time < 12 && time > 5) greeting = "Good morning";
-    else if (time >= 12 && time < 17) greeting = "Good afternoon";
-    else greeting = "Good evening";
-    return (
-      <div className="land-greeting-cont block neon-text">
-        <h3 className="modern-greeting">{greeting}</h3>
-      </div>
-    );
-  };
+  // const greetingMessage = () => {
+  //   // return(
+  //   //   <div>
+  //   //   <img src='https://www.freewebheaders.com/gc-music-art-800x200/cache/broken-turntable-vinyl-disc-black-music-banner_gc-banner-800x200_248871.jpg-nggid0511796-ngg0dyn-1920x1080x100-00f0w010c010r110f110r010t010.jpg' alt="Banner" />
+  //   //   {/* Or, using a div with background image */}
+  //   //   {/* <div style={{ backgroundImage: `url(https://www.freewebheaders.com/gc-music-art-800x200/cache/broken-turntable-vinyl-disc-black-music-banner_gc-banner-800x200_248871.jpg-nggid0511796-ngg0dyn-1920x1080x100-00f0w010c010r110f110r010t010.jpg' alt="Banner)` }}></div> */}
+  //   // </div>
+  //   //)
+  //   // const time = new Date().getHours();
+  //   // let greeting = null;
+  //   // if (time < 12 && time > 5) greeting = "Good morning";
+  //   // else if (time >= 12 && time < 17) greeting = "Good afternoon";
+  //   // else greeting = "Good evening";
+  //   // return (
+  //   //   <div className="land-greeting-cont block neon-text">
+  //   //     <h3 className="modern-greeting">{greeting}</h3>
+  //   //   </div>
+  //   // );
+  // };
 
   const handlePlayClick = (song) => {
     dispatch(pauseCurrAudio(false));
@@ -110,7 +117,8 @@ function SplashPage() {
   return (
     <div className="land-pg-main-cont main">
       <div className="land-allSongs-cont block">
-        <div className="land-greet-cont">{greetingMessage()}</div>
+        {/* <div className="land-greet-cont">{greetingMessage()}</div> */}
+        <div className="land-greet-cont" style={{ height: '45px' }}></div>
         <div className="songs">
           {genreSort("Hip-Hop", hipHopSongs)}
           {genreSort("Rock", rockSongs)}
