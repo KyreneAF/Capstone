@@ -19,7 +19,7 @@ function AudioPlayer() {
 
   if (!currAudio[1]) return null;
   return (
-    <div className="audio-player-main-cont">
+<div className="audio-player-main-cont" style={{ visibility: currAudio[1] ? 'visible' : 'hidden' }}>
       <ReactPlayer
         url={currAudio[1].audio}
         controls={true}
@@ -27,6 +27,13 @@ function AudioPlayer() {
         width="100%"
         height="50px"
       />
+      <div id='playing-song-cont'>
+        <div><img id='audio-player-img' src={currAudio[1].song.image_file} /></div>
+        <div id='audio-player-info'>
+          <span>{currAudio[1].song.title}</span>
+          <span id='ap-owner'>{currAudio[1].song.user_id.username}</span>
+        </div>
+      </div>
     </div>
   );
 }

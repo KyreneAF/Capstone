@@ -28,14 +28,7 @@
 } */
 
 /* AUDIO PLAYER */
-.audio-player-cont {
-  position: fixed;
-  bottom: 0;
-  left: 400px;
-  width: 50%;
-  background-color: none;
-  padding: 10px;
-}
+
 
 /* AUDIO */
 /* .hidden{
