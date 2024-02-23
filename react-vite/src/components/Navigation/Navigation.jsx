@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 function Navigation() {
   const navigate = useNavigate();
   const currUser = useSelector((state) => state.session);
-  console.log(currUser, "currUser");
+
   return (
     <div className="nav-main-cont row">
       <div className="nav-greet-main-cont">

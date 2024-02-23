@@ -31,7 +31,7 @@ def create_liked_song(song_id):
     if form.validate_on_submit():
         liked_song = LikedSong(
            user_id = current_user.id,
-           song_id = song_id,
+           song_id = form.song_id.data,
 
         )
         db.session.add(liked_song)
