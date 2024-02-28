@@ -43,21 +43,27 @@ export const thunkGetCurrLiked = (user_id) => async (dispatch) =>{
     }
 }
 
-export const thunkCreateLiked = (songId) => async(dispatch) => {
-    const res = await fetch(`/api/liked_songs/${songId}`,{
-        method:"POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(songId)
-    });
-    if(res.ok){
+export const thunkCreateLiked = (songId) => async (dispatch) => {
+    try {
+      const res = await fetch(`/api/liked_songs/${songId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(songId),
+      });
+
+      if (res.ok) {
         const likedSongs = await res.json();
-        dispatch(createLiked(likedSongs,likedSongs.id));
-        return likedSongs
-    } else {
+        dispatch(createLiked(likedSongs, likedSongs.id));
+        return likedSongs;
+      } else {
         const errors = await res.json();
         return errors;
       }
-}
+    } catch (error) {
+      console.error("Error creating liked song:", error);
+      throw error;
+    }
+  };
 
 export const thunkDeleteLiked = (id) => async(dispatch) =>{
     const res = await fetch(`/api/liked_songs/${id}`,{
