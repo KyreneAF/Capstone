@@ -10,7 +10,7 @@ function TabsComponent(){
 
 return(
 
-  <Tabs>
+  <Tabs id='tabs-main-cont-first'>
     <TabList id='tabs-main-cont'>
       <Tab id='tab'>Uploaded Songs</Tab>
       <Tab >Liked Songs</Tab>

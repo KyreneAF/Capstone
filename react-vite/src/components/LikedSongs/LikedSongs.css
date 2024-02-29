@@ -8,6 +8,7 @@
   flex-wrap: wrap;
   gap: 40px;
   margin-top: 50px;
+  /* min-height: 100vh */
 }
 /* IMAGE DIV this holds the entire image*/
 .liked-img-cont {
