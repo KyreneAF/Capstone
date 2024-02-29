@@ -103,7 +103,7 @@ export const thunkUpdateComment = (updatedComment,commentId) => async (dispatch)
 
 export const thunkDeleteComment = (comment_id) => async (dispatch) => {
     try {
-        console.log('COMMENTS IN THUNK', comment_id)
+
     const res = await fetch(`/api/comments/${comment_id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -131,7 +131,7 @@ function commentReducer(state = {}, action){
         }
         case GET_ALL_COMMENTS: {
             let newState = { ...state };
-            console.log("action", action.comments)
+
             action.comments.comments.forEach((comment) => (newState[comment.id] = comment));
             return newState;
           }

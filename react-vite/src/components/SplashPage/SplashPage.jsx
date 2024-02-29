@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { thunkGetAllSongs } from "../../redux/song";
 import { setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
-import { thunkCreateLiked, thunkDeleteLiked, thunkGetCurrLiked } from "../../redux/likedSong";
+import { thunkCreateLiked, thunkGetCurrLiked } from "../../redux/likedSong";
 // import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ function SplashPage() {
   const currUser = useSelector(state => state.session.user)
   const allSongs = useSelector((state) => state.song);
   const allLiked = useSelector((state) => state.likedSong)
-  const allLikedArr = Object.values(allLiked)
+  // const allLikedArr = Object.values(allLiked)
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
   const rockSongs = allSongsArr.filter((song) => song.genre === "Rock");
@@ -41,22 +41,20 @@ function SplashPage() {
     dispatch(setCurrAudio(song.id, song.audio_file, song));
     dispatch(pauseCurrAudio(true));
   };
-  // console.log('SHOW POPUP OUTSIDE', showPopup)
-  // console.log('alllikearr',allLikedArr)
-  // console.log('find',allLikedArr.find(song => song.song?.id === 22))
+
   const handelLiked = async (e,song) =>{
     e.stopPropagation();
 
     try {
 
-        const likedSongs = await dispatch(thunkCreateLiked(song.id));
+       await dispatch(thunkCreateLiked(song.id));
         setShowPopup(true);
         setToggleSong(song)
-        console.log('SHOW POPUP INSIDE', showPopup)
+
         setTimeout(() => {
           setShowPopup(false);
           setToggleSong('')
-          console.log('SHOW POPUP SET TIMEOUT', showPopup)
+
         }, 2000);
 
 
