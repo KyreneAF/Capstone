@@ -1,11 +1,14 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;700&display=swap'); */
-
+#tabs-main-cont-first{
+    margin-top: 80px;
+}
 
 .react-tabs__tab-list{
 
     margin-left:20px;
     border-bottom:.2px,solid #f2f2f2;
     margin-top: 20px;
+
 }
 
 
@@ -22,4 +25,7 @@
     border-bottom: 2px solid rgb(201,22,150);
     color:rgb(201,22,150);
     z-index:2
+}
+#tabs-main-cont-first{
+    min-height: 90vh
 }

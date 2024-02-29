@@ -41,7 +41,7 @@ function UpdateSongs() {
     if (!genre) errObj.genre = "Must select a genre...";
     setError(errObj);
 
-    console.log("checking", title, image, audio, genre);
+
 
     setImageLoading(true);
     const formData = new FormData();

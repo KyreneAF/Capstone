@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 import { thunkGetAllSongs } from "../../redux/song";
 import { setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
-// import { thunkCreateLiked } from "../../redux/likedSong";
+import { thunkCreateLiked, thunkGetCurrLiked } from "../../redux/likedSong";
 // import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -12,6 +13,8 @@ function SplashPage() {
   const navigate = useNavigate();
   const currUser = useSelector(state => state.session.user)
   const allSongs = useSelector((state) => state.song);
+  const allLiked = useSelector((state) => state.likedSong)
+  // const allLikedArr = Object.values(allLiked)
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
   const rockSongs = allSongsArr.filter((song) => song.genre === "Rock");
@@ -19,20 +22,15 @@ function SplashPage() {
   const bassSongs = allSongsArr.filter((song) => song.genre === "Dirty Bass");
   const popSongs = allSongsArr.filter((song) => song.genre === "Pop");
   const latinSongs = allSongsArr.filter((song) => song.genre === "Latino");
-
-
-  // useEffect(() => {
-  //   dispatch(thunkGetCurrLiked(currUser.id));
-  //   return () => dispatch(clearState());
-  // }, [dispatch, currUser]);
-
-
+  const [showPopup, setShowPopup] = useState(false)
+  const [toggleSong, setToggleSong] = useState('')
 
 
 
   useEffect(() => {
     dispatch(thunkGetAllSongs());
-  }, [dispatch]);
+    dispatch(thunkGetCurrLiked(currUser?.id))
+  }, [dispatch,currUser]);
 
 
 
@@ -44,16 +42,27 @@ function SplashPage() {
     dispatch(pauseCurrAudio(true));
   };
 
-  // const handelLiked = (e,song) =>{
-  //   e.stopPropagation();
-  //   console.log(song, '!!!!!!');
-  //   try {
-  //       const likedSongs = dispatch(thunkCreateLiked(song.id));
-  //       console.log('Liked songs:', likedSongs);
-  //   } catch (error) {
-  //       console.error('Error:', error);
-  //   }
-  // }
+  const handelLiked = async (e,song) =>{
+    e.stopPropagation();
+
+    try {
+
+       await dispatch(thunkCreateLiked(song.id));
+        setShowPopup(true);
+        setToggleSong(song)
+
+        setTimeout(() => {
+          setShowPopup(false);
+          setToggleSong('')
+
+        }, 2000);
+
+
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+  }
 
   const genreSort = (genre, arr) => {
     if (!allSongsArr.length) return null;
@@ -76,16 +85,16 @@ function SplashPage() {
               >
                 <i className="fa-solid fa-play play-icon-liked"></i>
               </div>
-              {/* {currUser &&
+              {currUser &&
               <div className="liked-song-info-cont column">
               <div className="heart-title-cont-splash row">
                 <div className="heart-cont-splash click" onClick={(e) =>{handelLiked(e,song)}} >
-                  <i
-                    className='fa-solid fa-heart splash-heart'
+                <i
+                  className='fa-solid fa-heart splash-heart'
                   ></i>
                 </div>
               </div>
-            </div>} */}
+            </div>}
 
               </div>
                 <div className="land-song-info row click ">
@@ -114,6 +123,17 @@ function SplashPage() {
   if (!allSongsArr.length) return null;
   return (
     <div className="land-pg-main-cont main">
+      {(showPopup && toggleSong) &&
+      <div className='splash-added'>
+        <div id='toggle-top'>
+          <img className='toggle-img'src={toggleSong.image_file}/>
+        </div>
+        <div id='toggle-bttm'>
+          <span>{toggleSong.title}</span>
+          <span>was added to your <NavLink to='/songs/current'>Library</NavLink></span>
+
+        </div>
+        </div>}
       <div className="land-allSongs-cont block">
         {/* <div className="land-greet-cont">{greetingMessage()}</div> */}
         <div className="land-greet-cont" style={{ height: '45px' }}></div>

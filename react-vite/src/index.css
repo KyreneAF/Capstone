@@ -44,3 +44,77 @@
   visibility: hidden;
   z-index: -2;
 }
+
+
+/* FOOTER CONTAINER */
+/* .footer-main-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(34, 34, 34, 0.9);
+  color: white;
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+#github-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.foot-abt {
+  display: flex;
+  flex-direction: row;
+  font-weight: 15px;
+  margin-bottom: 10px;
+}
+
+.foot-link-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.foot-link-cont a {
+  color: rgb(255, 255, 255, 0.7);
+  font-size: 15px;
+}
+.foot-a-cont {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+<footer>
+<div class="footer-main-cont">
+  <span class="foot-abt">About me</span>
+  <div id="github-cont">
+    <div class="foot-link-cont">
+      <span class="foot-person">Kyrene&apos;s</span>
+      <div class="foot-a-cont">
+        <a
+          href="https://github.com/KyreneAF"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/kyrene-flores-5870432a8/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</footer> */

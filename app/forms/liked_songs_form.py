@@ -5,4 +5,4 @@ from wtforms.validators import DataRequired
 
 class LikedSongForm(FlaskForm):
     song_id = IntegerField("Song", validators=[DataRequired()])
-    submit = SubmitField("Add Comment")
+    submit = SubmitField("Add Liked Song")
