@@ -80,7 +80,7 @@ function SongDetails() {
       return (
         <div id="add-comment-link">
           <OpenModalButton
-            modalComponent={<CreateCommentModal songId={song.id} />}
+            modalComponent={<CreateCommentModal songId={song.id} song={song}/>}
             buttonText={
               <span
                 style={{

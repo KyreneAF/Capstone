@@ -3,11 +3,24 @@ import ProfileButton from "./ProfileButton";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { thunkGetAllSongs } from "../../redux/song";
 
 function Navigation() {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
   const currUser = useSelector((state) => state.session);
+  const allSongs = useSelector((state) => state.song);
+  const allSongsArr = Object.values(allSongs);
+  const sortedSongs = allSongsArr.sort((a, b) => {
+    const nameA = a.title.toLowerCase();
+    const nameB = b.title.toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+  });
+  const [searchWord, setSearchWord] = useState("");
 
   return (
     <div className="nav-main-cont row">
@@ -48,6 +61,42 @@ function Navigation() {
       </div>
       <div className="nav-profile-button-main-cont">
         <ProfileButton />
+      </div>
+      <div className="search-main-cont">
+        <div id="search-input-cont">
+          <input
+            type="search"
+            id="search-bar"
+            value={searchWord}
+            placeholder="Search..."
+            onChange={(e) => setSearchWord(e.target.value)}
+          />
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div id="search-results-list-main-cont">
+          {searchWord.length > 0 &&
+          <div id="search-results-list">
+            {searchWord.length > 0 &&
+              sortedSongs
+                .filter(
+                  (song) =>
+                    song.title
+                      .toLowerCase()
+                      .startsWith(searchWord.toLowerCase()) ||
+                    song.user_id.username
+                      .toLowerCase()
+                      .startsWith(searchWord.toLowerCase())
+                )
+                .map((song) => (
+                  <div key={song.id} className="indi-search click" onClick={() => navigate(`/songs/${song.id}`)}>
+                    <img id="search-img" src={song.image_file} />
+                    <span >{song.title}</span>
+                    <span>-{song.user_id.username}</span>
+                  </div>
+                ))}
+          </div>
+          }
+        </div>
       </div>
 
       <div className="audio-player-cont">

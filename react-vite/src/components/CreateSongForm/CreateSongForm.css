@@ -1,56 +1,57 @@
-.error-cont{
-    max-height: 40px;
+.error-cont {
+  max-height: 40px;
 }
 
 /* MAIN CONT */
-.create-song-main-cont{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:100%;
-    gap:50px;
-    min-height: 90vh
+.create-song-main-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 50px;
+  min-height: 90vh;
+
 }
 
 /* FORM CONTAINER*/
-.create-song-form-cont{
-    border: 1px solid black;
-    margin-top: 100px;
-    height:500px;
-    width: 500px;
-    padding:20px;
-
+.create-song-form-cont {
+  border: 1px solid black;
+  margin-top: 100px;
+  height: 500px;
+  width: 500px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px 10px rgb(158,158,157,.5);
 }
 
-.form-main-cont{
-    height:300px;
-    display: flex;
-    flex-direction: row;
-    gap:10px;
+.form-main-cont {
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 /******/
 /*RIGHT SIDE */
-.csf-right-cont{
-    gap:30px;
-    align-content: center;
+.csf-right-cont {
+  gap: 30px;
+  align-content: center;
 }
-.csf-right-cont label{
-    align-self: center;
-    padding: 10px;
+.csf-right-cont label {
+  align-self: center;
+  padding: 10px;
 }
-.csf-title-cont{
-    display: flex;
-    justify-content: center;
-    padding:20px
+.csf-title-cont {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 /* LEFT SIDE */
-.csf-left-cont{
-    align-content: center;
-    gap: 50px
+.csf-left-cont {
+  align-content: center;
+  gap: 50px;
 }
-.csf-left-cont label{
-    align-self: center;
-    padding:20px
+.csf-left-cont label {
+  align-self: center;
+  padding: 20px;
 }
 /* .box{
     display: flex;
@@ -61,19 +62,17 @@
 } */
 
 /* FILES */
-.csf-left-cont input{
-    padding:5px
-
+.csf-left-cont input {
+  padding: 5px;
 }
 
 /* HEADING */
-.cs-heading{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-weight: 300;
-    font-size: 20px;
-
+.cs-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 /* .submit-error-cont > button{
@@ -84,26 +83,55 @@
     width:100px
 
 } */
-.submit-error-cont > button{
-    margin-left:200px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-
-
+.submit-error-cont > button {
+  margin-left: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
 }
 .submit-error-cont > button:hover {
-    color: rgba(252, 159, 232, 1);
-  }
-
-.is-loading{
-    display: flex;
-    justify-content: center;
-    color:#c91696;
+  color: rgba(252, 159, 232, 1);
 }
 
-.error-cont{
-    margin-top: 10px;
-    color:#c91696;
+.is-loading {
+  display: flex;
+  justify-content: center;
+  color: #c91696;
 }
+
+.error-cont {
+  margin-top: 10px;
+  color: #c91696;
+}
+
+/*** REFACTORED CODE ***/
+/* .create-song-form-cont {
+  font-family: sans-serif;
+  border: 1px solid black;
+  margin-top: 100px;
+  height: 600px;
+  width: 600px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.form-main-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  gap: 20px;
+}
+*/
+/* IMAGE INPUT */
+/*.csrf-img-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+} */
