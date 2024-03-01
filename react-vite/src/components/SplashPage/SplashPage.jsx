@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { thunkGetAllSongs } from "../../redux/song";
 import { setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
-import { thunkCreateLiked, thunkDeleteLiked, thunkGetCurrLiked } from "../../redux/likedSong";
+import { thunkCreateLiked, } from "../../redux/likedSong";
 // import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
