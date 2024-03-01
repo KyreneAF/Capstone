@@ -51,5 +51,9 @@ https://neon-noir.onrender.com/
 2. Comments
 3. Liked Songs Library
 
+## Future Features
+1. Recently Played
+2. Playlists/ AutoPlay
+
 ## Connect
 [Linkedin](https://www.linkedin.com/in/kyrene-flores-5870432a8/)
