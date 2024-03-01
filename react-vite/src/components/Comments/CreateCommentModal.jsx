@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 import './CreateCommentModal.css'
 // import "./SongDeleteModal.css";
 
-function CreateCommentModal({ songId}) {
+function CreateCommentModal({ songId,song}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [commentText, setCommentText] = useState('');
@@ -18,7 +18,7 @@ function CreateCommentModal({ songId}) {
       closeModal();
 
   };
-
+  console.log('SONG',song)
   const handleCancel = () => {
     return closeModal();
   };
@@ -27,7 +27,9 @@ function CreateCommentModal({ songId}) {
     <div className="create-comment-main-cont column">
       <form className="comment-form-cont column" onSubmit={handleCreate}>
         <div className='form-inner-cont column'>
-        <h3>Post your comment</h3>
+        <h3>Post your comment for:</h3>
+        <div style={{fontWeight:'500',marginBottom:'5px'}}> {song.title}</div>
+        <img src={song.image_file}/>
         <textarea
           rows="6"
           cols="25"
