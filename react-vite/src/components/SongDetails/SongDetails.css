@@ -70,3 +70,8 @@
   gap:10px;
   color: rgb(34, 34, 34, 0.6);
 }
+
+/* MAIN CONTAINER  */
+.song-main-cont{
+  margin-top: 50px;
+}

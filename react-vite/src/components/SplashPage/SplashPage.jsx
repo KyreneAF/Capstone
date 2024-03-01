@@ -81,7 +81,7 @@ function SplashPage() {
             >
               <div
                 onClick={(e) => handlePlayClick(e,song)}
-                className="play-icon-cont-splash  click"
+                className="play-icon-cont-splash click"
               >
                 <i className="fa-solid fa-play play-icon-liked"></i>
               </div>
