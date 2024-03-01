@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 import { useParams } from "react-router-dom";
 import { thunkGetAllSongs } from "../../redux/song";
 import { thunkGetAllComments } from "../../redux/comment";
@@ -42,6 +43,9 @@ function SongDetails() {
     dispatch(pauseCurrAudio(true));
   };
 
+
+
+
   if (!Object.values(allSongs).length) return null;
   const renderSongDetails = () => {
     return (
@@ -49,6 +53,8 @@ function SongDetails() {
         <div className="song-img-play-poser-cont">
           <div className="ss-info-con">
             <img className="single-song-img" src={song.image_file} />
+
+
             <div className="info-cont">
               <span>
                 {`produced by `}
@@ -109,3 +115,131 @@ function SongDetails() {
   );
 }
 export default SongDetails;
+// import { useEffect, useRef } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import WaveSurfer from 'wavesurfer.js'
+// import { useParams } from "react-router-dom";
+// import { thunkGetAllSongs } from "../../redux/song";
+// import { thunkGetAllComments } from "../../redux/comment";
+// import {
+//   setCurrAudio,
+//   pauseCurrAudio,
+//   clearStateAudio,
+// } from "../../redux/audioPlayer";
+// import OpenModalButton from "../OpenModalButton/OpenModalButton";
+// import CreateCommentModal from "../Comments/CreateCommentModal";
+// import "./SongDetails.css";
+// import CommentsPage from "../Comments/CommentsPage";
+
+// function SongDetails() {
+//   const dispatch = useDispatch();
+//   const allSongs = useSelector((state) => state.song);
+//   const allComments = useSelector((state) => state.comment);
+//   const currUser = useSelector((state) => state.session.user);
+//   const commentsArr = Object.values(allComments);
+//   const { id } = useParams();
+//   const song = allSongs[id];
+//   const userComment = commentsArr.some(
+//     (comment) => comment.user_id.id === currUser?.id
+//   );
+//   const wavesurferRef = useRef(null);
+
+//   useEffect(() => {
+//     dispatch(thunkGetAllSongs());
+//     dispatch(thunkGetAllComments(id));
+
+//     // Initialize WaveSurfer
+//     if (song) {
+//       wavesurferRef.current = WaveSurfer.create({
+//         container: '#waveform',
+//         waveColor: '#4F4A85',
+//         progressColor: '#383351',
+//         url: song.audio_file,
+//       });
+//     }
+
+//     return () => {
+//       // Clean up on unmount
+//       if (wavesurferRef.current) {
+//         wavesurferRef.current.destroy();
+//       }
+//     };
+//   }, [dispatch, id]);
+
+//   const handlePlayClick = () => {
+//     dispatch(pauseCurrAudio(false));
+//     dispatch(clearStateAudio());
+//     dispatch(setCurrAudio(song.id, song.audio_file, song));
+//     dispatch(pauseCurrAudio(true));
+//   };
+
+//   const renderSongDetails = () => {
+//     if (!song) return null;
+
+//     return (
+//       <div className="song-main-cont column">
+//         <div className="song-img-play-poser-cont">
+//           <div className="ss-info-con">
+//             <img className="single-song-img" src={song.image_file} />
+
+//             <div className="info-cont">
+//               <span>
+//                 {`produced by `}
+//                 <span style={{ color: "#c91696" }}>
+//                   {song.user_id.username}
+//                 </span>
+//               </span>
+//               <div className="ss-liked-cont row">
+//                 <div className="play-icon-cont click">
+//                   <i
+//                     className="fa-solid fa-play play-icon click"
+//                     onClick={handlePlayClick}
+//                   ></i>
+//                 </div>
+//                 <div id="heart-cont">
+//                   <i className="fa-solid fa-heart"></i>
+//                   <span>{song.num_likes} Likes</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   };
+
+//   const renderAddCommentBttn = () => {
+//     if (currUser && song && !userComment && song.user_id.id !== currUser.id) {
+//       return (
+//         <div id="add-comment-link">
+//           <OpenModalButton
+//             modalComponent={<CreateCommentModal songId={song.id} song={song}/>}
+//             buttonText={
+//               <span
+//                 style={{
+//                   color: "#c91696",
+//                   fontWeight: "400",
+//                   fontSize: "20px",
+//                 }}
+//                 className="click"
+//               >
+//                 Add a comment <i className="fa-solid fa-plus"></i>
+//               </span>
+//             }
+//           />
+//         </div>
+//       );
+//     }
+//   };
+
+//   return (
+//     <div className="ss-main-cont column">
+//       {renderSongDetails()}
+//       {renderAddCommentBttn()}
+//       <div id="waveform"></div>
+//       <CommentsPage songId={song.id} song={song} comments={song.comments} />
+//     </div>
+//   );
+// }
+
+// export default SongDetails;

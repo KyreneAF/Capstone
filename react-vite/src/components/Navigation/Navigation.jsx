@@ -88,7 +88,7 @@ function Navigation() {
                       .startsWith(searchWord.toLowerCase())
                 )
                 .map((song) => (
-                  <div key={song.id} className="indi-search click" onClick={() => navigate(`/songs/${song.id}`)}>
+                  <div key={song.id} className="indi-search click" onClick={() => {setSearchWord('');navigate(`/songs/${song.id}`)}}>
                     <img id="search-img" src={song.image_file} />
                     <span >{song.title}</span>
                     <span>-{song.user_id.username}</span>
