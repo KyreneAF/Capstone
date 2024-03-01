@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { thunkGetAllSongs } from "../../redux/song";
 import { setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
-import { thunkCreateLiked, thunkGetCurrLiked } from "../../redux/likedSong";
+import { thunkCreateLiked, thunkDeleteLiked, thunkGetCurrLiked } from "../../redux/likedSong";
 // import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ function SplashPage() {
   const navigate = useNavigate();
   const currUser = useSelector(state => state.session.user)
   const allSongs = useSelector((state) => state.song);
-  const allLiked = useSelector((state) => state.likedSong)
+  // const allLiked = useSelector((state) => state.likedSong)
   // const allLikedArr = Object.values(allLiked)
   const allSongsArr = Object.values(allSongs);
   const hipHopSongs = allSongsArr.filter((song) => song.genre === "Hip-Hop");
@@ -26,10 +26,9 @@ function SplashPage() {
   const [toggleSong, setToggleSong] = useState('')
 
 
-
   useEffect(() => {
     dispatch(thunkGetAllSongs());
-    dispatch(thunkGetCurrLiked(currUser?.id))
+    // dispatch(thunkGetCurrLiked(currUser?.id))
   }, [dispatch,currUser]);
 
 
@@ -42,20 +41,21 @@ function SplashPage() {
     dispatch(pauseCurrAudio(true));
   };
 
-  const handelLiked = async (e,song) =>{
+  const handelLiked = async(e,song) =>{
     e.stopPropagation();
 
     try {
 
-       await dispatch(thunkCreateLiked(song.id));
-        setShowPopup(true);
-        setToggleSong(song)
+        await dispatch(thunkCreateLiked(song.id));
+         setShowPopup(true);
+         setToggleSong(song)
 
-        setTimeout(() => {
-          setShowPopup(false);
-          setToggleSong('')
+         setTimeout(() => {
+           setShowPopup(false);
+           setToggleSong('')
 
-        }, 2000);
+         }, 2000);
+
 
 
 
