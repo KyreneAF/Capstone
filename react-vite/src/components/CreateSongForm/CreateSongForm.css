@@ -10,6 +10,7 @@
   height: 100%;
   gap: 50px;
   min-height: 90vh;
+
 }
 
 /* FORM CONTAINER*/
@@ -19,6 +20,7 @@
   height: 500px;
   width: 500px;
   padding: 20px;
+  box-shadow: 2px 2px 5px 10px rgb(158,158,157,.5);
 }
 
 .form-main-cont {
