@@ -16,7 +16,7 @@ def get_all_songs():
     if not songs:
         return {"message":"Songs does not exist"}, 404
     songs_to_dict = [song.to_dict() for song in songs]
-    return jsonify({"songs":songs_to_dict})
+    return {"songs":songs_to_dict}
 
 # GET SONGS OF CURRENT USER
 @song_routes.route("/current", methods=["GET"])
