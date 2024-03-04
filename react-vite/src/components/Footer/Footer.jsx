@@ -1,7 +1,9 @@
 import "./Footer.css";
 
+
 function Footer() {
   return (
+
 <div className="footer-main-cont">
   <span className="foot-abt">About me</span>
   <div id="github-cont">
@@ -25,6 +27,7 @@ function Footer() {
     </div>
   </div>
 </div>
+
   );
 }
 

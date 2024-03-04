@@ -24,7 +24,7 @@
 .react-tabs__tab--selected{
     border-bottom: 2px solid rgb(201,22,150);
     color:rgb(201,22,150);
-    z-index:2
+    z-index:1;
 }
 #tabs-main-cont-first{
     min-height: 90vh

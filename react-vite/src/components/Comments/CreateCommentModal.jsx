@@ -18,7 +18,7 @@ function CreateCommentModal({ songId,song}) {
       closeModal();
 
   };
-  console.log('SONG',song)
+
   const handleCancel = () => {
     return closeModal();
   };
