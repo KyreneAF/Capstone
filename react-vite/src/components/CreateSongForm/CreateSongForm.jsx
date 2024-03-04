@@ -12,7 +12,9 @@ function CreateSongForm() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState('')
   const [audio, setAudio] = useState(null);
+  const [audioName, setAudioName] = useState('')
   const [errors, setErrors] = useState({});
   const [imageLoading, setImageLoading] = useState(false);
 
@@ -29,8 +31,12 @@ function CreateSongForm() {
     setImageLoading(true);
     const formData = new FormData();
     console.log('FORM DATA IMAGE',image)
-    formData.append("image", image);
-    formData.append("audio", audio);
+    const newImg = URL.createObjectURL(image)
+    const newAudio = URL.createObjectURL(audio)
+    formData.append("image", newImg);
+    formData.append("imageName", imageName)
+    formData.append("audio", newAudio);
+    formData.append("audioName", audioName)
     formData.append("title", title);
     formData.append("genre", genre);
 
@@ -57,7 +63,10 @@ function CreateSongForm() {
                   className="box"
                   type="file"
                   accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setImageName(e.target.files[0].name);
+                  }}
                 />
                 <div
                   style={{ maxHeight: "20px", marginTop: "20px" }}
@@ -78,7 +87,10 @@ function CreateSongForm() {
                   className="box"
                   type="file"
                   accept="audio/mp3"
-                  onChange={(e) => setAudio(e.target.files[0])}
+                  onChange={(e) => {
+                    setAudio(e.target.files[0]);
+                    setAudioName(e.target.files[0].name);
+                  }}
                 />
 
                 <div

@@ -76,7 +76,9 @@ def seed_songs():
         genre="Pop",
         user_id = 1,
         image_file= 'https://cdn.pixabay.com/photo/2019/05/04/15/24/woman-4178302_1280.jpg',
+        image_name='sumatra_soul.jpeg',
         audio_file=audio_arr[3],
+        audio_name='sumatra_soul.mp3',
         created_at= datetime.now()
     )
     newSongs.append(demo_song)
@@ -88,7 +90,9 @@ def seed_songs():
             genre="Electronic",
             user_id = randint(2,3),
             image_file = song_images[i],
+            image_name = f"{song_images[i]}.jpeg",
             audio_file = choice(audio_arr),
+            audio_name = f"{song_images[i]}.mp3",
             created_at = datetime.now()
 
         )
@@ -98,7 +102,9 @@ def seed_songs():
             genre= "Dirty Bass",
             user_id = randint(2,3),
             image_file = song_images2[i],
+            image_name = f"{song_images2[i]}.jpeg",
             audio_file = choice(audio_arr),
+            audio_name = f"{song_images2[i]}.mp3",
             created_at = datetime.now()
 
         )
@@ -228,7 +234,9 @@ def seed_songs2():
                 genre="Hip-Hop",
                 user_id=randint(2, 3),
                 image_file= hh_song_img[i],
+                image_name = f"{hh_song_img[i]}.jpeg",
                 audio_file = choice(audio_arr),
+                audio_name = f"{hh_song_img[i]}.mp3",
                 created_at=datetime.now()
             ),
 
@@ -237,7 +245,9 @@ def seed_songs2():
                 genre='Rock',
                 user_id=randint(2, 3),
                 image_file= rock_song_img[i],
+                image_name = f"{rock_song_img[i]}.jpeg",
                 audio_file = choice(audio_arr),
+                audio_name = f"{rock_song_img[i]}.mp3",
                 created_at=datetime.now()
             ),
             Song(
@@ -245,7 +255,9 @@ def seed_songs2():
                 genre='Latino',
                 user_id=randint(2, 3),
                 image_file=latino_song_img[i],
+                image_name = f"{latino_song_img[i]}.jpeg",
                 audio_file = choice(audio_arr),
+                audio_name = f"{latino_song_img[i]}.mp3",
                 created_at=datetime.now()
             ),
             Song(
@@ -253,7 +265,9 @@ def seed_songs2():
                 genre="Pop",
                 user_id=randint(2, 3),
                 image_file=pop_song_img[i],
+                image_name = f"{pop_song_img[i]}.jpeg",
                 audio_file = choice(audio_arr),
+                audio_name = f"{pop_song_img[i]}.mp3",
                 created_at=datetime.now()
             ),
         ]

@@ -13,6 +13,8 @@ function UpdateSongs() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [image, setImage] = useState("");
+  const[imageName, setImageName] = useState("");
+  const[audioName, setAudioName] = useState("");
   const [audio, setAudio] = useState("");
   const [errors, setError] = useState({});
   const [imageLoading, setImageLoading] = useState(false);
@@ -29,17 +31,19 @@ function UpdateSongs() {
       setTitle(currSong.title);
       setGenre(currSong.genre);
       // if (currSong.image_file) {
-      //   const imageUrl = URL.createObjectURL(currSong.image_file);
+      //   const imageUrl = URL.createObjectURL(image);
       //   setImage(imageUrl);
       // }
 
       // // Prepopulate audio
       // if (currSong.audio_file) {
-      //   const audioUrl = URL.createObjectURL(currSong.audio_file);
+      //   const audioUrl = URL.createObjectURL(audio);
       //   setAudio(audioUrl);
       //}
       setImage(currSong.image_file);
-      setAudio(currSong.audio_file)
+      setAudio(currSong.audio_file);
+      // setImageName(currSong.imageName);
+      // setAudioName(currSong.audioName);
     // }if (currSong.image_file) {
     //   const imageUrl = URL.createObjectURL(currSong.image_file);
     //   setImage(imageUrl);
@@ -65,7 +69,9 @@ function UpdateSongs() {
     const formData = new FormData();
     console.log('IMAGE',image)
     formData.append("image", image);
+    formData.append("imageName", imageName);
     formData.append("audio", audio);
+    formData.append("audioName", audioName)
     formData.append("title", title);
     formData.append("genre", genre);
 
@@ -87,8 +93,12 @@ function UpdateSongs() {
                 <input
                   className="box"
                   type="file"
+                  defaultValue={image}
                   accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setImageName(e.target.files[0].name);
+                  }}
                 />
                 <div
                   style={{ maxHeight: "20px", marginTop: "20px" }}
@@ -110,9 +120,13 @@ function UpdateSongs() {
                 <label>Audio file</label>
                 <input
                   className="box"
+                  defaultValue={audio}
                   type="file"
                   accept="audio/mp3"
-                  onChange={(e) => setAudio(e.target.files[0])}
+                  onChange={(e) => {
+                    setAudio(e.target.files[0]);
+                    setAudioName(e.target.files[0].name);
+                  }}
                 />
 
                 <div

@@ -68,7 +68,9 @@ def create_song():
             title = form.data["title"],
             genre = form.data["genre"],
             image_file = image_upload["url"],
+            image_name = form.data['imageName'],
             audio_file = audio_upload["url"],
+            audio_name = form.data['imageName'],
             user_id = current_user.id
         )
         print("New Song in routes",new_song,"new_song")

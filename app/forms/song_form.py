@@ -13,7 +13,9 @@ class SongForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     genre = SelectField("Genre", choices=["Rock","Electronic","Dirty Bass","Pop","Hip-Hop","Latino"],validators=[DataRequired()])
     image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    imageName = StringField("Image Name", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     audio = FileField("Audio File", validators=[FileRequired(), FileAllowed(list(ALLOWED_AUDIO_EXTENSIONS))])
+    audioName = StringField("Audio Name", validators=[FileRequired(), FileAllowed(list(ALLOWED_AUDIO_EXTENSIONS))])
     submit = SubmitField("Create Song")
 
 
