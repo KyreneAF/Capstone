@@ -93,17 +93,61 @@
 .submit-error-cont > button:hover {
   color: rgba(252, 159, 232, 1);
 }
+/* LOADING CONTAINER */
+#loading-cont{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:10px;
+  margin-top:20px;
+}
 
 .is-loading {
   display: flex;
   justify-content: center;
   color: #c91696;
 }
+#spin-gif{
+  height:50px;
+  width:50px;
+}
 
 .error-cont {
   margin-top: 10px;
   color: #c91696;
 }
+/* IMAGE AND AUDIO NAME */
+.img-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.audio-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.csf-img-cont{
+  position: relative;
+}
+.csf-audio-cont{
+  position: relative;
+}
+
+.input-names{
+  position: absolute;
+  right: 20px;
+  background-color: white;
+  font-size: 14px;
+ }
+ .input-names-audio{
+  position: absolute;
+  right: 8px;
+  background-color: white;
+  font-size: 14px;
+ }
 
 /*** REFACTORED CODE ***/
 /* .create-song-form-cont {
