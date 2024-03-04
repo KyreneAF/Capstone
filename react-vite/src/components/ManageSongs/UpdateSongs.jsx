@@ -15,6 +15,8 @@ function UpdateSongs() {
   const [image, setImage] = useState("");
   const [audio, setAudio] = useState("");
   const [errors, setError] = useState({});
+  const [imageName,setImageName] = useState("");
+  const [audioName, setAudioName] = useState("")
   const [imageLoading, setImageLoading] = useState(false);
   const { id } = useParams();
   const currSong = allSongs[id];
@@ -28,24 +30,11 @@ function UpdateSongs() {
     if (currSong) {
       setTitle(currSong.title);
       setGenre(currSong.genre);
-      // if (currSong.image_file) {
-      //   const imageUrl = URL.createObjectURL(currSong.image_file);
-      //   setImage(imageUrl);
-      // }
-
-      // // Prepopulate audio
-      // if (currSong.audio_file) {
-      //   const audioUrl = URL.createObjectURL(currSong.audio_file);
-      //   setAudio(audioUrl);
-      //}
+      setImageName(`${title}_img.jpeg`);
+      setAudioName(`${title}_audio.mp3`)
       setImage(currSong.image_file);
       setAudio(currSong.audio_file)
-    // }if (currSong.image_file) {
-    //   const imageUrl = URL.createObjectURL(currSong.image_file);
-    //   setImage(imageUrl);
-    // } if (currSong.audio_file) {
-    //   const audioUrl = URL.createObjectURL(currSong.audio_file);
-    //   setAudio(audioUrl);
+
     }
   }, [currSong]);
 
@@ -84,12 +73,17 @@ function UpdateSongs() {
             <div className="csf-left-cont column">
               <div className="csf-img-cont column">
                 <label>Image file</label>
+                <div className='img-row'>
+                <span className='input-names'>{ imageName? imageName : ""}</span>
                 <input
                   className="box"
                   type="file"
                   accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) =>{ setImage(e.target.files[0]);setImageName("")}}
+
                 />
+
+                </div>
                 <div
                   style={{ maxHeight: "20px", marginTop: "20px" }}
                   className="update-err-cont"
@@ -108,13 +102,15 @@ function UpdateSongs() {
               </div>
               <div className="csf-audio-cont column">
                 <label>Audio file</label>
+                <div className='audio-row'>
+                <span className='input-names-audio'>{audioName ? audioName : ""}</span>
                 <input
                   className="box"
                   type="file"
                   accept="audio/mp3"
-                  onChange={(e) => setAudio(e.target.files[0])}
+                  onChange={(e) =>{ setAudio(e.target.files[0]); setAudioName("")}}
                 />
-
+                </div>
                 <div
                   style={{ maxHeight: "20px", marginTop: "20px" }}
                   className="update-err-cont"
@@ -187,7 +183,15 @@ function UpdateSongs() {
           </div>
 
           <div style={{ marginTop: "20px" }} className="is-loading">
-            {imageLoading && <p>Loading...</p>}
+            {imageLoading &&<div id='loading-cont'>
+              <p>Loading...</p>
+              <img id='spin-gif' src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'></img>
+            </div> }
+            {/* <div id='loading-cont'>
+              <p>Loading...</p>
+              <img id='spin-gif' src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'></img>
+
+            </div> */}
           </div>
         </form>
       </div>
