@@ -28,6 +28,7 @@ function CreateSongForm() {
 
     setImageLoading(true);
     const formData = new FormData();
+    console.log('FORM DATA IMAGE',image)
     formData.append("image", image);
     formData.append("audio", audio);
     formData.append("title", title);

@@ -12,8 +12,8 @@ function UpdateSongs() {
   const currUser = useSelector((state) => state.session.user);
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
-  const [image, setImage] = useState(null);
-  const [audio, setAudio] = useState(null);
+  const [image, setImage] = useState("");
+  const [audio, setAudio] = useState("");
   const [errors, setError] = useState({});
   const [imageLoading, setImageLoading] = useState(false);
   const { id } = useParams();
@@ -28,6 +28,24 @@ function UpdateSongs() {
     if (currSong) {
       setTitle(currSong.title);
       setGenre(currSong.genre);
+      // if (currSong.image_file) {
+      //   const imageUrl = URL.createObjectURL(currSong.image_file);
+      //   setImage(imageUrl);
+      // }
+
+      // // Prepopulate audio
+      // if (currSong.audio_file) {
+      //   const audioUrl = URL.createObjectURL(currSong.audio_file);
+      //   setAudio(audioUrl);
+      //}
+      setImage(currSong.image_file);
+      setAudio(currSong.audio_file)
+    // }if (currSong.image_file) {
+    //   const imageUrl = URL.createObjectURL(currSong.image_file);
+    //   setImage(imageUrl);
+    // } if (currSong.audio_file) {
+    //   const audioUrl = URL.createObjectURL(currSong.audio_file);
+    //   setAudio(audioUrl);
     }
   }, [currSong]);
 
@@ -45,6 +63,7 @@ function UpdateSongs() {
 
     setImageLoading(true);
     const formData = new FormData();
+    console.log('IMAGE',image)
     formData.append("image", image);
     formData.append("audio", audio);
     formData.append("title", title);
