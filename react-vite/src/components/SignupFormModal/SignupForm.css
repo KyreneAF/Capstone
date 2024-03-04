@@ -3,6 +3,7 @@
   font-weight: 300;
   /* margin-bottom: 20px; */
   color: #333;
+  margin-bottom: none;
 }
 
 #signUp-main-cont form {
@@ -44,9 +45,9 @@
 #signUp-main-cont button:hover {
   background-color: #c91696;
 }
-.signUp-main-cont h5 {
-  margin-top: 3px;
-  margin-bottom: 3px;
+.su-form-main-cont h5{
+  margin-top: 0px;
+  /* margin-bottom: 3px; */
 }
 
 #su-form-main-cont{
