@@ -40,6 +40,11 @@ function LikedSongs() {
       dispatch(thunkDeleteLiked(id));
     }
   };
+  if (!likedArr.length) return <LikedSongs404 />;
+  // const genreSort = (genre, arr) => {
+  //   if (arr.length === 0 || !arr.some((song) => song.genre === genre)) {
+  //     return null;
+  //   }
 
   // if(likedArr.length)return null
   return (
@@ -51,8 +56,8 @@ function LikedSongs() {
           <div key={liked.id}>
             <div
               className="liked-img-cont click"
-              style={{ backgroundImage: `url(${liked.song.image_file})` }}
-              onClick={() => navigate(`/songs/${liked.song.id}`)}
+              style={{ backgroundImage: `url(${liked.song?.image_file})` }}
+              onClick={() => navigate(`/songs/${liked.song?.id}`)}
             >
               <div
                 onClick={() => handlePlayClick(liked.song)}
@@ -63,18 +68,18 @@ function LikedSongs() {
             </div>
             <div className="liked-song-info-cont column">
               <div className="heart-title-cont row">
-                <div className="heart-cont click" onClick={() => removeFromLiked(liked.id)}>
+                <div className="heart-cont click" onClick={() => removeFromLiked(liked?.id)}>
                   <i
                     className={
-                      currLikedSongs[liked.id]
+                      currLikedSongs[liked?.id]
                         ? 'fa-solid fa-heart filled-heart'
                         : 'fa-regular fa-heart empty-heart click'
                     }
                   ></i>
                 </div>
-                <span>{liked.song.title}</span>
+                <span>{liked.song?.title}</span>
               </div>
-              <span style={{color:'grey', marginLeft:'20px'}}>{liked.song.genre}</span>
+              <span style={{color:'grey', marginLeft:'20px'}}>{liked.song?.genre}</span>
             </div>
           </div>
         ))

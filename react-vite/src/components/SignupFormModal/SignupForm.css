@@ -1,8 +1,9 @@
 #signUp-main-cont h1 {
   text-align: center;
   font-weight: 300;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: #333;
+  margin-bottom: none;
 }
 
 #signUp-main-cont form {
@@ -19,7 +20,7 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .err-cont {
@@ -29,7 +30,7 @@
 .err-cont p {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 #signUp-main-cont button {
@@ -44,7 +45,16 @@
 #signUp-main-cont button:hover {
   background-color: #c91696;
 }
-.signUp-main-cont h5 {
-  margin-top: 3px;
-  margin-bottom: 3px;
+.su-form-main-cont h5{
+  margin-top: 0px;
+  /* margin-bottom: 3px; */
+}
+
+#su-form-main-cont{
+  display: flex;
+  flex-direction: column;
+}
+.su-form-cont {
+  display: flex;
+  flex-direction: column;
 }

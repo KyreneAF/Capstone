@@ -1,16 +1,21 @@
+#footer-audio-main-cont{
+  position: relative;
+}
 .footer-main-cont {
     position: relative;
     bottom: 0;
-    /* left: 0; */
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: rgb(34, 34, 34, 0.9);
+    background-color:#383838;
     color: white;
     padding: 20px;
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
+    z-index: 4;
+
   }
   #github-cont {
     display: flex;

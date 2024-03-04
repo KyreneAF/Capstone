@@ -85,8 +85,11 @@ function SignupFormModal() {
     <div id="signUp-main-cont">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
+
+
       <form onSubmit={handleSubmit}>
-        <label>
+      <div id='su-form-main-cont'>
+        <label class="su-form-cont">
           <span>Email</span>
           <input
             maxLength={20}
@@ -103,7 +106,7 @@ function SignupFormModal() {
             <p style={{ color: "white" }}>Holding</p>
           )}
         </div>
-        <label>
+        <label class="su-form-cont">
           <span>Username</span>
 
           <input
@@ -122,7 +125,7 @@ function SignupFormModal() {
           )}
         </div>
 
-        <label>
+        <label class="su-form-cont">
           <span>Password</span>
 
           <input
@@ -141,7 +144,7 @@ function SignupFormModal() {
           )}
         </div>
 
-        <label>
+        <label class="su-form-cont">
           <span>Confirm Password</span>
           <input
             maxLength={20}
@@ -159,6 +162,7 @@ function SignupFormModal() {
           )}
         </div>
         <button type="submit">Sign Up</button>
+        </div>
       </form>
       <h5
         id="so-demo"

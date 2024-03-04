@@ -71,12 +71,22 @@ audio_arr = [
 def seed_songs():
     newSongs = []
 
+    demo_song = Song(
+        title= 'Sumatra Soul',
+        genre="Pop",
+        user_id = 1,
+        image_file= 'https://cdn.pixabay.com/photo/2019/05/04/15/24/woman-4178302_1280.jpg',
+        audio_file=audio_arr[3],
+        created_at= datetime.now()
+    )
+    newSongs.append(demo_song)
+
     for i in range(10):
         newSong = Song(
             title= song_titles[i],
             # genre= choice(["Rock","Electronic","Dirty Bass","Pop","Hip-Hop","Latino"]),
             genre="Electronic",
-            user_id = randint(1,3),
+            user_id = randint(2,3),
             image_file = song_images[i],
             audio_file = choice(audio_arr),
             created_at = datetime.now()
@@ -86,7 +96,7 @@ def seed_songs():
         newSong2 = Song(
             title= song_titles[i],
             genre= "Dirty Bass",
-            user_id = randint(1,3),
+            user_id = randint(2,3),
             image_file = song_images2[i],
             audio_file = choice(audio_arr),
             created_at = datetime.now()
@@ -216,7 +226,7 @@ def seed_songs2():
             Song(
                 title=choice(cool_song_titles),  # Generate a random cool song title
                 genre="Hip-Hop",
-                user_id=randint(1, 3),
+                user_id=randint(2, 3),
                 image_file= hh_song_img[i],
                 audio_file = choice(audio_arr),
                 created_at=datetime.now()
@@ -225,7 +235,7 @@ def seed_songs2():
             Song(
                 title=choice(cool_song_titles),
                 genre='Rock',
-                user_id=randint(1, 3),
+                user_id=randint(2, 3),
                 image_file= rock_song_img[i],
                 audio_file = choice(audio_arr),
                 created_at=datetime.now()
@@ -233,7 +243,7 @@ def seed_songs2():
             Song(
                 title=choice(cool_song_titles),
                 genre='Latino',
-                user_id=randint(1, 3),
+                user_id=randint(2, 3),
                 image_file=latino_song_img[i],
                 audio_file = choice(audio_arr),
                 created_at=datetime.now()
@@ -241,7 +251,7 @@ def seed_songs2():
             Song(
                 title=choice(cool_song_titles),
                 genre="Pop",
-                user_id=randint(1, 3),
+                user_id=randint(2, 3),
                 image_file=pop_song_img[i],
                 audio_file = choice(audio_arr),
                 created_at=datetime.now()
