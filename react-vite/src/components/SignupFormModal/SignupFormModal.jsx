@@ -89,7 +89,7 @@ function SignupFormModal() {
 
       <form onSubmit={handleSubmit}>
       <div id='su-form-main-cont'>
-        <label class="su-form-cont">
+        <label className="su-form-cont">
           <span>Email</span>
           <input
             maxLength={20}
@@ -106,7 +106,7 @@ function SignupFormModal() {
             <p style={{ color: "white" }}>Holding</p>
           )}
         </div>
-        <label class="su-form-cont">
+        <label className="su-form-cont">
           <span>Username</span>
 
           <input
@@ -125,7 +125,7 @@ function SignupFormModal() {
           )}
         </div>
 
-        <label class="su-form-cont">
+        <label className="su-form-cont">
           <span>Password</span>
 
           <input
@@ -144,7 +144,7 @@ function SignupFormModal() {
           )}
         </div>
 
-        <label class="su-form-cont">
+        <label className="su-form-cont">
           <span>Confirm Password</span>
           <input
             maxLength={20}
