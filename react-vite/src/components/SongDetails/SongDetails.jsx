@@ -50,6 +50,7 @@ function SongDetails() {
           <div className="ss-info-con">
             <img className="single-song-img" src={song.image_file} />
             <div className="info-cont">
+              <span style={{marginTop:'10px'}}>{song.title}</span>
               <span>
                 {`produced by `}
                 <span style={{ color: "#c91696" }}>

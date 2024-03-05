@@ -63,11 +63,9 @@
   border: none;
   font-weight: 100;
 }
-#search-bar{
-  border: none;
-  font-weight: 100;
+#search-bar:focus {
+  outline: none;
 }
-
 #search-results-list {
   position: absolute;
   background-color: white;

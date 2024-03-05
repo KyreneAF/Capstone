@@ -102,6 +102,14 @@
   margin-top:20px;
 }
 
+#loading-cont-cs{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:10px;
+  margin-top:20px;
+}
+
 .is-loading {
   display: flex;
   justify-content: center;

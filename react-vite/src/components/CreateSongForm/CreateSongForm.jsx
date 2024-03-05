@@ -159,7 +159,12 @@ function CreateSongForm() {
               Create song
             </button>
           </div>
-          <div className="is-loading">{imageLoading && <p>Loading...</p>}</div>
+          <div className="is-loading">{imageLoading &&<div id='loading-cont-cs'>
+            <p>Loading...</p>
+            <img id='spin-gif' src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'></img>
+
+          </div>
+          }</div>
         </form>
       </div>
     </div>
