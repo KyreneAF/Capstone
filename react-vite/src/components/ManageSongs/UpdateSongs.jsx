@@ -32,8 +32,8 @@ function UpdateSongs() {
       setGenre(currSong.genre);
       setImageName(`${title}_img.jpeg`);
       setAudioName(`${title}_audio.mp3`)
-      setImage(currSong.image_file);
-      setAudio(currSong.audio_file)
+      // setImage(currSong.image_file);
+      // setAudio(currSong.audio_file)
 
     }
   }, [currSong]);
@@ -52,7 +52,7 @@ function UpdateSongs() {
 
     setImageLoading(true);
     const formData = new FormData();
-    console.log('IMAGE',image)
+
     formData.append("image", image);
     formData.append("audio", audio);
     formData.append("title", title);
@@ -74,7 +74,7 @@ function UpdateSongs() {
               <div className="csf-img-cont column">
                 <label>Image file</label>
                 <div className='img-row'>
-                <span className='input-names'>{ imageName? imageName : ""}</span>
+                {/* <span className='input-names'>{ imageName? imageName : ""}</span> */}
                 <input
                   className="box"
                   type="file"
@@ -103,7 +103,7 @@ function UpdateSongs() {
               <div className="csf-audio-cont column">
                 <label>Audio file</label>
                 <div className='audio-row'>
-                <span className='input-names-audio'>{audioName ? audioName : ""}</span>
+                {/* <span className='input-names-audio'>{audioName ? audioName : ""}</span> */}
                 <input
                   className="box"
                   type="file"
