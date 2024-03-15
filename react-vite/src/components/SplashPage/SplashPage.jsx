@@ -3,7 +3,7 @@ import { useState } from "react";
 import { thunkGetAllSongs } from "../../redux/song";
 import { setCurrAudio, clearStateAudio, pauseCurrAudio,} from "../../redux/audioPlayer";
 import { thunkCreateLiked, } from "../../redux/likedSong";
-// import RecentlyPlayed from "./RecentlyPlayed/RecentlyPlayed";
+// import RecentlyPlayed from "./RecentlyPlayed/RecentlyPld
 import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./SplashPage.css";
@@ -146,6 +146,7 @@ function SplashPage() {
           {genreSort("Dirty Bass", bassSongs)}
         </div>
       </div>
+
     </div>
   );
 }

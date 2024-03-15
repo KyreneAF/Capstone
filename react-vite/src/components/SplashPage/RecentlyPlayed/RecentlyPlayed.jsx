@@ -36,7 +36,8 @@ function RecentlyPlayed() {
       );
     }
   };
-
+  console.log("RECENTLY PLAYED", recentlyPlayed)
+  if(!recentlyPlayed.length)return null
   return (
     <div>
       <h2>Recently Played</h2>
