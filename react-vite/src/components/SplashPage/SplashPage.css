@@ -17,22 +17,22 @@
   margin-right: 40px;
   height: 300px;
   width: 100%;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   gap:40px
 }
 /* SCROLL BAR*/
 
-.genre-cont {
+/* .genre-cont {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-}
+} */
 
   /******* */
 
-.genre-cont {
+/* .genre-cont {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-}
+} */
 
 .song-cont {
   display: flex;
