@@ -34,10 +34,6 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path: "songs/slider",
-        element: <SliderComp />,
-      },
-      {
         path: "songs/new",
         element: <CreateSongForm />,
       },

@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     songs = db.relationship("Song", back_populates="uploader", cascade='all, delete-orphan')
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     liked_songs = db.relationship("LikedSong", back_populates="user", cascade="all, delete-orphan")
+    profile_image = db.relationship("UserImage", back_populates="user", cascade='all, delete-orphan')
+
     # playlists = db.relationship('Playlist', backref='owner')
     # liked_songs = db.relationship('LikedSong', backref='liker')
 
