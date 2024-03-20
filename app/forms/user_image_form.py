@@ -9,7 +9,7 @@ from app.api.aws_helpers import ALLOWED_EXTENSIONS, ALLOWED_AUDIO_EXTENSIONS
 
 
 
-class SongForm(FlaskForm):
+class UserImageForm(FlaskForm):
     profile_image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     image_name = StringField("Image Name", validators=[DataRequired()])
     submit = SubmitField("Add Image")
