@@ -2,18 +2,27 @@ from flask import Blueprint, request,abort
 from app.models import db, UserImage
 from flask_login import current_user, login_required
 from app.forms import UserImageForm
-from app.api.aws_helpers import (upload_file_to_s3_images, upload_file_to_s3_audio, get_unique_filename, remove_file_from_s3_images, remove_file_from_s3)
+from app.api.aws_helpers import (upload_file_to_s3_images, get_unique_filename, remove_file_from_s3_images)
 
-user_image_routes = Blueprint('user', __name__)
+user_image_routes = Blueprint('profile', __name__)
 
-#Get image
+# GET IMAGE
+@user_image_routes.route('/<int:user_image_id>', methods=['GET'])
+@login_required
+def get_user_image(user_image_id):
+    user_image = UserImage.query.get(user_image_id)# find user image in UserImage table with specific id
+    if not user_image: # return error message if no image is found
+        return {"message": "User image does not exist"},404
+    user_img_to_dict = user_image.to_dict() #turn image into a dictionary
+    return {'user_image': user_img_to_dict} # return user image dictionary
+
 
 # POST USER IMAGE
-@user_image_routes('/<int:id>/new', methods=['POST'])
+@user_image_routes.route('/<int:id>/new', methods=['POST'])
 @login_required
 def create_image():
     form = UserImageForm()
-    form['csrf_toker'].data = request.cookies['csrf_token']
+    form['csrf_token'].data = request.cookies['csrf_token']
     if not current_user:
         return {"message":  "Current user not logged in"}
 
@@ -41,7 +50,7 @@ def create_image():
 
 
 # EDIT USER IMAGE
-@song_routes.route("/<int:id>/edit", methods=["PUT"])
+@user_image_routes.route("/<int:id>/edit", methods=["PUT"])
 @login_required
 def edit_user_image(id):
 

@@ -10,6 +10,7 @@ import UpdateSongs from "../components/ManageSongs/UpdateSongs";
 import SliderComp from "../components/SplashPage/SliderComp";
 // import UserSongs from "../components/ManageSongs/UserSongs";
 import TabsComponent from "../components/ManageSongs/Tabs/TabsComponent";
+import UserProfile from "../components/UserProfile/UserProfile";
 
 // import CreateCommentModal from "../components/Comments/CreateCommentModal";
 
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+
+
+
+
+
       {
         path: "songs/new",
         element: <CreateSongForm />,
@@ -52,7 +58,12 @@ export const router = createBrowserRouter([
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />,
-      }
+      },
+      {
+        path:"user/:id",
+        element: <UserProfile />
+
+      },
     ],
   },
 ]);
