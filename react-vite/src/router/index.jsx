@@ -7,6 +7,7 @@ import SplashPage from "../components/SplashPage/SplashPage";
 import CreateSongForm from "../components/CreateSongForm/CreateSongForm";
 import SongDetails from "../components/SongDetails/SongDetails";
 import UpdateSongs from "../components/ManageSongs/UpdateSongs";
+import SliderComp from "../components/SplashPage/SliderComp";
 // import UserSongs from "../components/ManageSongs/UserSongs";
 import TabsComponent from "../components/ManageSongs/Tabs/TabsComponent";
 
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
+        path: "songs/slider",
+        element: <SliderComp />,
+      },
+      {
         path: "songs/new",
         element: <CreateSongForm />,
       },
@@ -51,11 +56,7 @@ export const router = createBrowserRouter([
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />,
-      },
-      // {
-      //   path: "comments/new",
-      //   element: <CreateCommentModal />,
-      // },
+      }
     ],
   },
 ]);
