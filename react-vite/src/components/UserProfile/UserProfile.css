@@ -25,6 +25,7 @@
     width:200px;
     border-radius: 100%;
     background-color: #fc9feB;
+    border: 1px solid black
 
 }
 
@@ -53,6 +54,7 @@ padding:10px;
 }
 #user-bttn-cont button{
     border:none;
+    background-color: white;
 }
 
 #user-bttn-cont{
