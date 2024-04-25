@@ -29,8 +29,8 @@ function UpdateSongs() {
     if (currSong) {
       setTitle(currSong.title);
       setGenre(currSong.genre);
-      setImageName(`${title}_img.jpeg`);
-      setAudioName(`${title}_audio.mp3`);
+      // setImageName(`${title}_img.jpeg`);
+      // setAudioName(`${title}_audio.mp3`);
       // setImage(currSong.image_file);
       // setAudio(currSong.audio_file)
     }
@@ -77,7 +77,7 @@ function UpdateSongs() {
                     accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
                     onChange={(e) => {
                       setImage(e.target.files[0]);
-                      setImageName("");
+                      // setImageName("");
                     }}
                   />
                 </div>
@@ -107,7 +107,7 @@ function UpdateSongs() {
                     accept="audio/mp3"
                     onChange={(e) => {
                       setAudio(e.target.files[0]);
-                      setAudioName("");
+                      // setAudioName("");
                     }}
                   />
                 </div>
