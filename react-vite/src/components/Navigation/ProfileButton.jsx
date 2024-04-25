@@ -44,8 +44,8 @@ function ProfileButton() {
 
   return (
     <div className="pb-main-cont">
-      <div onClick={toggleMenu}>
-        <i className="fa-solid fa-user user-icon click"></i>
+      <div className="toggle-cont" onClick={toggleMenu}>
+        <i className="fa-solid fa-user click" id="user-icon"></i>
       </div>
       {showMenu && (
         <div className={"profile-dropdown"} ref={ulRef}>
@@ -61,7 +61,7 @@ function ProfileButton() {
                 {user.username}
               </div>
               <div
-                className="profile-link pb-border click"
+                className="profile-link pb-border click border"
                 style={{
                   borderBottom: "1px solid hsl(0,0%,79%)",
                   padding: "5px",
@@ -104,6 +104,7 @@ function ProfileButton() {
           )}
         </div>
       )}
+      {/* </div> */}
     </div>
   );
 }

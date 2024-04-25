@@ -18,19 +18,21 @@
 /* PROFILE BTTN and LOGO */
 .nav-profile-button-main-cont {
   display: flex;
+  height: 20px;
   margin-left: 10px;
-  /* justify-content: center; */
+  align-self: center;
   align-items: center;
   position: relative;
   display: flex;
   align-items: center;
   gap: 30px;
   width: 100px;
+  z-index: 2;
+
   /* justify-content: space-between; */
 }
 
 /* */
-
 
 .nav-bttn {
   display: flex;
@@ -53,13 +55,12 @@
 .search-main-cont {
   align-self: center;
 }
-#search-input-cont{
+#search-input-cont {
   background-color: white;
   padding: 5px;
   border-radius: 3px;
-
 }
-#search-bar{
+#search-bar {
   border: none;
   font-weight: 100;
 }
@@ -74,13 +75,12 @@
   gap: 10px;
   position: absolute;
   border: 1px solid black;
-  padding:15px;
+  padding: 15px;
   top: 80%;
   z-index: 2px;
   box-shadow: 5px 5px 10px 3px gray;
   min-height: 20vh;
-  min-width: 20vh
-
+  min-width: 20vh;
 }
 
 #search-img {
@@ -88,14 +88,14 @@
   width: 25px;
 }
 
-.indi-search{
+.indi-search {
   display: flex;
-  gap:5px;
+  gap: 5px;
   transition: transform 0.3s ease;
 }
-.indi-search:hover{
+.indi-search:hover {
   display: flex;
-  gap:5px;
+  gap: 5px;
   transform: scale(1.05);
-  box-shadow:1px 1px 2px 2px rgb(252, 159, 232,.5);
+  box-shadow: 1px 1px 2px 2px rgb(252, 159, 232, 0.5);
 }

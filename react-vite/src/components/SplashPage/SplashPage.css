@@ -5,20 +5,18 @@
   width: 100%;
   /* margin-left: 30px; */
   font-family: sans-serif;
-
 }
 .land-allSongs-cont {
-  width:85%;
+  width: 85%;
   margin-top: 20px;
-
 }
 /* GENRE CONTAINERS*/
-.genre-cont{
+.genre-cont {
   margin-right: 40px;
   height: 300px;
   width: 100%;
   overflow-x: auto;
-  gap:40px
+  gap: 40px;
 }
 /* SCROLL BAR*/
 
@@ -27,7 +25,7 @@
   scroll-snap-type: x mandatory;
 }
 
-  /******* */
+/******* */
 
 .genre-cont {
   scroll-behavior: smooth;
@@ -42,16 +40,14 @@
 }
 
 .land-cont {
-  height: 300px;
-  width:100%;
+  height: 350px;
+  width: 100%;
   /* border-bottom: 0.3px solid rgb(145,145,145,.6) */
-
 }
 
 .land-cont h3 {
   margin-bottom: 10px;
   width: 100%;
-
 }
 
 /*SONG TILE*/
@@ -142,16 +138,16 @@
 
 /* LIKED HEART */
 
-.splash-heart{
-  color:white;
+.splash-heart {
+  color: white;
   font-size: 20px;
   padding: 8px;
-  position:absolute;
-  right:0;
+  position: absolute;
+  right: 0;
   bottom: 0;
   visibility: hidden;
 }
-.splash-heart:hover{
+.splash-heart:hover {
   transform: scale(1.1);
   color: rgb(77, 80, 77, 0.7);
 }
@@ -162,50 +158,47 @@
 
 /*******/
 
-.songs{
-  display:flex;
+.songs {
+  display: flex;
   flex-direction: column;
-  gap:60px;
+  gap: 60px;
   margin-top: 40px;
-
 }
 
 /* TOGGLE   */
-.splash-added{
+.splash-added {
   font-family: sans-serif;
-  visibility:visible;
+  visibility: visible;
   position: fixed;
-  top:80px;
-  left:70px;
+  top: 80px;
+  left: 70px;
   z-index: 3;
 
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap:10px;
-  background-color:white;
-  border:1px solid grey;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid grey;
   box-shadow: 3px 3px 5px 4px rgba(0, 0, 0, 0.5);
   font-size: 12px;
   padding: 15px;
-
 }
-#toggle-top{
+#toggle-top {
   display: flex;
   flex-direction: row;
-  gap:10px
+  gap: 10px;
 }
-#toggle-bttm{
+#toggle-bttm {
   display: flex;
   flex-direction: column;
 }
-#toggle-bttm{
+#toggle-bttm {
   display: flex;
   flex-direction: column;
 }
-.toggle-img{
+.toggle-img {
   height: 25px;
-  width:25px;
+  width: 25px;
   display: block;
-
 }

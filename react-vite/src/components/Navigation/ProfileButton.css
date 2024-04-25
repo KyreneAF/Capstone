@@ -1,9 +1,12 @@
-/* ICON BUTTON  */
+/* ICON BUTTON */
 .pb-main-cont {
   position: relative;
+  width: 100%;
 }
-
-.user-icon {
+.toggle-cont {
+  width: 200px;
+}
+#user-icon {
   font-size: 20px;
   background-color: #333333;
   color: white;
@@ -51,7 +54,6 @@
 .pb-border {
   display: flex;
   justify-content: center;
-  /* border-bottom: 1px solid red; */
   width: 90%;
   padding: 20px;
 }
