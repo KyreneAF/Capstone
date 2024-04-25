@@ -1,4 +1,3 @@
-import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 
 function Droppable(props) {
@@ -15,3 +14,5 @@ function Droppable(props) {
     </div>
   );
 }
+
+export default Droppable;

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useModal } from "../../../context/Modal";
+// import { useModal } from "../../../context/Modal";
 import { useDroppable } from "@dnd-kit/core";
 
 function CreateProfileImage() {
-  const { closeModal } = useModal();
+  // const { closeModal } = useModal();
   const [profileImage, setProfileImage] = useState();
 
   const { isOver, setNodeRef } = useDroppable({

@@ -19,23 +19,24 @@ function RecentlyPlayed() {
   }, []);
 
   // Function to handle adding a song to recently played list
-  const addToRecentlyPlayed = (song) => {
-    // Check if song is already in recently played list
-    const isSongAlreadyPlayed = recentlyPlayed.some(
-      (playedSong) => playedSong.id === song.id
-    );
+  //THIS IS A FUTURE FUNCTION I AM STILL TESTING OUT. THIS WILL CREATE A CACHE AND DISPLAY RECENTLY PLAYED SONGS TO THE SPLASH PAGE
+  // const addToRecentlyPlayed = (song) => {
+  //   // Check if song is already in recently played list
+  //   const isSongAlreadyPlayed = recentlyPlayed.some(
+  //     (playedSong) => playedSong.id === song.id
+  //   );
 
-    // If song is not already in recently played list, add it
-    if (!isSongAlreadyPlayed) {
-      const updatedRecentlyPlayed = [song, ...recentlyPlayed.slice(0, 9)]; // Limit to 10 recently played songs
-      setRecentlyPlayed(updatedRecentlyPlayed);
-      // Store updated recently played list in cache
-      localStorage.setItem(
-        "recentlyPlayed",
-        JSON.stringify(updatedRecentlyPlayed)
-      );
-    }
-  };
+  //   // If song is not already in recently played list, add it
+  //   if (!isSongAlreadyPlayed) {
+  //     const updatedRecentlyPlayed = [song, ...recentlyPlayed.slice(0, 9)]; // Limit to 10 recently played songs
+  //     setRecentlyPlayed(updatedRecentlyPlayed);
+  //     // Store updated recently played list in cache
+  //     localStorage.setItem(
+  //       "recentlyPlayed",
+  //       JSON.stringify(updatedRecentlyPlayed)
+  //     );
+  //   }
+  // };
 
   return (
     <div>

@@ -9,7 +9,7 @@ function UserProfile() {
   const user = useSelector((state) => state.session.user); // this is to find current logged in user info
   const { id } = useParams(); // getting user id from param to view other user's profile
   const [userPic, setUserPic] = useState(null);
-  const [colorClass, setColorClass] = useState("blue"); // dynamically change class color for background gradient
+  // const [colorClass, setColorClass] = useState("blue"); // dynamically change class color for background gradient
 
   useEffect(() => {
     const fetchUserImage = async () => {
