@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./UserProfile.css";
 import { useParams } from "react-router-dom";
+import TabsComponent from "../ManageSongs/Tabs/TabsComponent";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import CreateProfileImage from "./CreateProfileImage/CreateProfileImage";
 
@@ -56,12 +57,17 @@ function UserProfile() {
               buttonText={
                 <button>
                   <i className="fa-solid fa-camera-retro"></i>
-                  <span>Upload profile image</span>
+                  <span style={{ marginLeft: "5px" }}>
+                    Upload profile image
+                  </span>
                 </button>
               }
             />
           </div>
         </div>
+      </div>
+      <div className="personal-songs-cont">
+        <TabsComponent />
       </div>
     </div>
   );
