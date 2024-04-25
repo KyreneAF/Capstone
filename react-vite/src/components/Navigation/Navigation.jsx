@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-// import { thunkGetAllSongs } from "../../redux/song";
+import { thunkGetAllSongs } from "../../redux/song";
 
 function Navigation() {
   const navigate = useNavigate();
