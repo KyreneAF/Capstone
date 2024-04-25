@@ -5,11 +5,11 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import './ProfileButton.css';
+import "./ProfileButton.css";
 
 function ProfileButton() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
@@ -39,22 +39,53 @@ function ProfileButton() {
     e.preventDefault();
     dispatch(thunkLogout());
     closeMenu();
-    navigate("/")
+    navigate("/");
   };
 
   return (
-    <div className='pb-main-cont'>
+    <div className="pb-main-cont">
       <div onClick={toggleMenu}>
         <i className="fa-solid fa-user user-icon click"></i>
       </div>
       {showMenu && (
         <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
-            <div className='dropdown-text'>
-              <div style={{borderBottom:'1px solid black', padding:'5px'}}>{user.username}</div>
-              <div style={{borderBottom:'1px solid black', padding:'5px'}}>{user.email}</div>
+            <div className="dropdown-text">
+              <div
+                className="pb-border"
+                style={{
+                  borderBottom: "1px solid hsl(0,0%,79%)",
+                  padding: "5px",
+                }}
+              >
+                {user.username}
+              </div>
+              <div
+                className="profile-link pb-border click"
+                style={{
+                  borderBottom: "1px solid hsl(0,0%,79%)",
+                  padding: "5px",
+                }}
+                onClick={() => {
+                  navigate(`user/${user.id}`), closeMenu();
+                }}
+              >
+                <i className="fa-regular fa-user"></i>
+                <span>Profile</span>
+              </div>
+              <div
+                className="pb-border"
+                style={{
+                  borderBottom: "1px solid hsl(0,0%,79%)",
+                  padding: "5px",
+                }}
+              >
+                {user.email}
+              </div>
               <div>
-                <button className='click border pb-bttn' onClick={logout}>Log Out</button>
+                <button className="click border pb-bttn" onClick={logout}>
+                  Log Out
+                </button>
               </div>
             </div>
           ) : (
