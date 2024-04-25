@@ -1,0 +1,65 @@
+#user-profile-main-cont{
+    margin-left: 60px;
+    margin-right:60px;
+    margin-top: 66px;
+    height: 90vh;
+}
+#user-border-main-cont{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    height:280px;
+    width: 100%;
+    background: linear-gradient(to right,#f70feb, #fc9fe8);
+}
+
+#user-pic-cont{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:30%;
+    height:100%
+}
+.profile-img{
+    height:200px;
+    width:200px;
+    border-radius: 100%;
+    background-color: #fc9feB;
+    border: 1px solid black
+
+}
+
+#user-name-cont{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-top: 40px;
+}
+
+#user-page-name{
+    display: flex;
+    align-items: center;
+    color:white;
+    /* background-color: #4d504d; */
+
+    font-weight: 30px;
+
+}
+
+#user-page-name span{
+color:white;
+font-size: 25px;
+background-color: #181d29;
+padding:10px;
+}
+#user-bttn-cont button{
+    border:none;
+    background-color: white;
+}
+
+#user-bttn-cont{
+    display: flex;
+    padding:5px;
+    background-color: white;
+    border:1px solid grey;
+}
