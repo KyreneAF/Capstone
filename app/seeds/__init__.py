@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .user_seeds import seed_users, undo_users
 from .song_seeds import seed_songs, undo_songs, seed_songs2, undo_songs2
+from .user_profile_seed import seed_user_image, undo_user_image
 # from .songs2_seeds import seed_songs2, undo_songs2
 from .comments_seeds import seed_comments, undo_comments
 from .liked_songs_seeds import seed_liked_songs, undo_liked_songs
@@ -23,17 +24,22 @@ def seed():
         db.session.execute(f"TRUNCATE table {SCHEMA}.songs RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.comments RESTART IDENTITY CASCADE;")
         db.session.execute(f"TRUNCATE table {SCHEMA}.liked_songs RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.user_images RESTART IDENTITY CASCADE;")
         db.session.commit()
+        undo_user_image()
         undo_liked_songs()
         undo_comments()
         undo_songs()
         undo_users()
+
 
     seed_users()
     seed_songs()
     seed_songs2()
     seed_comments()
     seed_liked_songs()
+    seed_user_image()
+
     # Add other seed functions here
 
 

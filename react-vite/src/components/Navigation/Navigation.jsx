@@ -3,9 +3,9 @@ import ProfileButton from "./ProfileButton";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
 import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { thunkGetAllSongs } from "../../redux/song";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+// import { thunkGetAllSongs } from "../../redux/song";
 
 function Navigation() {
   const navigate = useNavigate();
@@ -74,28 +74,35 @@ function Navigation() {
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div id="search-results-list-main-cont">
-          {searchWord.length > 0 &&
-          <div id="search-results-list">
-            {searchWord.length > 0 &&
-              sortedSongs
-                .filter(
-                  (song) =>
-                    song.title
-                      .toLowerCase()
-                      .startsWith(searchWord.toLowerCase()) ||
-                    song.user_id.username
-                      .toLowerCase()
-                      .startsWith(searchWord.toLowerCase())
-                )
-                .map((song) => (
-                  <div key={song.id} className="indi-search click" onClick={() => {setSearchWord('');navigate(`/songs/${song.id}`)}}>
-                    <img id="search-img" src={song.image_file} />
-                    <span >{song.title}</span>
-                    <span>-{song.user_id.username}</span>
-                  </div>
-                ))}
-          </div>
-          }
+          {searchWord.length > 0 && (
+            <div id="search-results-list">
+              {searchWord.length > 0 &&
+                sortedSongs
+                  .filter(
+                    (song) =>
+                      song.title
+                        .toLowerCase()
+                        .startsWith(searchWord.toLowerCase()) ||
+                      song.user_id.username
+                        .toLowerCase()
+                        .startsWith(searchWord.toLowerCase())
+                  )
+                  .map((song) => (
+                    <div
+                      key={song.id}
+                      className="indi-search click"
+                      onClick={() => {
+                        setSearchWord("");
+                        navigate(`/songs/${song.id}`);
+                      }}
+                    >
+                      <img id="search-img" src={song.image_file} />
+                      <span>{song.title}</span>
+                      <span>-{song.user_id.username}</span>
+                    </div>
+                  ))}
+            </div>
+          )}
         </div>
       </div>
 

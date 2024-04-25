@@ -3,3 +3,4 @@ from .signup_form import SignUpForm
 from .song_form import SongForm
 from .comment_form import CommentForm
 from .liked_songs_form import LikedSongForm
+from .user_image_form import UserImageForm
