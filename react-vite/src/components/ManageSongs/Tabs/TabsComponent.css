@@ -17,7 +17,7 @@
     padding:20px;
     font-size:20px;
     font-family: Inter,sans-serif;
-    color: #333;
+    color: white;
     /* border-bottom: 1px solid grey */
 
 }
@@ -25,6 +25,7 @@
     border-bottom: 2px solid rgb(201,22,150);
     color:rgb(201,22,150);
     z-index:1;
+    background-color:hsl(0,0%,11%);
 }
 #tabs-main-cont-first{
     min-height: 90vh
