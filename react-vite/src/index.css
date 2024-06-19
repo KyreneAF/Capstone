@@ -4,14 +4,18 @@ body {
   font-family: sans-serif;
   color: #333;
   margin:0px;
-
+  background-color:hsl(0,0%,11%);
+}
+.navie {
+  color: white;
 }
 .click {
   cursor: pointer;
 }
 .block {
   padding-bottom: 50px;
-  border-bottom: 0.3px solid rgb(145,145,145,.6)
+  /* border-bottom: 0.3px solid rgb(145,145,145,.6) */
+  border-bottom: 0.3px solid hsl(0,0%,5%)
 }
 
 .border {
