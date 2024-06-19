@@ -17,6 +17,9 @@
 .ss-info-con {
   padding: 20px;
   border: 1px solid black;
+  background-color:white;
+  margin-top:50px;
+  margin-bottom:30px
 }
 
 .single-song-img {
@@ -73,5 +76,9 @@
 
 /* MAIN CONTAINER  */
 .song-main-cont{
-  margin-top: 50px;
+  background-color: hsl(0,0%,5%);
+}
+
+.single-content-cont p{
+  color:white
 }

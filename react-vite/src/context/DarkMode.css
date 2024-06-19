@@ -1,0 +1,63 @@
+body{
+    background-color:hsl(0,0%,11%)
+}
+
+/* SPLASH*/
+.land-pg-main-cont{
+    background-color: hsl(0,0%,11%);
+};
+.land-cont h3{
+    color:white;
+}
+.navie {
+
+    color: white;
+  }
+.block{
+    border-bottom: .3 solid hsl(0,0%,5%);
+};
+.songs .land-cont{
+    background-color:hsl(0,0%,5%) ;
+}
+/* LIBRARY */
+.personal-songs-cont .react-tabs__tab--selected {
+    background-color:hsl(0,0%,11%);
+}
+.personal-songs-cont .react-tabs__tab{
+    color:white
+}
+.liked-song-info-cont span{
+    color:white
+}
+/* UPLOAD SONG */
+.cs-heading{
+    color:white
+}
+.csf-left-cont label{
+    color:white
+}
+.csf-left-cont input{
+    color:gray
+}
+.csf-right-cont label{
+    color:white
+}
+.create-song-form-cont{
+    box-shadow: 2px 2px 5px 8px rgb(158, 158, 157, .5);
+}
+
+.submit-error-cont > button {
+    color:white;
+}
+
+/* SEARCH BAR */
+#search-results-list{
+    box-shadow:2px 2px 8px 3px gray;
+}
+/* SINGLE SONG */
+.ss-info-cont{
+    background-color: white;
+}
+.single-content-cont p{
+    color:white
+}

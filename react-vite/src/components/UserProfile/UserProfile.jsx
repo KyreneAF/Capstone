@@ -53,9 +53,9 @@ function UserProfile() {
           </div>
           <div id="user-bttn-cont">
             <OpenModalButton
-              modalComponent={<CreateProfileImage />}
+              // modalComponent={<CreateProfileImage />}
               buttonText={
-                <button>
+                <button onClick={() => window.alert("Feature Coming Soon...")}>
                   <i className="fa-solid fa-camera-retro"></i>
                   <span style={{ marginLeft: "5px" }}>
                     Upload profile image

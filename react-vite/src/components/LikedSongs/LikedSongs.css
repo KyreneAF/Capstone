@@ -57,7 +57,9 @@
 .liked-song-info-cont span {
   font-size: small;
 }
-
+.liked-song-info-cont span{
+  color:white;
+}
 .heart-title-cont {
   display: flex;
   gap: 5px;
