@@ -18,7 +18,6 @@ function UserProfile() {
         const res = await fetch(`/api/profile/${id}`);
         if (res.ok) {
           const userImg = await res.json();
-          console.log("USER IMG", userImg);
           setUserPic(userImg.user_image); // Update the state with the fetched image data
         } else {
           throw new Error("Failed to fetch user image");
