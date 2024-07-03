@@ -28,7 +28,7 @@ function CreateSongForm() {
 
     setImageLoading(true);
     const formData = new FormData();
-    console.log('FORM DATA IMAGE',image)
+    console.log("FORM DATA IMAGE", image);
     formData.append("image", image);
     formData.append("audio", audio);
     formData.append("title", title);
@@ -159,12 +159,17 @@ function CreateSongForm() {
               Create song
             </button>
           </div>
-          <div className="is-loading">{imageLoading &&<div id='loading-cont-cs'>
-            <p>Loading...</p>
-            <img id='spin-gif' src='https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'></img>
-
+          <div className="is-loading">
+            {imageLoading && (
+              <div id="loading-cont-cs">
+                <p>Loading...</p>
+                <img
+                  id="spin-gif"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+                ></img>
+              </div>
+            )}
           </div>
-          }</div>
         </form>
       </div>
     </div>

@@ -10,7 +10,6 @@
   height: 100%;
   gap: 50px;
   min-height: 90vh;
-
 }
 
 /* FORM CONTAINER*/
@@ -20,7 +19,8 @@
   height: 500px;
   width: 500px;
   padding: 20px;
-  box-shadow: 2px 2px 5px 8px rgb(158, 158, 157, .5);
+  box-shadow: 2px 2px 10px 8px rgb(158, 158, 157, 0.5);
+  background: linear-gradient(to bottom, #383838, hsl(0, 0%, 11%));
 }
 
 .form-main-cont {
@@ -39,7 +39,7 @@
 .csf-right-cont label {
   align-self: center;
   padding: 10px;
-  color:white;
+  color: white;
 }
 .csf-title-cont {
   display: flex;
@@ -54,10 +54,10 @@
 .csf-left-cont label {
   align-self: center;
   padding: 20px;
-  color:white;
+  color: white;
 }
-.csf-left-cont input{
-  color:white;
+.csf-left-cont input {
+  color: white;
 }
 /* .box{
     display: flex;
@@ -79,7 +79,7 @@
   justify-content: center;
   font-weight: 300;
   font-size: 20px;
-  color:white
+  color: white;
 }
 
 /* .submit-error-cont > button{
@@ -103,20 +103,20 @@
   color: rgba(252, 159, 232, 1);
 }
 /* LOADING CONTAINER */
-#loading-cont{
+#loading-cont {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap:10px;
-  margin-top:20px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-#loading-cont-cs{
+#loading-cont-cs {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap:10px;
-  margin-top:20px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .is-loading {
@@ -124,9 +124,9 @@
   justify-content: center;
   color: #c91696;
 }
-#spin-gif{
-  height:50px;
-  width:50px;
+#spin-gif {
+  height: 50px;
+  width: 50px;
 }
 
 .error-cont {
@@ -134,37 +134,37 @@
   color: #c91696;
 }
 /* IMAGE AND AUDIO NAME */
-.img-row{
+.img-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.audio-row{
+.audio-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.csf-img-cont{
+.csf-img-cont {
   position: relative;
 }
-.csf-audio-cont{
+.csf-audio-cont {
   position: relative;
 }
 
-.input-names{
+.input-names {
   position: absolute;
   right: 20px;
   background-color: white;
   font-size: 14px;
- }
- .input-names-audio{
+}
+.input-names-audio {
   position: absolute;
   right: 8px;
   background-color: white;
   font-size: 14px;
- }
+}
 
 /*** REFACTORED CODE ***/
 /* .create-song-form-cont {
