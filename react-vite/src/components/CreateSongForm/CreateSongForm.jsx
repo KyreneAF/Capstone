@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkCreateSong } from "../../redux/song";
 import { useNavigate } from "react-router-dom";
-import "./CreateSongForm.css";
+// import "./CreateSongForm.css";
+// import "./CreateSongForm2.css";
 
 function CreateSongForm() {
   // const history = useHistory(); // so that you can redirect after the image upload is successful
@@ -43,111 +44,93 @@ function CreateSongForm() {
 
     navigate(`/songs/${newSong.song.id}`);
   };
-
   return (
     <div className="create-song-main-cont">
       <div className="create-song-form-cont ">
         <h2 className="cs-heading">{`Hello, ${currUser.username} upload your new song`}</h2>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="form-main-cont">
-            <div className="csf-left-cont column">
-              <div className="csf-img-cont column">
-                <label>Image file</label>
-                <input
-                  className="box"
-                  type="file"
-                  accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
-                  onChange={(e) => setImage(e.target.files[0])}
-                />
-                <div
-                  style={{ maxHeight: "20px", marginTop: "20px" }}
-                  className="update-err-cont"
-                >
-                  {!image ? (
-                    <span style={{ color: "red" }}>
-                      Image file cannot be empty
-                    </span>
-                  ) : (
-                    <span style={{ color: "white" }}>Holding</span>
-                  )}
-                </div>
-              </div>
-              <div className="csf-audio-cont column">
-                <label>Audio file</label>
-                <input
-                  className="box"
-                  type="file"
-                  accept="audio/mp3"
-                  onChange={(e) => setAudio(e.target.files[0])}
-                />
-
-                <div
-                  style={{ maxHeight: "20px", marginTop: "20px" }}
-                  className="update-err-cont"
-                >
-                  {!audio ? (
-                    <span style={{ color: "red" }}>
-                      Audio file cannot be empty
-                    </span>
-                  ) : (
-                    <span style={{ color: "white" }}>Holding</span>
-                  )}
-                </div>
-              </div>
+            <label>Image file</label>
+            <input
+              className="box"
+              type="file"
+              accept="image/png, image/jpeg image/pdf, image/png, image/jpg, image/jpeg, image/gif"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+            <div
+              style={{ maxHeight: "20px", marginTop: "20px" }}
+              className="update-err-cont"
+            >
+              {!image ? (
+                <span style={{ color: "red" }}>Image file cannot be empty</span>
+              ) : (
+                <span style={{ color: "white" }}>Holding</span>
+              )}
             </div>
 
-            <div className="csf-right-cont column">
-              <div className="csf-title-cont column">
-                <label>Title</label>
-                <input
-                  type="text"
-                  maxLength="40"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-                <div
-                  style={{ maxHeight: "20px", marginTop: "20px" }}
-                  className="update-err-cont"
-                >
-                  {!title ? (
-                    <span style={{ color: "red" }}>Title cannot be empty</span>
-                  ) : (
-                    <span style={{ color: "white" }}>Holding</span>
-                  )}
-                </div>
-              </div>
+            <label>Audio file</label>
+            <input
+              className="box"
+              type="file"
+              accept="audio/mp3"
+              onChange={(e) => setAudio(e.target.files[0])}
+            />
 
-              <div className="csf-genre-cont column">
-                <label>Tell us your genre:</label>
-                <select
-                  name="genre"
-                  id="pet-select"
-                  value={genre}
-                  onChange={(e) => setGenre(e.target.value)}
-                >
-                  <option value="" disabled hidden>
-                    --Pick your genre--
-                  </option>
-                  <option value={"Dirty Bass"}>Dirty Bass</option>
-                  <option value={"Hip-Hop"}>Hip-Hop</option>
-                  <option value={"Rock"}>Rock</option>
-                  <option value={"Electronic"}>Electronic</option>
-                  <option value={"Pop"}>Pop</option>
-                  <option value={"Latino"}>Latino</option>
-                </select>
-                <div className="error-cont">
-                  {errors.genre ? errors.genre : ""}
-                </div>
-                <div
-                  style={{ maxHeight: "20px", marginTop: "20px" }}
-                  className="update-err-cont"
-                >
-                  {!genre ? (
-                    <span style={{ color: "red" }}>Genre cannot be empty</span>
-                  ) : (
-                    <span style={{ color: "white" }}>Holding</span>
-                  )}
-                </div>
-              </div>
+            <div
+              style={{ maxHeight: "20px", marginTop: "20px" }}
+              className="update-err-cont"
+            >
+              {!audio ? (
+                <span style={{ color: "red" }}>Audio file cannot be empty</span>
+              ) : (
+                <span style={{ color: "white" }}>Holding</span>
+              )}
+            </div>
+
+            <label>Title</label>
+            <input
+              type="text"
+              maxLength="40"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <div
+              style={{ maxHeight: "20px", marginTop: "20px" }}
+              className="update-err-cont"
+            >
+              {!title ? (
+                <span style={{ color: "red" }}>Title cannot be empty</span>
+              ) : (
+                <span style={{ color: "white" }}>Holding</span>
+              )}
+            </div>
+
+            <label>Tell us your genre:</label>
+            <select
+              name="genre"
+              id="pet-select"
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+            >
+              <option value="" disabled hidden>
+                --Pick your genre--
+              </option>
+              <option value={"Dirty Bass"}>Dirty Bass</option>
+              <option value={"Hip-Hop"}>Hip-Hop</option>
+              <option value={"Rock"}>Rock</option>
+              <option value={"Electronic"}>Electronic</option>
+              <option value={"Pop"}>Pop</option>
+              <option value={"Latino"}>Latino</option>
+            </select>
+            <div className="error-cont">{errors.genre ? errors.genre : ""}</div>
+            <div
+              style={{ maxHeight: "20px", marginTop: "20px" }}
+              className="update-err-cont"
+            >
+              {!genre ? (
+                <span style={{ color: "red" }}>Genre cannot be empty</span>
+              ) : (
+                <span style={{ color: "white" }}>Holding</span>
+              )}
             </div>
           </div>
           <div className="submit-error-cont error-cont">
