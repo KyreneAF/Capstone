@@ -93,6 +93,9 @@ function LoginFormModal() {
       <h5 className="demo-link click" onClick={(e) => demoLogin(e)}>
         Demo User
       </h5>
+      <a href={`${window.origin}/api/auth/oauth_login`}>
+        <button>OAUTH</button>
+      </a>
     </div>
   );
 }

@@ -30,8 +30,6 @@ function UserProfile() {
     fetchUserImage();
   }, [id]);
 
-  // console.log("user pic", userPic)
-
   // if(!userPic)return null
   return (
     <div id="user-profile-main-cont">
