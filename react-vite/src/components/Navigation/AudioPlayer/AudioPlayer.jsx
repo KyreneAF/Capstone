@@ -14,7 +14,7 @@ function AudioPlayer() {
       // Add the currently playing song to local storage
       localStorage.setItem("recentlyPlayed", JSON.stringify(currAudio[1].song));
     }
-  }, [currAudio]);
+  }, [currAudio,isPlaying]);
 
   if (!currAudio[1]) return null;
   return (
