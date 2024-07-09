@@ -45,7 +45,7 @@
   height: 350px;
   width: 100%;
   color: white;
-  background: linear-gradient(to bottom, #383838, hsl(0, 0%, 11%));
+  background: linear-gradient(to bottom, hsl(0, 0%, 22%, 0.5), hsl(0, 0%, 11%));
   padding: 30px;
   border-radius: 5px;
 }
@@ -167,7 +167,7 @@
 .songs {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
   margin-top: 40px;
 }
 
