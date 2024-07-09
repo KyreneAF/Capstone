@@ -17,6 +17,7 @@
   background-position: center;
   position: relative;
   width: 170px;
+  border-radius: 5px;
 }
 .liked-img-cont:hover {
   transform: scale(1.1);
@@ -57,8 +58,8 @@
 .liked-song-info-cont span {
   font-size: small;
 }
-.liked-song-info-cont span{
-  color:white;
+.liked-song-info-cont span {
+  color: white;
 }
 .heart-title-cont {
   display: flex;

@@ -4,7 +4,6 @@ import SignupFormPage from "../components/SignupFormPage";
 import Layout from "./Layout";
 // import GreetingPage from '../components/GreetingPage/GreetingPage';
 import SplashPage from "../components/SplashPage/SplashPage";
-import CreateSongForm from "../components/CreateSongForm/CreateSongForm";
 import SongDetails from "../components/SongDetails/SongDetails";
 import UpdateSongs from "../components/ManageSongs/UpdateSongs";
 // import SliderComp from "../components/SplashPage/SliderComp";
@@ -48,10 +47,6 @@ export const router = createBrowserRouter([
         path: "songs/current",
         element: <TabsComponent />,
       },
-      // {
-      //   path: "songs/current",
-      //   element: <UserSongs />,
-      // },
       {
         path: "songs/edit/:id",
         element: <UpdateSongs />,

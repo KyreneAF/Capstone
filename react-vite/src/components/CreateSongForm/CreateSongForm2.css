@@ -1,0 +1,77 @@
+/* CREATE SONG MAIN CONTAINER*/
+.create-song-main-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 90vh;
+}
+.create-song-form-cont {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background: linear-gradient(to bottom, hsl(0, 0%, 22%, 0.5), hsl(0, 0%, 11%));
+  border-radius: 8px;
+  width: 60%;
+  align-items: center;
+  color: white;
+}
+
+.create-song-form-cont h2 {
+  color: white;
+  font-size: 35px;
+}
+
+.form-main-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 100%;
+  font-size: 25px;
+}
+
+.update-err-cont {
+  font-size: 15px;
+}
+
+.submit-error-cont.error-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.submit-error-cont.error-cont button {
+  background-color: white;
+  color: hsl(317, 80%, 44%);
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#spin-gif {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.holding {
+  visibility: hidden;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 3px;
+}
+
+select#pet-select {
+  padding: 8px;
+  border-radius: 3px;
+}
+/*This is my second styling for upload songs*/
