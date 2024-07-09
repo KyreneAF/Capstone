@@ -12,9 +12,9 @@
   flex-direction: column;
   gap: 20px;
   padding: 30px;
-  background: linear-gradient(to bottom, #383838, hsl(0, 0%, 11%));
+  background: linear-gradient(to bottom, hsl(0, 0%, 22%, 0.5), hsl(0, 0%, 11%));
   border-radius: 8px;
-  width: 80%;
+  width: 60%;
   align-items: center;
   color: white;
 }
@@ -46,11 +46,12 @@
 
 .submit-error-cont.error-cont button {
   background-color: white;
-  color: black;
+  color: hsl(317, 80%, 44%);
   padding: 10px;
   border-radius: 5px;
   width: 200px;
   font-size: 15px;
+  font-weight: bold;
 }
 
 #spin-gif {
