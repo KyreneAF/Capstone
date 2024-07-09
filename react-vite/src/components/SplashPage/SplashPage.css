@@ -5,7 +5,7 @@
   width: 100%;
   /* margin-left: 30px; */
   font-family: sans-serif;
-  background-color: hsl(0,0%,11%);
+  background-color: hsl(0, 0%, 11%);
 }
 
 .land-allSongs-cont {
@@ -44,8 +44,10 @@
 .land-cont {
   height: 350px;
   width: 100%;
-  color:white;
-  /* border-bottom: 0.3px solid rgb(145,145,145,.6) */
+  color: white;
+  background: linear-gradient(to bottom, #383838, hsl(0, 0%, 11%));
+  padding: 30px;
+  border-radius: 5px;
 }
 
 .land-cont h3 {
@@ -64,6 +66,7 @@
   position: relative;
   height: 170px;
   width: 170px;
+  border-radius: 5px;
 }
 .land-song-info {
   font-size: small;
@@ -168,10 +171,10 @@
   margin-top: 40px;
 }
 
-.songs .land-cont{
-  background-color: hsl(0,0%,5%);
-  padding:20px;
-}
+/* .songs .land-cont {
+  background-color: hsl(0, 0%, 5%);
+  padding: 20px;
+} */
 
 /* TOGGLE   */
 .splash-added {
